@@ -9,7 +9,7 @@ const char *regsb[] = {"al", "cl", "dl", "bl", "ah", "ch", "dh", "bh"};
 
 void reg_test() {
   srand(time(0));
-  word_t sample[8];
+  word_t sample[9];
   word_t pc_sample = rand();
   cpu.pc = pc_sample;
 
