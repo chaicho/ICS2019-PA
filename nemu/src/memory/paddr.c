@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-static uint8_t pmem[PMEM_SIZE] PG_ALIGN = {};
+static uint8_t pmem[134217728] PG_ALIGN = {};
 
 void* guest_to_host(paddr_t addr) { return &pmem[addr]; }
 paddr_t host_to_guest(void *addr) { return (void *)pmem - addr; }
