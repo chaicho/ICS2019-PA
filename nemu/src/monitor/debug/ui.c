@@ -70,7 +70,7 @@ static int cmd_si(char *args){
     else if(i==0) printf("Do nothing\n");
     else {
     cpu_exec(i);
-    printf("%d\n",i);
+
     }
   }
   return 0;
