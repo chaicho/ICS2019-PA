@@ -80,7 +80,7 @@ static int cmd_si(char *args){
 static int cmd_info(char  *args){
   char *arg =strtok(NULL,"");
   if(*arg=='r'){
-    void isa_reg_display(void);
+    isa_reg_display();
     printf("yes");
   }
   else if(*arg=='w')  //打印监视点
