@@ -70,7 +70,7 @@ void isa_reg_display() {
   }
 printf("\n");
   for (i = 4; i <= 7; i ++) {
-       printf("%s : %08x    ",regsl[i],reg_l(i));
+       printf("%s: %08x    ",regsl[i],reg_l(i));
   }
   printf("\n");
 }
