@@ -43,14 +43,34 @@ void reg_test() {
 
 void isa_reg_display() {
   int i;
-  printf ("uiuuu\n");
-  for (i = 0; i <= 7; i ++) {
-        printf ("uiuuu\n");
+  for (i = 0; i <= 3; i ++) {
        printf("%s : %8x    ",regsb[i],reg_b(i));
-       printf("%s : %8x    ",regsw[i],reg_w(i));
-       printf("%s : %8x    ",regsl[i],reg_l(i)); 
-       printf("\n"); 
+      
+  } 
+  printf("\n");
+  for (i = 4; i <= 7; i ++) {
+       printf("%s : %8x    ",regsb[i],reg_b(i));
+      
   }
+  printf("\n");
+  for (i = 0; i <= 3; i ++) {
+       printf("%s : %8x    ",regsw[i],reg_w(i));
+      
+  }
+  printf("\n");
+  for (i = 0; i <= 3; i ++) {
+       printf("%s : %08x    ",regsl[i],reg_l(i));
+  }
+  printf("\n");
+  for (i = 4; i <= 7; i ++) {
+       printf("%s : %8x    ",regsw[i],reg_w(i));
+      
+  }
+  printf("\n");
+  for (i = 4; i <= 7; i ++) {
+       printf("%s : %08x    ",regsl[i],reg_l(i));
+  }
+  printf("\n");
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {

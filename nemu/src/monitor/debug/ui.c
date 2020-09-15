@@ -81,7 +81,7 @@ static int cmd_info(char  *args){
   char *arg =strtok(NULL,"");
   if(*arg=='r'){
     isa_reg_display();
-    printf("yes");
+
   }
   else if(*arg=='w')  //打印监视点
   {
