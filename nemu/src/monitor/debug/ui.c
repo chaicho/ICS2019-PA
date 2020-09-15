@@ -37,6 +37,7 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+
 static int cmd_help(char *args);
 
 static struct {
@@ -47,7 +48,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "si [N]", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",cmd_c},
   /* TODO: Add more commands */
 
 };
@@ -90,6 +91,7 @@ void ui_mainloop() {
     char *cmd = strtok(str, " ");
     if (cmd == NULL) { continue; }
 
+    
     /* treat the remaining string as the arguments,
      * which may need further parsing
      */
