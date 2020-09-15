@@ -49,8 +49,6 @@ void isa_reg_display() {
        printf("%s : %8x    ",regsl[i],reg_l(i)); 
        printf("\n"); 
   }
-  
-
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
