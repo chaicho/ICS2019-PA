@@ -44,6 +44,7 @@ void reg_test() {
 void isa_reg_display() {
   int i;
   for (i = 0; i <= 7; i ++) {
+        printf ("uiuuu\n");
        printf("%s : %8x    ",regsb[i],reg_b(i));
        printf("%s : %8x    ",regsw[i],reg_w(i));
        printf("%s : %8x    ",regsl[i],reg_l(i)); 
