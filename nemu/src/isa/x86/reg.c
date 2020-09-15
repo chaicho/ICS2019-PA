@@ -61,13 +61,14 @@ void isa_reg_display() {
   for (i = 0; i <= 3; i ++) {
        printf("%s : %08x    ",regsl[i],reg_l(i));
   }
+  printf("\n");  
+  printf("\n");
   printf("\n");
   for (i = 4; i <= 7; i ++) {
        printf("%s : %8x    ",regsw[i],reg_w(i));
       
   }
-  printf("\n");
-  printf("\n");printf("\n");
+printf("\n");
   for (i = 4; i <= 7; i ++) {
        printf("%s : %08x    ",regsl[i],reg_l(i));
   }
