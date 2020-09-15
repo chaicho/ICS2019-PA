@@ -48,7 +48,11 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si [N]", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",cmd_c},
+  { "si [N]", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",},
+  { "p EXPR"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",},
+  {"x N EXPR","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",},
+  {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",},
+  {"d N","Delete the monitoring point with sequence number N",},
   /* TODO: Add more commands */
 
 };
