@@ -39,6 +39,7 @@ static int cmd_q(char *args) {
 
 
 static int cmd_help(char *args);
+static int cmd_si(char *args);
 
 static struct {
   char *name;
@@ -48,7 +49,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si [N]", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",},
+  { "si [N]", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",cmd_si},
   { "p EXPR"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",},
   {"x N EXPR","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",},
   {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",},
@@ -59,6 +60,22 @@ static struct {
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
 
+
+static int cmd_si(char *args){
+  char *arg =  strtok(NULL, " "); //这个地方从刚才的下一个开始
+  if(arg==NULL) cpu_exec(1);
+  else{
+    int i=0;
+    sscanf(arg,"%d",&i);
+    if(i<0) printf("Wrong Arguments\n");  
+    else if(i==0) printf("Do nothing\n");
+    else {
+    cpu_exec(i);
+    printf("%d\n",i);
+    }
+  }
+  return 0;
+}
 static int cmd_help(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
