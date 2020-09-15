@@ -40,6 +40,7 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 static int cmd_si(char *args);
+static int cmd_info(char *args);
 static struct {
   char *name;
   char *description;
@@ -49,7 +50,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",cmd_si},
-  { "p EXPR"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",},
+  {"info"," Print register status or Print monitoring point information",cmd_info},
+  { "p"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",cmd_info},
   {"x N EXPR","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",},
   {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",},
   {"d N","Delete the monitoring point with sequence number N",},
@@ -72,6 +74,17 @@ static int cmd_si(char *args){
     cpu_exec(i);
 
     }
+  }
+  return 0;
+}
+static int cmd_info(char  *args){
+  char *arg =strtok(NULL,"");
+  if(*arg=='r'){
+    void isa_reg_display(void);
+  }
+  else if(*arg=='w')  //打印监视点
+  {
+     
   }
   return 0;
 }
