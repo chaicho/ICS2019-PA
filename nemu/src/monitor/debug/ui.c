@@ -119,7 +119,7 @@ static int cmd_x(char *args){
    sscanf(arg, "%d %x", &number, &address);
    int i;
    for( i=0;i<number;i++){
-      printf("%x :  %x\n",address,paddr_read(address+4*i, 4));
+      printf("%8x :  %x\n",address,paddr_read(address+4*i, 4));
    } 
   return 0;
 }
