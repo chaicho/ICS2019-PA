@@ -115,9 +115,8 @@ static int cmd_help(char *args) {
 
 static int cmd_x(char *args){
    char *arg = strtok(NULL, " "); 
-   int number;
-   u_int32_t address;
-   sscanf(arg, "%d %x", &number, &address);
+   int number, address;
+   sscanf(arg, "%d%x", &number, &address);
    printf("%x\n",address);
    int i;
    for( i=0;i<number;i++){
