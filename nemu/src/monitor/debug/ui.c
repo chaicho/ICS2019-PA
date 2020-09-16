@@ -118,10 +118,10 @@ static int cmd_x(char *args){
    int number, address=1;
    sscanf(arg, "%d", &number);
    arg = strtok(NULL, " ");
-   sscanf(arg,"%x",&address); 
+   sscanf(arg,"%x", &address); 
    int i;
    for( i=0;i<number;i++){
-      printf("%8x :  %x\n",address+4*i,paddr_read(address+4*i, 4));
+      printf("%8x :  %8x\n",address+4*i,paddr_read(address+4*i, 4));
    } 
   return 0;
 }
