@@ -1,7 +1,7 @@
 #include <isa.h>
 #include "expr.h"
 #include "watchpoint.h"
-
+#include <memory/paddr.h>
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -41,6 +41,7 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 static int cmd_si(char *args);
 static int cmd_info(char *args);
+static int cmd_x(char *args);
 static struct {
   char *name;
   char *description;
@@ -52,7 +53,7 @@ static struct {
   { "si", "Let the program step through N instructions and then suspend execution. When N is not given, the default value is 1",cmd_si},
   {"info"," Print register status or Print monitoring point information",cmd_info},
   { "p"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",cmd_info},
-  {"x N EXPR","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",},
+  {"x","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",cmd_x},
   {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",},
   {"d N","Delete the monitoring point with sequence number N",},
   /* TODO: Add more commands */
@@ -112,6 +113,16 @@ static int cmd_help(char *args) {
   return 0;
 }
 
+static int cmd_x(char *args){
+   char *arg = strtok(NULL, " "); 
+   int number,address;
+   sscanf(arg, "%d %x", &number, &address);
+   int i;
+   for( i=0;i<number;i++){
+      printf("%x :  %x\n",address,paddr_read(address+4*i, 4));
+   } 
+  return 0;
+}
 void ui_mainloop() {
   if (is_batch_mode()) {
     cmd_c(NULL);
