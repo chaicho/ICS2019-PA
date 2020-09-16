@@ -116,7 +116,9 @@ static int cmd_help(char *args) {
 static int cmd_x(char *args){
    char *arg = strtok(NULL, " "); 
    int number, address=1;
-   sscanf(arg, "%d 0x%x", &number, &address);
+   sscanf(arg, "%d", &number);
+   arg = strtok(NULL, " ");
+   sscanf(arg,"%x",&address); 
    int i;
    for( i=0;i<number;i++){
       printf("%8x :  %x\n",address+4*i,paddr_read(address+4*i, 4));
