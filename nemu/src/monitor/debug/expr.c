@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM
+  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_DIV,
 
   /* TODO: Add more token types */
 
@@ -26,7 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
-  {"/",TK_DIV},
+  {"/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0~9]+",TK_NUM},
@@ -45,7 +45,7 @@ void init_regex() {
   char error_msg[128];
   int ret;
 
-  for (i = 0; i < NR_REGEX; i ++) {
+  for (i = 0; i < NR_REGEX;  i ++) {
     ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);//re[i]存放编译后的正则表达式
     if (ret != 0) {
       regerror(ret, &re[i], error_msg, 128);
@@ -113,6 +113,8 @@ static bool make_token(char *e) {
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
               assert(substr_len<=31);
               break;
+          case 264:
+              tokens[nr_token++].type=264;
           default:
               printf("Illegal\n");
               break;
