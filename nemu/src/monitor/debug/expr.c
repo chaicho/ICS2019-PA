@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM
+  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM
 
   /* TODO: Add more token types */
 
@@ -26,6 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
+  {"/",TK_DIV},
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0~9]+",TK_NUM},
@@ -110,6 +111,7 @@ static bool make_token(char *e) {
           case 263:     //数字
               tokens[nr_token].type=263;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
+              assert(substr_len<=31);
               break;
           default:
               printf("Illegal\n");
@@ -136,7 +138,7 @@ word_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
+
 
   return 0;
 }
