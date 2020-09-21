@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ,
+  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM
 
   /* TODO: Add more token types */
 
@@ -22,8 +22,14 @@ static struct rule {
    */
 
   {" +", TK_NOTYPE},    // spaces
-  {"\\+", '+'},         // plus
+  {"\\+", TK_PLUS},         // plus
   {"==", TK_EQ},        // equal
+  {"\\-",TK_MINUS},
+  {"\\*",TK_MULT},
+  {"\\(",TK_LEFTBRA},
+  {"\\)",TK_RIGHTBRA},
+  {"[0~9]+",TK_NUM},
+
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -39,7 +45,7 @@ void init_regex() {
   int ret;
 
   for (i = 0; i < NR_REGEX; i ++) {
-    ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);
+    ret = regcomp(&re[i], rules[i].regex, REG_EXTENDED);//re[i]存放编译后的正则表达式
     if (ret != 0) {
       regerror(ret, &re[i], error_msg, 128);
       panic("regex compilation failed: %s\n%s", error_msg, rules[i].regex);
@@ -52,8 +58,8 @@ typedef struct token {
   char str[32];
 } Token;
 
-static Token tokens[32] __attribute__((used)) = {};
-static int nr_token __attribute__((used))  = 0;
+static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
+static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
 
 static bool make_token(char *e) {
   int position = 0;
@@ -78,11 +84,38 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-
+        
         switch (rules[i].token_type) {
-          default: TODO();
+          case 256:     //空格
+              break;
+          case 257:     //加号
+              tokens[nr_token].type=257;
+              strcpy(tokens[nr_token++].str);
+              break;
+          case 258:     //等于
+              tokens[nr_token].type=258;
+              strcpy(tokens[nr_token++],"==");
+              break;
+          case 259:     //减
+              tokens[nr_token++].type=259;
+              break;
+          case 260:     //乘
+              tokens[nr_token++].type=260;
+              break;
+          case 261:     //左括号
+              tokens[nr_token++].type=261;
+              break;
+          case 262:     //右括号
+              tokens[nr_token++].type=262;
+              break;
+          case 263:     //数字
+              tokens[nr_token].type=263;
+              stncpy(tokens[nr_token++].str,substr_start,substr_len);
+              break;
+          default:
+              printf("Illegal\n");
+              break;
         }
-
         break;
       }
     }
