@@ -90,11 +90,10 @@ static bool make_token(char *e) {
               break;
           case 257:     //加号
               tokens[nr_token].type=257;
-              strcpy(tokens[nr_token++].str);
               break;
           case 258:     //等于
               tokens[nr_token].type=258;
-              strcpy(tokens[nr_token++],"==");
+              strcpy(tokens[nr_token++].str,"==");
               break;
           case 259:     //减
               tokens[nr_token++].type=259;
@@ -110,7 +109,7 @@ static bool make_token(char *e) {
               break;
           case 263:     //数字
               tokens[nr_token].type=263;
-              stncpy(tokens[nr_token++].str,substr_start,substr_len);
+              strncpy(tokens[nr_token++].str,substr_start,substr_len);
               break;
           default:
               printf("Illegal\n");
