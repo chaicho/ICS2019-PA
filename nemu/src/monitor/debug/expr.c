@@ -150,14 +150,26 @@ int eval(int p,int q){
     if(p>q){
       return -1;  
     }
-    else if(p==q) return atoi(tokens[p].str);
+    else if(p==q) {
+      if(tokens[p].type==TK_NUM)
+      return atoi(tokens[p].str);
+      
+      else return 0;        
+    } 
     else if(check_brackets(p,q)){
         return eval(p+1,q-1);
     }
     else{
-      int i=0; //用loc来记录
+      int i=0,lef=0; //用loc来记录,lef记录是否在括号中
       for(i=p;i<=q;i++){
-          if(tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
+          if(tokens[i].type==TK_LEFTBRA){
+            lef++;
+          }
+          else if(tokens[i].type==TK_RIGHTBRA)
+          {
+              lef--;
+          }
+          else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
               if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){
                 loc=i;
               }
