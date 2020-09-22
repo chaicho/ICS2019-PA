@@ -95,7 +95,7 @@ static bool make_token(char *e) {
               strcpy(tokens[nr_token++].str,"==");
               break;
            case 258:     //加号
-              tokens[nr_token].type=258;
+              tokens[nr_token++].type=258;
               break;
           case 259:     //减
               tokens[nr_token++].type=259;
@@ -113,7 +113,7 @@ static bool make_token(char *e) {
               break;
           case 264:     //数字
               tokens[nr_token].type=264;
-              strncpy(tokens[nr_token++].str,substr_start,substr_len+1);
+              strncpy(tokens[nr_token++].str,substr_start,substr_len);
               //assert(substr_len<=31);
               break;
           
