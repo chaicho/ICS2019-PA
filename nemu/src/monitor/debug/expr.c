@@ -26,7 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
-  {"/",TK_DIV}, 
+  {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0-9]+",TK_NUM},
@@ -171,8 +171,9 @@ int eval(int p,int q){
               lef--;
           }
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
-              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){
+              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){  ///如果以后出了问题记得看这边
                 loc=i;
+                printf("%d\n",loc);
               }
           }
          // printf("%d\n",lef);
@@ -206,6 +207,6 @@ word_t expr(char *e, bool *success) {
   }
   
   /* TODO: Insert codes to evaluate the expression. */
- // printf("%d\n",nr_token);
+  printf("%d\n",nr_token);
   return eval(0,nr_token-1);
 }
