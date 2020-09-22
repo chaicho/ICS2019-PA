@@ -172,9 +172,9 @@ int eval(int p,int q){
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
               if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){
                 loc=i;
-                printf("Loc=%d %d\n",loc,tokens[loc].type);
               }
           }
+          printf("%d\n",lef);
       }
       int val1=eval(p,loc-1);
       int val2=eval(loc+1,q);
