@@ -6,7 +6,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_PLUS,TK_EQ, TK_MINUS,TK_MULT,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_DIV,
+  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,
 
   /* TODO: Add more token types */
 
@@ -26,7 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
-  {"/",TK_DIV}, 
+  {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0~9]+",TK_NUM},
@@ -89,12 +89,13 @@ static bool make_token(char *e) {
         switch (rules[i].token_type) {
           case 256:     //空格
               break;
-          case 257:     //加号
+          
+          case 257:     //等于
               tokens[nr_token].type=257;
-              break;
-          case 258:     //等于
-              tokens[nr_token].type=258;
               strcpy(tokens[nr_token++].str,"==");
+              break;
+           case 258:     //加号
+              tokens[nr_token].type=258;
               break;
           case 259:     //减
               tokens[nr_token++].type=259;
@@ -102,19 +103,20 @@ static bool make_token(char *e) {
           case 260:     //乘
               tokens[nr_token++].type=260;
               break;
-          case 261:     //左括号
+          case 261:  //除法
               tokens[nr_token++].type=261;
-              break;
-          case 262:     //右括号
+          case 262:     //左括号
               tokens[nr_token++].type=262;
               break;
-          case 263:     //数字
-              tokens[nr_token].type=263;
+          case 263:     //右括号
+              tokens[nr_token++].type=263;
+              break;
+          case 264:     //数字
+              tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
               assert(substr_len<=31);
               break;
-          case 264:
-              tokens[nr_token++].type=264;
+          
           default:
               printf("Illegal\n");
               break;
@@ -131,14 +133,63 @@ static bool make_token(char *e) {
 
   return true;
 }
-
-
+bool check_brackets(int p,int q){
+        if(tokens[p].type!=TK_LEFTBRA&&tokens[q].type!=TK_RIGHTBRA) return false;
+        int credit=0;
+        int j=0;
+        for( j=p;j<=q;j++){
+          if(tokens[j].type==TK_LEFTBRA) credit++;
+          else if(tokens[j].type==TK_RIGHTBRA) {
+            if(credit<=0) return false;
+            else credit--;
+        }}
+        return credit==0;
+}
+int eval(int p,int q){
+    int loc=0;
+    if(p>q){
+      return -1;  
+    }
+    else if(p==q) return atoi(tokens[p].str);
+    else if(check_brackets(p,q)){
+        return eval(p+1,q-1);
+    }
+    else{
+      int i=0; //用loc来记录
+      for(i=p;i<=q;i++){
+          if(tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
+              if(tokens[i].type<TK_MINUS||tokens[i].type<tokens[loc].type){
+                loc=i;
+              }
+          }
+      }
+      int val1=eval(p,loc-1);
+      int val2=eval(loc+1,q);
+      switch (tokens[loc].type)
+      {
+      case TK_PLUS:
+        return val1+val2;
+        break;
+      case  TK_MINUS:
+        return val1-val2;
+        break;
+      case TK_MULT:
+        return val1*val2;
+        break;
+      case TK_DIV:
+        return val1/val2;
+        break;
+      default:
+        break;
+      }
+    }    
+}
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-
+  
   /* TODO: Insert codes to evaluate the expression. */
 
 
