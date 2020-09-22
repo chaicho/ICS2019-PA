@@ -113,7 +113,7 @@ static bool make_token(char *e) {
               break;
           case 264:     //数字
               tokens[nr_token].type=264;
-              strncpy(tokens[nr_token++].str,substr_start,substr_len);
+              strncpy(tokens[nr_token++].str,substr_start,substr_len-1);
               //assert(substr_len<=31);
               break;
           
