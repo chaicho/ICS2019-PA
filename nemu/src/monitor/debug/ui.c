@@ -132,8 +132,9 @@ static int cmd_p (char *args){
     bool success;
     if(arg==NULL) printf("More arguments needed\n");
     else{
-           expr(arg,&success);
+           int t=expr(arg,&success);
            if(!success) printf("Mission failed\n");
+           else printf("%d\n",t);
          }
      
     return 0; 
