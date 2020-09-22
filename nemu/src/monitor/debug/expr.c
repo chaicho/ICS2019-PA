@@ -162,7 +162,7 @@ int eval(int p,int q){
     else{
       int i=0,lef=0; //用loc来记录,lef记录是否在括号中
       for(i=p;i<=q;i++){
-        printf("%d\n",tokens[i].type);
+       // printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
             lef++;
           }
