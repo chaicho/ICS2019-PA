@@ -68,7 +68,6 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
 
   nr_token = 0;
-
   while (e[position] != '\0') {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
@@ -113,7 +112,7 @@ static bool make_token(char *e) {
               break;
           case 264:     //数字
               tokens[nr_token].type=264;
-              strncpy(tokens[nr_token++].str,substr_start,substr_len);
+              strncpy(tokens[nr_token++].str,substr_start,substr_len+1);
               assert(substr_len<=31);
               break;
           
