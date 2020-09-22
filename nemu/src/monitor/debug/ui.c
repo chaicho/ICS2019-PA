@@ -128,11 +128,10 @@ static int cmd_x(char *args){
   return 0;
 }
 static int cmd_p (char *args){
-    char *arg =strtok(NULL," ");
     bool success;
-    if(arg==NULL) printf("More arguments needed\n");
+    if(args==NULL) printf("More arguments needed\n");
     else{
-           int t=expr(arg,&success);
+           int t=expr(args,&success);
            if(!success) printf("Mission failed\n");
            else printf("%d\n",t);
          }
