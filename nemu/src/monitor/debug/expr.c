@@ -29,7 +29,7 @@ static struct rule {
   {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
-  {"[0~9]+",TK_NUM},
+  {"+",TK_NUM},
 
 };
 
@@ -113,7 +113,7 @@ static bool make_token(char *e) {
           case 264:     //数字
               tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len+1);
-              assert(substr_len<=31);
+              //assert(substr_len<=31);
               break;
           
           default:
