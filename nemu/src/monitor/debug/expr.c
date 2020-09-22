@@ -1,10 +1,10 @@
 #include <isa.h>
-
+#include <stdlib.h>
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-#include <stdlib.h>
+
 enum {
   TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,
 
@@ -18,7 +18,7 @@ static struct rule {
 } rules[] = {
 
   /* TODO: Add more rules.
-   * Pay attention to the precedence level of different rules.
+   * Pay attention  to the precedence level of different rules.
    */
 
   {" +", TK_NOTYPE},    // spaces

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-#include "expr.c"
+
 void cpu_exec(uint64_t);
 int is_batch_mode();
 
@@ -132,11 +132,10 @@ static int cmd_p (char *args){
     bool success;
     if(arg==NULL) printf("More arguments needed\n");
     else{
-         if(!make_token(arg)) printf("No match\n");
-         else{
            expr(arg,&success);
+           if(!success) printf("Mission failed\n");
          }
-    } 
+     
     return 0; 
 }
 void ui_mainloop() {
