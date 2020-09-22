@@ -158,7 +158,7 @@ int eval(int p,int q){
       int i=0; //用loc来记录
       for(i=p;i<=q;i++){
           if(tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
-              if(tokens[i].type<TK_MINUS||tokens[i].type<tokens[loc].type){
+              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){
                 loc=i;
               }
           }
