@@ -134,7 +134,7 @@ static bool make_token(char *e) {
   return true;
 }
 bool check_brackets(int p,int q){
-        if(tokens[p].type!=TK_LEFTBRA&&tokens[q].type!=TK_RIGHTBRA) return false;
+        if(tokens[p].type!=TK_LEFTBRA||tokens[q].type!=TK_RIGHTBRA) return false;
         int credit=0;
         int j=0;
         for( j=p;j<=q;j++){
@@ -157,7 +157,6 @@ int eval(int p,int q){
       else return 0;        
     } 
     else if(check_brackets(p,q)){ 
-        assert(0);
         return eval(p+1,q-1);
     }
     else{
