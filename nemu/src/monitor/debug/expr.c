@@ -29,7 +29,7 @@ static struct rule {
   {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
-  {"[0~9]+",TK_NUM},
+  {"[0-9]+",TK_NUM},
 
 };
 
