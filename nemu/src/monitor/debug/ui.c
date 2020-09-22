@@ -128,7 +128,7 @@ static int cmd_x(char *args){
   return 0;
 }
 static int cmd_p (char *args){
-    bool success;
+    bool success=true;
     if(args==NULL) printf("More arguments needed\n");
     else{
            int t=expr(args,&success);
