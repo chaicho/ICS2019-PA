@@ -151,8 +151,7 @@ int eval(int p,int q){
       return -1;  
     }
     else if(p==q) {
-      if(tokens[p].type==TK_NUM)
-      return atoi(tokens[p].str);
+      if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
       
       else return 0;        
     } 
@@ -173,7 +172,7 @@ int eval(int p,int q){
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
               if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){  ///如果以后出了问题记得看这边
                 loc=i;
-                printf("%d\n",loc);
+                //printf("%d\n",loc);
               }
           }
          // printf("%d\n",lef);
