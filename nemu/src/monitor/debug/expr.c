@@ -26,7 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
-  {"\\/",TK_DIV}, 
+  {"/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0-9]+",TK_NUM},
@@ -206,6 +206,6 @@ word_t expr(char *e, bool *success) {
   }
   
   /* TODO: Insert codes to evaluate the expression. */
-  printf("%d\n",nr_token);
+ // printf("%d\n",nr_token);
   return eval(0,nr_token-1);
 }
