@@ -156,7 +156,8 @@ int eval(int p,int q){
       
       else return 0;        
     } 
-    else if(check_brackets(p,q)){
+    else if(check_brackets(p,q)){ 
+        printf("YES\n");
         return eval(p+1,q-1);
     }
     else{
