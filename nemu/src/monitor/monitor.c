@@ -6,7 +6,7 @@
 
 void init_log(const char *log_file);
 void init_mem();
-void init_regex();
+void init_regex();  //正则表达式的初始化
 void init_wp_pool();
 void init_difftest(char *ref_so_file, long img_size, int port);
 

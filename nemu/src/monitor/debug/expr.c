@@ -4,7 +4,7 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-
+#include <stdlib.h>
 enum {
   TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,
 
@@ -180,6 +180,7 @@ int eval(int p,int q){
         return val1/val2;
         break;
       default:
+        return 0;
         break;
       }
     }    
@@ -192,6 +193,6 @@ word_t expr(char *e, bool *success) {
   
   /* TODO: Insert codes to evaluate the expression. */
 
-
+  printf("%d\n",eval(0,nr_token-1));
   return 0;
 }
