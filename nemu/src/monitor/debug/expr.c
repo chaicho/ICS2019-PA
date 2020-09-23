@@ -201,7 +201,9 @@ int eval(int p,int q){
         printf("the first valid op is %d\n",a[gg]);
       if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,a[gg]-1);
-      int val2=positive*eval(record+1,q);
+    
+      int val2=positive*eval(record+1,q); 
+      printf("val1=%d,val2=%d\n",val1,val2);
       switch (tokens[a[gg]].type)
       {
       case TK_PLUS:
