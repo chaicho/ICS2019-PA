@@ -146,7 +146,7 @@ bool check_brackets(int p,int q){
             if(credit<=0) return false;
             else credit--;
         }}
-        printf("brackets: p=%d,q=%d\n,%d",p,q,credit);
+        printf("brackets: p=%d,q=%d,....%d\n",p,q,credit);
         return credit==0;
 }
 int eval(int p,int q){
