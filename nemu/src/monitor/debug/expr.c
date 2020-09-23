@@ -152,6 +152,7 @@ bool check_brackets(int p,int q){
 int eval(int p,int q){
     int a[33]={0};
     int gg=0;
+    if(q==32763) assert(0);
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
       return 0;  
