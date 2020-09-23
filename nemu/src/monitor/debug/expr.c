@@ -163,7 +163,7 @@ int eval(int p,int q){
     else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p+1,q-1))return eval(p+1,q-1);
     else if(check_brackets(p,q)){
         
-          int i=0,lef=0; //用loc来记录,lef记录是否在括号中
+          int i=0,lef=0; //用a按可行性记录符号,lef记录是否在括号中
       for(i=p;i<=q;i++){
        // printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
@@ -174,14 +174,15 @@ int eval(int p,int q){
               lef--;
           }
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
+            printf("%d\n",gg);
               if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[a[gg]].type){  ///如果以后出了问题记得看这边
                 a[gg++]=i;
-                //printf("%d\n",a[gg]);
+                printf("%d\n",a[gg]);
               }
           }
          // printf("%d\n",lef);
       }
-      
+      gg--;
       int positive=1;
       int record=a[gg];
       
