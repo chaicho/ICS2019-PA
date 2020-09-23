@@ -185,7 +185,7 @@ int eval(int p,int q){
       gg--;
       int positive=1;
       int record=a[gg];
-     
+     assert(0);
       while(gg>0&&tokens[a[gg]].type==TK_MINUS){
           if(a[gg]==p) break;
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
@@ -195,7 +195,7 @@ int eval(int p,int q){
          }
       }
         printf("the first valid op is %d\n",a[gg]);
-      int val1=eval(p,(int)(a[gg]-1));
+      int val1=eval(p,a[gg]-1);
       int val2=positive*eval(record+1,q);
       switch (tokens[a[gg]].type)
       {
