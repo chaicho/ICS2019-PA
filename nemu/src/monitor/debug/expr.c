@@ -134,33 +134,36 @@ static bool make_token(char *e) {
 
   return true;
 }
-bool check_brackets(int p,int q){
-        if(tokens[p].type!=TK_LEFTBRA||tokens[q].type!=TK_RIGHTBRA) return false;
+bool check_brackets(int p,int q,bool *valid){
         int credit=0;
         int j=0;
+        int times=0;
         for( j=p;j<=q;j++){
-          if(tokens[j].type==TK_LEFTBRA) credit++;
+          if(tokens[j].type==TK_LEFTBRA) {
+            credit++;
+            times++;
+            }
           else if(tokens[j].type==TK_RIGHTBRA) {
             if(credit<=0) return false;
             else credit--;
         }}
+        if(times==1) *valid=true;
         return credit==0;
 }
 int eval(int p,int q){
     int loc=0;
+    bool valid=false;
     if(p>q){
       return -1;  
     }
     else if(p==q) {
       if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
-      
       else return 0;        
     } 
-    else if(check_brackets(p,q)){ 
-        return eval(p+1,q-1);
-    }
-    else{
-      int i=0,lef=0; //用loc来记录,lef记录是否在括号中
+    else if(check_brackets(p,q,&valid)){ 
+        if(valid&&tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA) return eval(p+1,q-1);
+        else{
+          int i=0,lef=0; //用loc来记录,lef记录是否在括号中
       for(i=p;i<=q;i++){
        // printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
@@ -197,8 +200,13 @@ int eval(int p,int q){
       default:
         return 0;
         break;
-      }
-    }    
+        }
+    }
+  }
+  else{
+    assert(0);
+    return 0;
+  }    
 }
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
