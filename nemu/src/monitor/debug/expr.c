@@ -183,7 +183,7 @@ int eval(int p,int q){
       
       int pos=1;
       int record=loc;
-     // printf("%d\n",record);
+      
       while(tokens[loc].type==TK_MINUS){
           if(loc==0) break;
           if(loc>0&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
@@ -191,7 +191,7 @@ int eval(int p,int q){
            pos=-pos;
          }
       }
-
+        printf("the first - is %d\n",loc);
       if(loc==0) return (-pos)*eval(record+1,q);
       int val1=eval(p,loc-1);
       int val2=pos*eval(record+1,q);
