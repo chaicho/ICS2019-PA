@@ -173,10 +173,10 @@ int eval(int p,int q){
               lef--;
           }
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
-            printf("%d\n",gg);
+           // printf("%d\n",gg);
               if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[a[gg]].type){  ///如果以后出了问题记得看这边
                 a[gg++]=i;
-                printf("%d\n",a[gg]);
+             //   printf("%d\n",a[gg]);
               }
           }
          // printf("%d\n",lef);
@@ -192,7 +192,7 @@ int eval(int p,int q){
            positive=-positive;
          }
       }
-        printf("the first - is %d\n",a[gg]);
+        printf("the first valid op is %d\n",a[gg]);
       if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,a[gg]-1);
       int val2=positive*eval(record+1,q);
