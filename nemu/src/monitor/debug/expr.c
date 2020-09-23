@@ -194,7 +194,6 @@ int eval(int p,int q){
           if(a[gg]==p) break;
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
            gg--;
-              assert(0);
            positive=-positive;
            printf("%d options remained\n",gg);
          }
