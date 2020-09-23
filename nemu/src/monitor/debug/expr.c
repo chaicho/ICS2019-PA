@@ -159,7 +159,7 @@ int eval(int p,int q){
       if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
       else return 0;        
     } 
-    else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p-1,q-1))return eval(p+1,q-1);
+    else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p+1,q-1))return eval(p+1,q-1);
     else if(check_brackets(p,q)){
         
           int i=0,lef=0; //用loc来记录,lef记录是否在括号中
