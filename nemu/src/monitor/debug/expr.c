@@ -146,7 +146,7 @@ bool check_brackets(int p,int q){
             if(credit<=0) return false;
             else credit--;
         }}
-      //  printf("brackets: p=%d,q=%d,....%d\n",p,q,credit);
+        printf("brackets: p=%d,q=%d,....%d\n",p,q,credit);
         return credit==0;
 }
 int eval(int p,int q){
@@ -195,14 +195,15 @@ int eval(int p,int q){
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
            gg--;
            positive=-positive;
-        //  printf("%d options remained\n",gg);
+           printf("%d options remained\n",gg);
          }
       }
-        //printf("the first valid op is %d\n",a[gg]);
+        printf("the first valid op is %d\n",a[gg]);
       if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,a[gg]-1);
-      int val2=positive*eval(a[gg]+1,q); 
-      //printf("val1=%d,val2=%d\n",val1,val2);
+    
+      int val2=positive*eval(record+1,q); 
+      printf("val1=%d,val2=%d\n",val1,val2);
       switch (tokens[a[gg]].type)
       {
       case TK_PLUS:
