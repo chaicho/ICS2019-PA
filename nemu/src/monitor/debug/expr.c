@@ -182,8 +182,9 @@ int eval(int p,int q){
       }
       int pos=1;
       int record=loc;
+      printf("%d\n",record);
       while(tokens[loc].type==TK_MINUS){
-            if(tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
+            if(loc>0&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
            loc--;
            pos=-pos;
          }
