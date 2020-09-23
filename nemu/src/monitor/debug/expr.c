@@ -197,6 +197,7 @@ int eval(int p,int q){
            positive=-positive;
            printf("%d options remained\n",gg);
          }
+         else break;
       }
         printf("the first valid op is %d\n",a[gg]);
       if(a[gg]==p) return (-positive)*eval(record+1,q);
