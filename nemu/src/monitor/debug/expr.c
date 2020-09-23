@@ -185,8 +185,8 @@ int eval(int p,int q){
       int record=loc;
       
       while(tokens[loc].type==TK_MINUS){
-          if(loc==0) break;
-          if(loc>0&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
+          if(loc==q) break;
+          if(loc>q&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
            loc--;
            pos=-pos;
          }
