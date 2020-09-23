@@ -152,7 +152,7 @@ bool check_brackets(int p,int q){
 int eval(int p,int q){
     int a[33]={0};
     int gg=0;
-    if(q==32763) assert(0);
+    bool selected=false; //是否有优先级高的一个选的
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
       return 0;  
@@ -175,17 +175,21 @@ int eval(int p,int q){
           }
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
            // printf("%d\n",gg);
-              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[a[gg]].type){  ///如果以后出了问题记得看这边
+              if(tokens[i].type<=TK_MINUS){  ///如果以后出了问题记得看这边
+                selected=true;
                 a[gg++]=i;
              //   printf("%d\n",a[gg]);
               }
+              else if(!selected&&tokens[i].type<=TK_DIV){
+                a[gg++]=i;
+                }
           }
          // printf("%d\n",lef);
       }
       gg--;
       int positive=1;
       int record=a[gg];
-  
+     
       while(gg>0&&tokens[a[gg]].type==TK_MINUS){
           if(a[gg]==p) break;
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
