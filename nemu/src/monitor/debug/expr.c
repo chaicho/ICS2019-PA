@@ -150,7 +150,7 @@ bool check_brackets(int p,int q){
         return credit==0;
 }
 int eval(int p,int q){
-    int a[33];
+    int a[33]={0};
     int gg=0;
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
@@ -162,7 +162,6 @@ int eval(int p,int q){
     } 
     else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p+1,q-1))return eval(p+1,q-1);
     else if(check_brackets(p,q)){
-        
           int i=0,lef=0; //用a按可行性记录符号,lef记录是否在括号中
       for(i=p;i<=q;i++){
        // printf("%d\n",tokens[i].type);
