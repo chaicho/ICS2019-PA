@@ -76,9 +76,9 @@ static bool make_token(char *e) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
      //   printf("%s\n",rules[i].regex);
-       Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+      /* Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
            i, rules[i].regex, position, substr_len, substr_len, substr_start);
-        
+       */ 
         position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
@@ -152,6 +152,7 @@ bool check_brackets(int p,int q,bool *valid){
 }
 int eval(int p,int q){
     int loc=0;
+    printf("p=%d,q=%d",p,q);
     bool valid=false;
     if(p>q){
       return -1;  
