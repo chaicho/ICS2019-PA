@@ -184,12 +184,13 @@ int eval(int p,int q){
       gg--;
       int positive=1;
       int record=a[gg];
-      
+     
       while(tokens[a[gg]].type==TK_MINUS){
           if(a[gg]==p) break;
-          if(a[gg]>p&&tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
+          if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
            gg--;
            positive=-positive;
+           printf("%d options remained\n",gg);
          }
       }
         printf("the first valid op is %d\n",a[gg]);
