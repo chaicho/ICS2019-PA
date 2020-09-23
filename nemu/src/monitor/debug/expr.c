@@ -185,14 +185,14 @@ int eval(int p,int q){
       int record=loc;
       
       while(tokens[loc].type==TK_MINUS){
-          if(loc==q) break;
-          if(loc>q&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
+          if(loc==p) break;
+          if(loc>p&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
            loc--;
            pos=-pos;
          }
       }
         printf("the first - is %d\n",loc);
-      if(loc==0) return (-pos)*eval(record+1,q);
+      if(loc==p) return (-pos)*eval(record+1,q);
       int val1=eval(p,loc-1);
       int val2=pos*eval(record+1,q);
       switch (tokens[loc].type)
