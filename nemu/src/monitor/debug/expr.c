@@ -137,6 +137,7 @@ static bool make_token(char *e) {
 bool check_brackets(int p,int q){
         int credit=0;
         int j=0;
+       
         for( j=p;j<=q;j++){
           if(tokens[j].type==TK_LEFTBRA) {
             credit++;
@@ -145,6 +146,7 @@ bool check_brackets(int p,int q){
             if(credit<=0) return false;
             else credit--;
         }}
+        printf("brackets: p=%d,q=%d\n,%d",p,q,credit);
         return credit==0;
 }
 int eval(int p,int q){
