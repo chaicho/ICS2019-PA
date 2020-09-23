@@ -105,6 +105,7 @@ static bool make_token(char *e) {
               break;
           case 261:  //除法
               tokens[nr_token++].type=261;
+              break;
           case 262:     //左括号
               tokens[nr_token++].type=262;
               break;
