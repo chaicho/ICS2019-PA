@@ -26,7 +26,7 @@ static struct rule {
   {"==", TK_EQ},        // equal
   {"\\-",TK_MINUS},
   {"\\*",TK_MULT},
-  {"/",TK_DIV}, 
+  {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
   {"[0-9]+",TK_NUM},
