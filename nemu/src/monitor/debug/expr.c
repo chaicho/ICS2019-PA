@@ -150,7 +150,8 @@ bool check_brackets(int p,int q){
         return credit==0;
 }
 int eval(int p,int q){
-    int loc=0;
+    int a[33];
+    int gg=0;
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
       return 0;  
@@ -173,29 +174,29 @@ int eval(int p,int q){
               lef--;
           }
           else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
-              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[loc].type){  ///如果以后出了问题记得看这边
-                loc=i;
-                //printf("%d\n",loc);
+              if(tokens[i].type<=TK_MINUS||tokens[i].type<tokens[a[gg]].type){  ///如果以后出了问题记得看这边
+                a[gg++]=i;
+                //printf("%d\n",a[gg]);
               }
           }
          // printf("%d\n",lef);
       }
       
-      int pos=1;
-      int record=loc;
+      int positive=1;
+      int record=a[gg];
       
-      while(tokens[loc].type==TK_MINUS){
-          if(loc==p) break;
-          if(loc>p&&tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
-           loc--;
-           pos=-pos;
+      while(tokens[a[gg]].type==TK_MINUS){
+          if(a[gg]==p) break;
+          if(a[gg]>p&&tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
+           gg--;
+           positive=-positive;
          }
       }
-        printf("the first - is %d\n",loc);
-      if(loc==p) return (-pos)*eval(record+1,q);
-      int val1=eval(p,loc-1);
-      int val2=pos*eval(record+1,q);
-      switch (tokens[loc].type)
+        printf("the first - is %d\n",a[gg]);
+      if(a[gg]==p) return (-positive)*eval(record+1,q);
+      int val1=eval(p,a[gg]-1);
+      int val2=positive*eval(record+1,q);
+      switch (tokens[a[gg]].type)
       {
       case TK_PLUS:
         return val1+val2;
