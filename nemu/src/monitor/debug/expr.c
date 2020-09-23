@@ -153,7 +153,7 @@ int eval(int p,int q){
     int loc=0;
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
-      return -1;  
+      return 0;  
     }
     else if(p==q) {
       if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
@@ -180,16 +180,17 @@ int eval(int p,int q){
           }
          // printf("%d\n",lef);
       }
-      bool pos=true;
+      int pos=1;
+      int record=loc;
       while(tokens[loc].type==TK_MINUS){
-         if(loc==0) break;
-         else if(tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
+            if(tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
            loc--;
-           pos=!pos;
+           pos=-pos;
          }
       }
+      if(loc==0) return (-pos)*eval(record+1,q);
       int val1=eval(p,loc-1);
-      int val2=pos*eval(loc+1,q);
+      int val2=pos*eval(record+1,q);
       switch (tokens[loc].type)
       {
       case TK_PLUS:
