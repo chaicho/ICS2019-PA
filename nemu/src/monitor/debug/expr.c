@@ -185,7 +185,7 @@ int eval(int p,int q){
       int positive=1;
       int record=a[gg];
      
-      while(tokens[a[gg]].type==TK_MINUS){
+      while(gg>0&&tokens[a[gg]].type==TK_MINUS){
           if(a[gg]==p) break;
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
            gg--;
