@@ -152,7 +152,7 @@ bool check_brackets(int p,int q,bool *valid){
 }
 int eval(int p,int q){
     int loc=0;
-    printf("p=%d,q=%d",p,q);
+    printf("p=%d,q=%d\n",p,q);
     bool valid=false;
     if(p>q){
       return -1;  
