@@ -180,13 +180,16 @@ int eval(int p,int q){
           }
          // printf("%d\n",lef);
       }
-      if(tokens[loc].type==TK_MINUS&&(loc==0||(tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA))){
-         int val1=eval(p,loc-2);
-         int val2=-eval(loc+1,q);
-         return val1+val2;  
+      bool pos=true;
+      while(tokens[loc].type==TK_MINUS){
+         if(loc==0) break;
+         else if(tokens[loc-1].type!=TK_NUM&&tokens[loc-1].type!=TK_RIGHTBRA){
+           loc--;
+           pos=!pos;
+         }
       }
       int val1=eval(p,loc-1);
-      int val2=eval(loc+1,q);
+      int val2=pos*eval(loc+1,q);
       switch (tokens[loc].type)
       {
       case TK_PLUS:
