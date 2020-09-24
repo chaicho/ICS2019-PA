@@ -15,9 +15,53 @@ static char *code_format =
 "  printf(\"%%u\", result); "
 "  return 0; "
 "}";
-
+static char exp[]={'+','-','*','/'};
+int ii,j,tmp;
+static inline void gen_num(){
+     tmp=rand()%4+2;
+     j=0;
+     buf[ii++]=rand()%8+1+'0';
+    for(j=1;j<=tmp;j++) {
+      buf[ii++]=rand()%9+'0';
+      }
+}
 static inline void gen_rand_expr() {
-  buf[0] = '\0';
+  if(ii>=500) {
+    gen_num();
+    return;
+    }
+  switch (rand()%3)
+  {
+  case 0:
+     gen_num();
+    break;
+  case 1:
+    buf[ii++]='(';
+    gen_rand_expr();
+    buf[ii++]=')';
+    break;
+  case 2:
+    gen_rand_expr();
+    tmp=rand()%4;
+    switch (tmp)
+    {
+    case 0:
+      buf[ii++]='-';
+      break;
+    case 1:
+      buf[ii++]='+';
+      break;
+    case 2:
+      buf[ii++]='/';
+      break;
+    case 3:
+      buf[ii++]='*';
+      break;
+    }
+    gen_rand_expr();
+    break;
+  }
+  return;
 }
 
 int main(int argc, char *argv[]) {
@@ -29,8 +73,10 @@ int main(int argc, char *argv[]) {
   }
   int i;
   for (i = 0; i < loop; i ++) {
+    ii=0; 
+    memset(buf,0,520);
     gen_rand_expr();
-
+   
     sprintf(code_buf, code_format, buf);
 
     FILE *fp = fopen("/tmp/.code.c", "w");
@@ -52,3 +98,4 @@ int main(int argc, char *argv[]) {
   }
   return 0;
 }
+ 
