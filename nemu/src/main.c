@@ -18,8 +18,8 @@ int main(int argc, char *argv[]) {
     if (cmd == NULL) { 
       continue; 
     }
+    cmd[strlen(cmd)]='\n';
    char *args=cmd+strlen(cmd)+1;
-   args[strlen(args)]=0;
    bool success=true;
    int x=expr(args,&success);
    printf("%d\n",expr(args,&success));
