@@ -16,6 +16,8 @@ int main(int argc, char *argv[]) {
   char str[50];
   while( fscanf(fp, "%u %s", &result,str)){
      char *cmd = strtok(str, " ");
+          printf("%s",str);
+
     if (cmd == NULL) { 
       continue; 
     }
