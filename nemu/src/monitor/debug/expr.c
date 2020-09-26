@@ -149,7 +149,7 @@ bool check_brackets(int p,int q){
         //printf("brackets: p=%d,q=%d,....%d\n",p,q,credit);
         return credit==0;
 }
-int eval(int p,int q){
+unsigned eval(int p,int q){
     int a[33]={0};
     int gg=0;
     bool selected=false; //是否有优先级高的一个选的
