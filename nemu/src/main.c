@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     if (cmd == NULL) { 
       continue; 
     }
-   char *args=strtok(str,"\n");
+   char *args=strtok(str," ");
    bool success=true;
    unsigned x=expr(args,&success);
    printf("%s",args);
