@@ -21,7 +21,8 @@ int main(int argc, char *argv[]) {
    char *args=cmd+strlen(cmd)+1;
    bool success=true;
    unsigned x=expr(args,&success);
-   if(x==(unsigned)atoll(args)) {
+   printf("%u\n",x);
+   if(x==atoi(args)) {
      printf("%s",args);
      printf("You are right!\n");
    }
@@ -29,7 +30,6 @@ int main(int argc, char *argv[]) {
      printf("%s",args);
      printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
    }
-    memset(args,'\n',1000);
   }
   return is_exit_status_bad();
 }
