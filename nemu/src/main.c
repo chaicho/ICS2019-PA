@@ -18,7 +18,8 @@ int main(int argc, char *argv[]) {
     if (cmd == NULL) { 
       continue; 
     }
-   char *args=strtok(NULL," ");
+   char *args=cmd+strlen(cmd)+1;
+   printf("%s\n",args);
    bool success=true;
    unsigned x=expr(args,&success);
    if(x==(unsigned)atoi(cmd)) printf("You are right!\n");
