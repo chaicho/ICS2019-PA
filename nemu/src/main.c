@@ -25,7 +25,6 @@ int main(int argc, char *argv[]) {
    if(x==atoi(args)) printf("You are right!\n");
    else {
      printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
-     assert(0);
    }
   }
   return is_exit_status_bad();
