@@ -12,8 +12,9 @@ int main(int argc, char *argv[]) {
   /* Start engine. */
   engine_start();
   FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
+  int result=0;
   char str[50];
-  while(fgets(str,40,fp)!=NULL){ 
+  while( fscanf(fp, "%u %s", &result,str)){
      char *cmd = strtok(str, " ");
     if (cmd == NULL) { 
       continue; 
@@ -23,11 +24,11 @@ int main(int argc, char *argv[]) {
    unsigned x=expr(args,&success);
    printf("%u\n",expr(args,&success));
    if(x==(unsigned) atoi(args)) {
-     //printf("%s\n",args);
+     printf("%s\n",args);
      printf("You are right!\n");
    }
    else {
-    // printf("%s\n",args);
+    printf("%s\n",args);
      printf("Right:%d,Wrong:%u \n",atoi(cmd),x);
    }
     memset(str,0,49);
