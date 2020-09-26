@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   int result=0;
   char str[50];
   while( fscanf(fp, "%u %s", &result,str)){
-          printf("%s\n",str);
+       //   printf("%s\n",str);
 
    bool success=true;
    unsigned x=expr(str,&success);
