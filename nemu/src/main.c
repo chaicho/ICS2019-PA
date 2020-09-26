@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     if (cmd == NULL) { 
       continue; 
     }
-   char *args=strtok(str,"\n\n");
+   char *args=strtok(str,"\n");
    bool success=true;
    unsigned x=expr(args,&success);
    printf("%s",args);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
      printf("%s\n",args);
      printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
    }
-    memset(str,0,50);
+    memset(str,'\n',50);
   }
   return is_exit_status_bad();
 }
