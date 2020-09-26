@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
   FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
   int result=0;
   char str[50];
-  while( fscanf(fp, "%u %s", &result,str)){
+  while( fscanf(fp, "%u %s", &result,str)!=-1){
        //   printf("%s\n",str);
 
    bool success=true;
