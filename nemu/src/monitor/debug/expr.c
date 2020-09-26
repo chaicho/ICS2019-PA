@@ -56,7 +56,7 @@ void init_regex() {
 
 typedef struct token {
   int type;
-  char str[32];
+  char str[100];//32
 } Token;
 
 static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
@@ -115,7 +115,7 @@ static bool make_token(char *e) {
           case 264:     //数字
               tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
-              assert(substr_len<=31);
+              // assert(substr_len<=31);
               break;
           
           default:

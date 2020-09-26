@@ -15,19 +15,18 @@ static char *code_format =
 "  printf(\"%%u\", result); "
 "  return 0; "
 "}";
-static char exp[]={'+','-','*','/'};
 int ii,j,tmp;
 static inline void gen_num(){
-     tmp=rand()%4+2;
+     tmp=rand()%4+1;
      j=0;
      buf[ii++]=rand()%8+1+'0';
-    for(j=1;j<=tmp;j++) {
+    for(j=1;j<=tmp+3;j++) {
       buf[ii++]=rand()%9+'0';
       }
 }
 static inline void gen_rand_expr() {
   if(ii>=500) {
-    gen_num();
+
     return;
     }
   switch (rand()%3)
@@ -59,7 +58,9 @@ static inline void gen_rand_expr() {
       break;
     }
     gen_rand_expr();
+
     break;
+    
   }
   return;
 }
@@ -74,9 +75,9 @@ int main(int argc, char *argv[]) {
   int i;
   for (i = 0; i < loop; i ++) {
     ii=0; 
-    memset(buf,0,520);
-    gen_rand_expr();
-   
+    memset(buf,0,1000);
+     gen_rand_expr();
+
     sprintf(code_buf, code_format, buf);
 
     FILE *fp = fopen("/tmp/.code.c", "w");
