@@ -19,10 +19,12 @@ int main(int argc, char *argv[]) {
       continue; 
     }
    char *args=cmd+strlen(cmd)+1;
-   printf("%s\n",args);
    bool success=true;
    unsigned x=expr(args,&success);
-   if(x==atoi(args)) printf("You are right!\n");
+   if(x==(unsigned) atoi(args)) {
+     printf("%s",args);
+     printf("You are right!\n");
+   }
    else {
      printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
    }
