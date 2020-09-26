@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
      printf("You are right!\n");
    }
    else {
+     printf("%s",args);
      printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
    }
   }
