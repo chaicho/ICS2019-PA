@@ -23,11 +23,11 @@ int main(int argc, char *argv[]) {
    unsigned x=expr(args,&success);
    printf("%u\n",x);
    if(x==atoi(args)) {
-     printf("%s",args);
+     printf("%s\n",args);
      printf("You are right!\n");
    }
    else {
-     printf("%s",args);
+     printf("%s\n",args);
      printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
    }
   }
