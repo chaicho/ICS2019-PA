@@ -15,15 +15,10 @@ int main(int argc, char *argv[]) {
   int result=0;
   char str[50];
   while( fscanf(fp, "%u %s", &result,str)){
-     char *cmd = strtok(str, " ");
           printf("%s\n",str);
 
-    if (cmd == NULL) { 
-      continue; 
-    }
-   char *args=cmd+strlen(cmd)+1;
    bool success=true;
-   unsigned x=expr(args,&success);
+   unsigned x=expr(str,&success);
    // printf("%u\n",expr(args,&success));
    if(x==(unsigned) result) {
     // printf("%s\n",args);
