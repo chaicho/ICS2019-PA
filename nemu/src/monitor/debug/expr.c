@@ -230,11 +230,12 @@ unsigned eval(int p,int q){
   }    
 }
 word_t expr(char *e, bool *success) {
+  memset(tokens,0,30);
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-  memset(tokens,0,30);
+  
   /* TODO: Insert codes to evaluate the expression. */
  // printf("%d\n",nr_token);
   return eval(0,nr_token-1);
