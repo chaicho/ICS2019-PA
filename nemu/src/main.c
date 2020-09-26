@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
      printf("You are right!\n");
    }
    else {
-    printf("%s\n",str);
+     printf("%s\n",str);
      printf("Right:%u,Wrong:%u \n",result,x);
      assert(0);
    }
