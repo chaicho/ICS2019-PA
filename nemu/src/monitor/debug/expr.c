@@ -231,8 +231,8 @@ int eval(int p,int q){
 }
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
+    printf("%s",e);
     *success = false;
-    printf("gg\n");
     return 0;
   }
   
