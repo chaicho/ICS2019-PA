@@ -29,6 +29,7 @@ int main(int argc, char *argv[]) {
      printf("%s",args);
      printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
    }
+    memset(args,0,1000);
   }
   return is_exit_status_bad();
 }
