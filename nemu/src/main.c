@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
   FILE *fp = fopen("", "r");
   char str[50];
   if(fgets(str,40,fp)!=NULL){ 
-  if(str!=NULL) puts(str);
+  puts(str);
   }
   return is_exit_status_bad();
 }
