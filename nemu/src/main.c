@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
       continue; 
     }
    char *args=cmd+strlen(cmd)+1;
-   printf("%c",args[strlen(args)-2]);
+   args[strlen(args)]=0;
    bool success=true;
    int x=expr(args,&success);
    printf("%d\n",expr(args,&success));
