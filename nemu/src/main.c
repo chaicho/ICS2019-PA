@@ -28,9 +28,9 @@ int main(int argc, char *argv[]) {
    }
    else {
     // printf("%s\n",args);
-     printf("Right:%d,Wrong:%d \n",atoi(cmd),x);
+     printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
    }
-    memset(str,0,50);
+    memset(str,0,49);
   }
   return is_exit_status_bad();
 }
