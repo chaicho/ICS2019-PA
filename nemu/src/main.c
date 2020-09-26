@@ -8,10 +8,6 @@ int main(int argc, char *argv[]) {
 
   /* Start engine. */
   engine_start();
-   FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
-  char str[50];
-  while(fgets(str,40,fp)!=NULL){ 
-    
-  }
+   
   return is_exit_status_bad();
 }
