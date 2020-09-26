@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
    char *args=strtok(str," ");
    bool success=true;
    unsigned x=expr(args,&success);
-   printf("%s",args);
+   printf("%s\n",args);
    if(x==atoi(args)) {
      printf("%s\n",args);
      printf("You are right!\n");
