@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
      printf("%s\n",args);
      printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
    }
+    memset(str,0,50);
   }
   return is_exit_status_bad();
 }
