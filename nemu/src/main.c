@@ -27,6 +27,7 @@ int main(int argc, char *argv[]) {
    else {
     //printf("%s\n",args);
      printf("Right:%u,Wrong:%u \n",result,x);
+     assert(0);
    }
     memset(str,0,49);
   }
