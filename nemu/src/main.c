@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
    char *args=cmd+strlen(cmd)+1;
    bool success=true;
    unsigned x=expr(args,&success);
-   if(x==(unsigned) atoi(args)) {
+   if(x==atoi(args)) {
      printf("%s",args);
      printf("You are right!\n");
    }
