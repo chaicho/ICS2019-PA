@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   init_monitor(argc, argv);
   FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
   char str[50];
-  if(fgets(str,40,fp)!=NULL){ 
+  while(fgets(str,40,fp)!=NULL){ 
   puts(str);
   }
   /* Start engine. */
