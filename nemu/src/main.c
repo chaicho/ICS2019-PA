@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     }
    char *args=strtok(str," ");
    bool success=true;
-   uint32_t x=expr(args,&success);
+   int x=expr(args,&success);
    printf("%s\n",args);
    if(x==atoi(args)) {
      printf("%s\n",args);
