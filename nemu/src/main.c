@@ -22,7 +22,10 @@ int main(int argc, char *argv[]) {
    bool success=true;
    unsigned x=expr(args,&success);
    if(x==(unsigned)atoi(cmd)) printf("You are right!\n");
-   else printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
+   else {
+     printf("Right:%u,Wrong:%u\n",atoi(cmd),x);
+     assert(0);
+   }
   }
   return is_exit_status_bad();
 }
