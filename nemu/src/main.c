@@ -22,14 +22,14 @@ int main(int argc, char *argv[]) {
    char *args=cmd+strlen(cmd)+1;
    bool success=true;
    unsigned x=expr(args,&success);
-   printf("%u\n",expr(args,&success));
-   if(x==(unsigned) atoi(args)) {
-     printf("%s\n",args);
+   // printf("%u\n",expr(args,&success));
+   if(x==(unsigned) result) {
+    // printf("%s\n",args);
      printf("You are right!\n");
    }
    else {
-    printf("%s\n",args);
-     printf("Right:%d,Wrong:%u \n",atoi(cmd),x);
+    //printf("%s\n",args);
+     printf("Right:%u,Wrong:%u \n",result,x);
    }
     memset(str,0,49);
   }
