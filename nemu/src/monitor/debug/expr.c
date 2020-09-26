@@ -230,7 +230,7 @@ unsigned eval(int p,int q){
   }    
 }
 word_t expr(char *e, bool *success) {
-  memset(tokens,0,30*sizeof(Token));
+  memset(tokens,0,32*sizeof(Token));
   if (!make_token(e)) {
     *success = false;
     return 0;
