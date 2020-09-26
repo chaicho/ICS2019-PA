@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
    bool success=true;
    int x=expr(args,&success);
    printf("%d\n",expr(args,&success));
-   printf("%s\n",args);
    if(x==atoi(args)) {
      printf("%s\n",args);
      printf("You are right!\n");
