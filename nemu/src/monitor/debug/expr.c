@@ -56,7 +56,7 @@ void init_regex() {
 
 typedef struct token {
   int type;
-  char str[100];//32
+  char str[32];//32
 } Token;
 
 static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
@@ -231,7 +231,6 @@ int eval(int p,int q){
 }
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
-    printf("%s",e);
     *success = false;
     return 0;
   }
