@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
    bool success=true;
    unsigned x=expr(str,&success);
    // printf("%u\n",expr(args,&success));
-   if(x==(unsigned) result) {
+   if(x==result) {
     // printf("%s\n",args);
      printf("You are right!\n");
    }
