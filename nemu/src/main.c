@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
    }
    else {
     // printf("%s\n",args);
-     printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
+     printf("Right:%d,Wrong:%u \n",atoi(cmd),x);
    }
     memset(str,0,49);
   }
