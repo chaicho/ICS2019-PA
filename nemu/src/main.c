@@ -20,14 +20,15 @@ int main(int argc, char *argv[]) {
     }
    char *args=cmd+strlen(cmd)+1;
    bool success=true;
-   int x=expr(args,&success);
-   printf("%d\n",expr(args,&success));
+   unsigned x=expr(args,&success);
+   printf("%u\n",expr(args,&success));
+  
    if(x==atoi(args)) {
-     printf("%s\n",args);
+     //printf("%s\n",args);
      printf("You are right!\n");
    }
    else {
-     printf("%s\n",args);
+    // printf("%s\n",args);
      printf("Right:%d,Wrong:%d \n",atoi(cmd),x);
    }
     memset(str,0,50);
