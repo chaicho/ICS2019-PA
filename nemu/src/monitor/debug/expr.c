@@ -114,7 +114,7 @@ static bool make_token(char *e) {
           case 264:     //数字
               tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
-              // assert(substr_len<=31);
+               assert(substr_len<=31);
               break;
           
           default:
@@ -124,9 +124,10 @@ static bool make_token(char *e) {
         break;
       }
     }
-    if(e[position]=='\n') return true;
+   // if(e[position]=='\n') return true;
     if (i == NR_REGEX) {
       //printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
+      printf("the character is: %c\n",e[position]);
       return false;
     }
   }
