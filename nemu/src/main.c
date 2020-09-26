@@ -18,7 +18,6 @@ int main(int argc, char *argv[]) {
     if (cmd == NULL) { 
       continue; 
     }
-    cmd[strlen(cmd)]='\n';
    char *args=cmd+strlen(cmd)+1;
    bool success=true;
    int x=expr(args,&success);
@@ -29,7 +28,7 @@ int main(int argc, char *argv[]) {
    }
    else {
      printf("%s\n",args);
-     printf("Right:%u,Wrong:%u \n",atoi(cmd),x);
+     printf("Right:%d,Wrong:%d \n",atoi(cmd),x);
    }
     memset(str,'\n',50);
   }
