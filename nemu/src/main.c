@@ -22,8 +22,7 @@ int main(int argc, char *argv[]) {
    bool success=true;
    unsigned x=expr(args,&success);
    printf("%u\n",expr(args,&success));
-  
-   if(x==atoi(args)) {
+   if(x==(unsigned) atoi(args)) {
      //printf("%s\n",args);
      printf("You are right!\n");
    }
