@@ -127,7 +127,7 @@ static bool make_token(char *e) {
    // if(e[position]=='\n') return true;
     if (i == NR_REGEX) {
       //printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
-      if(e[position]=='\n') return true;
+      //if(e[position]=='\n') return true;
       return false;
     }
   }
