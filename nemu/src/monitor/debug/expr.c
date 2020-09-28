@@ -92,8 +92,8 @@ static bool make_token(char *e) {
               break;
           
           case TK_EQ:     //等于
-              tokens[nr_token].type=257;
-              strcpy(tokens[nr_token++].str,"==");
+              tokens[nr_token].type=TK_EQ;
+             // strcpy(tokens[nr_token++].str,"==");
               break;
            case TK_PLUS:     //加号
               tokens[nr_token++].type=TK_PLUS;
@@ -124,7 +124,7 @@ static bool make_token(char *e) {
                assert(substr_len<=31);
                break;
           case TK_NUM:     //数字
-              tokens[nr_token].type=264;
+              tokens[nr_token].type=TK_NUM;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
                assert(substr_len<=31);
               break;
@@ -269,7 +269,7 @@ unsigned eval(int p,int q){
     assert(0);
     return 0;
    }    
-   return 0;
+   return 1;
 }
 word_t expr(char *e, bool *success) {
   memset(tokens,0,32*sizeof(Token));
