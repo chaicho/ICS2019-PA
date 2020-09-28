@@ -207,7 +207,7 @@ unsigned eval(int p,int q){
           else if(lef==0){
            // printf("%d\n",gg);
                if(priority[tokens[i].type]>=lowest){
-                 record=i;
+                if(!(i>0&&tokens[i].type==TK_NEG&&tokens[i-1].type==TK_NEG)) record=i;
                  lowest=priority[tokens[i].type];
                }
           }
@@ -251,6 +251,7 @@ unsigned eval(int p,int q){
         return val1!=val2;
         break;
       case TK_NEG:
+
         return -val2;
         break;
       case TK_OR:
