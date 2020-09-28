@@ -170,7 +170,7 @@ bool check_brackets(int p,int q){
         return credit==0;
 }
 unsigned eval(int p,int q){
-    int a[33]={0};
+    //int a[33]={0};
     int record=p;
     //int gg=0;
     //bool selected=false; //是否有优先级高的一个选的
@@ -227,7 +227,7 @@ unsigned eval(int p,int q){
       int val1=eval(p,record-1);
       int val2=eval(record+1,q); 
    //   printf("val1=%d,val2=%d\n",val1,val2);
-      switch (tokens[a[record]].type)
+      switch (tokens[record].type)
       {
       case TK_PLUS:
         return val1+val2;
@@ -269,7 +269,7 @@ unsigned eval(int p,int q){
     assert(0);
     return 0;
    }    
-   return 1;
+   return 0;
 }
 word_t expr(char *e, bool *success) {
   memset(tokens,0,32*sizeof(Token));
