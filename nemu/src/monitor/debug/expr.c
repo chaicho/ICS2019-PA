@@ -5,7 +5,7 @@
  */
 #include <regex.h>
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_NEQ,TK_REG,TK_NEG,
+  TK_NOTYPE, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_NEQ,TK_REG,TK_NEG,
 
   /* TODO: Add more token types */
 };
@@ -191,8 +191,9 @@ unsigned eval(int p,int q){
     } 
     else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p+1,q-1))return eval(p+1,q-1);
     else if(check_brackets(p,q)){
-          int i=0,lef=0; //用a按可行性记录符号,lef记录是否在括号中
+          int i=0,lef=0; //lef记录是否在括号中
       for(i=p;i<=q;i++){
+        lef=0;
        // printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
             lef++;
@@ -203,9 +204,9 @@ unsigned eval(int p,int q){
           }
           else if(lef==0){
            // printf("%d\n",gg);
-               if(priority[tokens[i].type-256]>=lowest){
+               if(priority[tokens[i].type]>=lowest){
                  record=i;
-                 lowest=priority[tokens[i].type-256];
+                 lowest=priority[tokens[i].type];
                }
           }
          // printf("%d\n",lef);
