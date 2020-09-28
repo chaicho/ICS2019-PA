@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
    unsigned x=expr(str,&success);
    // printf("%u\n",expr(args,&success));
    if(x==result) {
-    // printf("%s\n",args);
-     printf("You are right!\n");
+     printf("%s\n",str);
+     printf("You are right! The answer is %u\n",x);
    }
    else {
      printf("%s\n",str);
