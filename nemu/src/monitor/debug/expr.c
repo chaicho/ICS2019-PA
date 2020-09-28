@@ -6,21 +6,18 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,
+  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_SH,
 
   /* TODO: Add more token types */
-
 };
 
 static struct rule {
   char *regex;
   int token_type;
 } rules[] = {
-
   /* TODO: Add more rules.
    * Pay attention  to the precedence level of different rules.
    */
-
   {" +", TK_NOTYPE},    // spaces
   {"\\+", TK_PLUS},         // plus
   {"==", TK_EQ},        // equal
@@ -29,8 +26,9 @@ static struct rule {
   {"\\/",TK_DIV}, 
   {"\\(",TK_LEFTBRA},
   {"\\)",TK_RIGHTBRA},
+  {"0[xX][a-f0-9]+",TK_HEX},
   {"[0-9]+",TK_NUM},
-
+ // {"\\",},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -89,34 +87,33 @@ static bool make_token(char *e) {
           case 256:     //空格
               break;
           
-          case 257:     //等于
+          case TK_EQ:     //等于
               tokens[nr_token].type=257;
               strcpy(tokens[nr_token++].str,"==");
               break;
-           case 258:     //加号
+           case TK_PLUS:     //加号
               tokens[nr_token++].type=258;
               break;
-          case 259:     //减
+          case TK_MINUS:     //减
               tokens[nr_token++].type=259;
               break;
-          case 260:     //乘
+          case TK_MULT:     //乘
               tokens[nr_token++].type=260;
               break;
-          case 261:  //除法
+          case TK_DIV:  //除法
               tokens[nr_token++].type=261;
               break;
-          case 262:     //左括号
+          case TK_LEFTBRA:     //左括号
               tokens[nr_token++].type=262;
               break;
-          case 263:     //右括号
+          case TK_RIGHTBRA:     //右括号
               tokens[nr_token++].type=263;
               break;
-          case 264:     //数字
+          case TK_NUM:     //数字
               tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
                assert(substr_len<=31);
               break;
-          
           default:
               printf("Illegal\n");
               break;
@@ -235,7 +232,12 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-  
+  int w=0;
+  for (w = 0; w < nr_token; w ++) {
+     if (tokens[w].type == '*' && (w == 0 || (tokens[w- 1].type<=TK_DIV&&tokens[w-1].type>TK_EQ) ) ) {
+      tokens[w].type = TK_DE;
+    }
+}
   /* TODO: Insert codes to evaluate the expression. */
  // printf("%d\n",nr_token);
   return eval(0,nr_token-1);

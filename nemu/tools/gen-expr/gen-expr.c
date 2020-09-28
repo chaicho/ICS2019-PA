@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     fputs(code_buf, fp);
     fclose(fp);
     int ret = system("gcc /tmp/.code.c -Wall -Werror -o  /tmp/.expr");
-    if (ret != 0)  {
+    if (ret != 0) {
       i--;
       continue;
     }
