@@ -223,7 +223,7 @@ unsigned eval(int p,int q){
          }
          else break;
       */
-        printf("the first valid op is %d\n,which is %d",record,tokens[record].type);
+        printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
       //if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,record-1);
       int val2=eval(record+1,q); 
