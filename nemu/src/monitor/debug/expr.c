@@ -88,7 +88,7 @@ static bool make_token(char *e) {
          */
         
         switch (rules[i].token_type) {
-          case 256:     //空格
+          case TK_NOTYPE:     //空格
               break;
           
           case TK_EQ:     //等于
