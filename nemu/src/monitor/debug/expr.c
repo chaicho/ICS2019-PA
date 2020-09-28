@@ -183,7 +183,7 @@ unsigned eval(int p,int q){
     else if(p==q) {
       if(tokens[p].type==TK_NUM) return (unsigned)atoi(tokens[p].str);
       else if(tokens[p].type==TK_HEX){
-
+        
       }
       else if(tokens[p].type==TK_REG)
       {
@@ -205,7 +205,7 @@ unsigned eval(int p,int q){
               lef--;
           }
           else if(lef==0){
-           // printf("%d\n",gg);
+            printf("at %d\n",i);
                if(priority[tokens[i].type]>=lowest){
                 if(!(i>0&&tokens[i].type==TK_NEG&&tokens[i-1].type==TK_NEG)) record=i;
                  lowest=priority[tokens[i].type];
