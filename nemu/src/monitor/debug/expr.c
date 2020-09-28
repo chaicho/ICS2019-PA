@@ -222,9 +222,9 @@ unsigned eval(int p,int q){
         //   printf("%d options remained\n",gg);
          }
          else break;
-      
-       // printf("the first valid op is %d\n",a[gg]);
-      if(a[gg]==p) return (-positive)*eval(record+1,q);*/
+      */
+        printf("the first valid op is %d\n",record);
+      //if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,record-1);
       int val2=eval(record+1,q); 
    //   printf("val1=%d,val2=%d\n",val1,val2);
