@@ -4,9 +4,8 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
-
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_SH,
+  TK_NOTYPE = 256, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_NEQ,TK_REG,TK_NEG,
 
   /* TODO: Add more token types */
 };
@@ -28,7 +27,10 @@ static struct rule {
   {"\\)",TK_RIGHTBRA},
   {"0[xX][a-f0-9]+",TK_HEX},
   {"[0-9]+",TK_NUM},
- // {"\\",},
+  {"&&",TK_AND},
+  {"\\|\\|",TK_OR},
+  {"!=",TK_NEQ},
+  {"\\$[Ee]?[A-Da-d][xX]}|\\$[A-Da-d][xXlL]|\\$[Ee]?[si|SI|di|DI|SP|sp|BP|bp]",TK_REG},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -59,7 +61,9 @@ typedef struct token {
 
 static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
 static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
-
+ bool address=false;
+ int lowest=-1;// 用来记录当前优先级最低的符号
+static int priority[32]={0,7,4,4,3,3,1,1,1000,1000,2,11,12,7,2};
 static bool make_token(char *e) {
   int position = 0;
   int i;
@@ -92,27 +96,46 @@ static bool make_token(char *e) {
               strcpy(tokens[nr_token++].str,"==");
               break;
            case TK_PLUS:     //加号
-              tokens[nr_token++].type=258;
+              tokens[nr_token++].type=TK_PLUS;
               break;
           case TK_MINUS:     //减
-              tokens[nr_token++].type=259;
+              tokens[nr_token++].type=TK_MINUS;
               break;
           case TK_MULT:     //乘
-              tokens[nr_token++].type=260;
+              tokens[nr_token++].type=TK_MULT;
               break;
           case TK_DIV:  //除法
-              tokens[nr_token++].type=261;
+              tokens[nr_token++].type=TK_DIV;
               break;
           case TK_LEFTBRA:     //左括号
-              tokens[nr_token++].type=262;
+              tokens[nr_token++].type=TK_LEFTBRA;
               break;
           case TK_RIGHTBRA:     //右括号
-              tokens[nr_token++].type=263;
+              tokens[nr_token++].type=TK_RIGHTBRA;
               break;
+          case TK_REG:
+              tokens[nr_token].type=TK_REG;
+               strncpy(tokens[nr_token++].str,substr_start,substr_len);
+               assert(substr_len<=31);
+               break;
+          case TK_HEX:
+              tokens[nr_token].type=TK_HEX;
+               strncpy(tokens[nr_token++].str,substr_start,substr_len);
+               assert(substr_len<=31);
+               break;
           case TK_NUM:     //数字
               tokens[nr_token].type=264;
               strncpy(tokens[nr_token++].str,substr_start,substr_len);
                assert(substr_len<=31);
+              break;
+          case TK_AND:
+              tokens[nr_token++].type=TK_AND;
+              break;
+          case TK_OR:
+              tokens[nr_token++].type=TK_OR;
+              break;
+          case TK_NEQ:
+              tokens[nr_token++].type=TK_NEQ;
               break;
           default:
               printf("Illegal\n");
@@ -148,14 +171,22 @@ bool check_brackets(int p,int q){
 }
 unsigned eval(int p,int q){
     int a[33]={0};
-    int gg=0;
-    bool selected=false; //是否有优先级高的一个选的
+    int record=p;
+    //int gg=0;
+    //bool selected=false; //是否有优先级高的一个选的
    // printf("p=%d,q=%d\n",p,q);
     if(p>q){
       return 0;  
     }
     else if(p==q) {
       if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
+      else if(tokens[p].type==TK_HEX){
+
+      }
+      else if(tokens[p].type==TK_REG)
+      {
+      }
+      
       else return 0;        
     } 
     else if(tokens[p].type==TK_LEFTBRA&&tokens[q].type==TK_RIGHTBRA&&check_brackets(p+1,q-1))return eval(p+1,q-1);
@@ -170,23 +201,18 @@ unsigned eval(int p,int q){
           {
               lef--;
           }
-          else if(lef==0&&tokens[i].type<TK_LEFTBRA&&tokens[i].type>TK_EQ){
+          else if(lef==0){
            // printf("%d\n",gg);
-              if(tokens[i].type<=TK_MINUS){  ///如果以后出了问题记得看这边
-                selected=true;
-                a[gg++]=i;
-             //   printf("%d\n",a[gg]);
-              }
-              else if(!selected&&tokens[i].type<=TK_DIV){
-                a[gg++]=i;
-                }
+               if(priority[tokens[i].type-256]>=lowest){
+                 record=i;
+                 lowest=priority[tokens[i].type-256];
+               }
           }
          // printf("%d\n",lef);
       }
-      gg--;
+     /* gg--;
       int positive=1;
       int record=a[gg];
-     
       while(gg>0&&tokens[a[gg]].type==TK_MINUS){
           if(a[gg]==p) break;
           if(tokens[a[gg]-1].type!=TK_NUM&&tokens[a[gg]-1].type!=TK_RIGHTBRA){
@@ -195,14 +221,13 @@ unsigned eval(int p,int q){
         //   printf("%d options remained\n",gg);
          }
          else break;
-      }
+      
        // printf("the first valid op is %d\n",a[gg]);
-      if(a[gg]==p) return (-positive)*eval(record+1,q);
-      int val1=eval(p,a[gg]-1);
-    
-      int val2=positive*eval(record+1,q); 
+      if(a[gg]==p) return (-positive)*eval(record+1,q);*/
+      int val1=eval(p,record-1);
+      int val2=eval(record+1,q); 
    //   printf("val1=%d,val2=%d\n",val1,val2);
-      switch (tokens[a[gg]].type)
+      switch (tokens[a[record]].type)
       {
       case TK_PLUS:
         return val1+val2;
@@ -216,15 +241,35 @@ unsigned eval(int p,int q){
       case TK_DIV:
         return val1/val2;
         break;
+      case TK_EQ:
+        return val1==val2;
+        break;
+      case TK_NEQ:
+        return val1!=val2;
+        break;
+      case TK_NEG:
+        return -val2;
+        break;
+      case TK_OR:
+        return val1||val2;
+        break;
+      case TK_AND:
+        return val1&&val2;
+        break;
+      case TK_DE:
+        address=true;
+        return val2;
+        break;
       default:
         return 0;
         break;
         }
     }
-  else{
+    else{
     assert(0);
     return 0;
-  }    
+   }    
+   return 0;
 }
 word_t expr(char *e, bool *success) {
   memset(tokens,0,32*sizeof(Token));
@@ -234,10 +279,15 @@ word_t expr(char *e, bool *success) {
   }
   int w=0;
   for (w = 0; w < nr_token; w ++) {
-     if (tokens[w].type == '*' && (w == 0 || (tokens[w- 1].type<=TK_DIV&&tokens[w-1].type>TK_EQ) ) ) {
+     if (tokens[w].type == TK_MULT && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&&tokens[w-1].type!=TK_HEX) ) ) {
       tokens[w].type = TK_DE;
+    }}
+  for (w = 0; w < nr_token; w ++) {
+     if (tokens[w].type == TK_MINUS && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&& tokens[w-1].type!=TK_HEX) ) ){
+      tokens[w].type = TK_NEG;
     }
 }
+   lowest=-1;// 用来记录当前优先级最低的符号
   /* TODO: Insert codes to evaluate the expression. */
  // printf("%d\n",nr_token);
   return eval(0,nr_token-1);
