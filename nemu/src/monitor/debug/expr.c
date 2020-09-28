@@ -179,7 +179,7 @@ unsigned eval(int p,int q){
       return 0;  
     }
     else if(p==q) {
-      if(tokens[p].type==TK_NUM) return atoi(tokens[p].str);
+      if(tokens[p].type==TK_NUM) return (unsigned) atoi(tokens[p].str);
       else if(tokens[p].type==TK_HEX){
 
       }
