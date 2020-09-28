@@ -195,7 +195,6 @@ unsigned eval(int p,int q){
     else if(check_brackets(p,q)){
           int i=0,lef=0; //lef记录是否在括号中
       for(i=p;i<=q;i++){
-        lef=0;
        // printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
             lef++;
