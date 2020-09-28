@@ -67,6 +67,7 @@ static int priority[32]={0,7,4,4,3,3,1,1,-1000,-1000,2,11,12,7,2};
 static bool make_token(char *e) {
   int position = 0;
   int i;
+  lowest=-1;
   regmatch_t pmatch;
   
   nr_token = 0;
@@ -172,6 +173,7 @@ bool check_brackets(int p,int q){
 unsigned eval(int p,int q){
     //int a[33]={0};
     int record=p;
+    lowest=0;
     //int gg=0;
     //bool selected=false; //是否有优先级高的一个选的
    // printf("p=%d,q=%d\n",p,q);
