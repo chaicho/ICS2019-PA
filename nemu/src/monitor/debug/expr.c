@@ -63,7 +63,7 @@ static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
 static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
  bool address=false;
  int lowest=-1;// 用来记录当前优先级最低的符号
-static int priority[32]={0,7,4,4,3,3,1,1,1000,1000,2,11,12,7,2};
+static int priority[32]={0,7,4,4,3,3,1,1,-1000,-1000,2,11,12,7,2};
 static bool make_token(char *e) {
   int position = 0;
   int i;
@@ -179,7 +179,7 @@ unsigned eval(int p,int q){
       return 0;  
     }
     else if(p==q) {
-      if(tokens[p].type==TK_NUM) return (unsigned) atoi(tokens[p].str);
+      if(tokens[p].type==TK_NUM) return (unsigned)atoi(tokens[p].str);
       else if(tokens[p].type==TK_HEX){
 
       }
@@ -204,7 +204,7 @@ unsigned eval(int p,int q){
           }
           else if(lef==0){
            // printf("%d\n",gg);
-               if(priority[tokens[i].type]>=lowest){
+               if(tokens[i].type>=lowest){
                  record=i;
                  lowest=priority[tokens[i].type];
                }
