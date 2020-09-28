@@ -204,7 +204,7 @@ unsigned eval(int p,int q){
           }
           else if(lef==0){
            // printf("%d\n",gg);
-               if(tokens[i].type>=lowest){
+               if(priority[tokens[i].type]>=lowest){
                  record=i;
                  lowest=priority[tokens[i].type];
                }
