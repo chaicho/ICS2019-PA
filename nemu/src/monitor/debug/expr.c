@@ -173,7 +173,7 @@ bool check_brackets(int p,int q){
 unsigned eval(int p,int q){
     //int a[33]={0};
     int record=p;
-    lowest=0;
+    lowest=-1;
     //int gg=0;
     //bool selected=false; //是否有优先级高的一个选的
    // printf("p=%d,q=%d\n",p,q);
