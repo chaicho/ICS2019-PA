@@ -93,7 +93,7 @@ static bool make_token(char *e) {
               break;
           
           case TK_EQ:     //等于
-              tokens[nr_token].type=TK_EQ;
+              tokens[nr_token++].type=TK_EQ;
              // strcpy(tokens[nr_token++].str,"==");
               break;
            case TK_PLUS:     //加号
