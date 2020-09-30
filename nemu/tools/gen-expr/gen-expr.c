@@ -30,7 +30,7 @@ static inline void gen_num(){
       }
 }
 static inline void gen_rand_expr() {
-  if(ii>=400) {
+  if(ii>=40) {
     gen_num();
     return;
     }
