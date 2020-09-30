@@ -63,7 +63,7 @@ static Token tokens[200] __attribute__((used)) = {}; //存放正则表达式
 static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
  bool address=false;
  int lowest=-1;// 用来记录当前优先级最低的符号
-static int priority[32]={0,7,4,4,3,3,1,1,1000,1000,2,11,12,7,2};
+static int priority[32]={0,7,4,4,3,3,1,1,-1,-1,2,11,12,7,2};
 static bool make_token(char *e) {
   int position = 0;
   int i;
