@@ -59,7 +59,7 @@ typedef struct token {
   char str[32];//32
 } Token;
 
-static Token tokens[32] __attribute__((used)) = {}; //存放正则表达式
+static Token tokens[60] __attribute__((used)) = {}; //存放正则表达式
 static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
  bool address=false;
  int lowest=-1;// 用来记录当前优先级最低的符号
