@@ -195,7 +195,7 @@ unsigned eval(int p,int q){
     else if(check_brackets(p,q)){
           int i=0,lef=0; //lef记录是否在括号中
       for(i=p;i<=q;i++){
-        printf("%d\n",tokens[i].type);
+        //printf("%d\n",tokens[i].type);
           if(tokens[i].type==TK_LEFTBRA){
             lef++;
           }
@@ -208,7 +208,7 @@ unsigned eval(int p,int q){
                if(priority[tokens[i].type]>=lowest){
                 if(!(i>0&&tokens[i].type==TK_NEG&&tokens[i-1].type==TK_NEG)) record=i;
                  lowest=priority[tokens[i].type];
-                 printf("at %d\n with lowest %d\n",i,lowest);
+              //   printf("at %d\n with lowest %d\n",i,lowest);
                } 
           }
          // printf("%d\n",lef);
@@ -225,11 +225,11 @@ unsigned eval(int p,int q){
          }
          else break;
       */
-        printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
+        //printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
       //if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,record-1);
       int val2=eval(record+1,q); 
-   //   printf("val1=%d,val2=%d\n",val1,val2);
+      printf("val1=%d,val2=%d\n",val1,val2);
       switch (tokens[record].type)
       {
       case TK_PLUS:
