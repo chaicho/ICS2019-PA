@@ -78,8 +78,8 @@ static bool make_token(char *e) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
      //   printf("%s\n",rules[i].regex);
-       Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-           i, rules[i].regex, position, substr_len, substr_len, substr_start);
+    //   Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+      //     i, rules[i].regex, position, substr_len, substr_len, substr_start);
        
         position += substr_len;
 
@@ -224,7 +224,7 @@ unsigned eval(int p,int q){
          }
          else break;
       */
-        printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
+      //  printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
       //if(a[gg]==p) return (-positive)*eval(record+1,q);
       int val1=eval(p,record-1);
       int val2=eval(record+1,q); 
@@ -275,7 +275,7 @@ unsigned eval(int p,int q){
    return 0;
 }
 word_t expr(char *e, bool *success) {
-  memset(tokens,0,32*sizeof(Token));
+  memset(tokens,0,60*sizeof(Token));
   if (!make_token(e)) {
     *success = false;
     return 0;
