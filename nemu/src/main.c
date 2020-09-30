@@ -8,7 +8,10 @@ int is_exit_status_bad();
 int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
   init_monitor(argc, argv);
-  FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
+ 
+  /* Start engine. */
+  engine_start();
+ FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
   int result=0;
   char str[50];
   while( fscanf(fp, "%u %s", &result,str)!=-1){
@@ -28,8 +31,5 @@ int main(int argc, char *argv[]) {
    }
     memset(str,0,49);
   }
-  /* Start engine. */
-  engine_start();
-
   return is_exit_status_bad();
 }
