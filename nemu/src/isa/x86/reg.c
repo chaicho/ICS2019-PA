@@ -79,9 +79,18 @@ word_t isa_reg_str2val(const char *s, bool *success) {
   *success=true;    
   int ww=0;
   for(ww=0;ww<7;ww++){
-    if(strcmp(s,regsl[ww])) return reg_l(ww);
-    if(strcmp(s,regsb[ww])) return  reg_b(ww);
-    if(strcmp(s,regsw[ww])) return reg_w(ww);    
+    if(strcmp(s,regsl[ww])){
+      printf("%s\n",regsl[ww]);
+      return reg_l(ww);
+      }
+    if(strcmp(s,regsb[ww])){
+         printf("%s\n",regsb[ww]);
+         return  reg_b(ww);
+    }
+    if(strcmp(s,regsw[ww])) {
+         printf("%s\n",regsw[ww]);
+         return reg_w(ww);    
+     }
   }
   if(ww==7) *success=false;
   return 0;
