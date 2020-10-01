@@ -63,7 +63,7 @@ static Token tokens[200] __attribute__((used)) = {}; //存放正则表达式
 static int nr_token __attribute__((used))  = 0; //正则表达式的的数量
  bool address=false;
  int lowest=-1;// 用来记录当前优先级最低的符号
-static int priority[32]={0,7,4,4,3,3,1,1,-1,-1,2,11,12,7,2};
+static int priority[32]={0,7,4,4,3,3,1,1,-1,-1,2,11,12,7,2,-1};
 static bool make_token(char *e) {
   int position = 0;
   int i;
@@ -116,7 +116,7 @@ static bool make_token(char *e) {
               break;
           case TK_REG:
               tokens[nr_token].type=TK_REG;
-               strncpy(tokens[nr_token++].str,substr_start,substr_len);
+               strncpy(tokens[nr_token++].str,substr_start+1,substr_len-1);
                assert(substr_len<=31);
                break;
           case TK_HEX:
@@ -183,10 +183,12 @@ unsigned eval(int p,int q){
     else if(p==q) {
       if(tokens[p].type==TK_NUM) return (unsigned)atoi(tokens[p].str);
       else if(tokens[p].type==TK_HEX){
-        
+          char *ptr;
+          return (unsigned) strtol(tokens[p].str,&ptr,16);
       }
       else if(tokens[p].type==TK_REG)
       {
+          
       }
       
       else return 0;        
