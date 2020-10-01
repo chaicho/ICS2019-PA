@@ -192,10 +192,6 @@ unsigned eval(int p,int q){
         bool success;  
         unsigned t=isa_reg_str2val(tokens[p].str,&success);
         if(!success) printf("Wrong reg\n");
-        if(address) {
-          address=false;
-          return paddr_read(t, 4);
-        }
         return t;
   
       }
@@ -271,8 +267,7 @@ printf("the first valid op is at %d,which is %d\n",record,tokens[record].type);
         return val1&&val2;
         break;
       case TK_DE:
-        address=true;
-        return val2;
+        return paddr_read( val2,4);
         break;
       default:
         return 0;
