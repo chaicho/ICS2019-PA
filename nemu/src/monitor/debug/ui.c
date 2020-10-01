@@ -122,7 +122,7 @@ static int cmd_x(char *args){
    int i=0;
    sscanf(arg, "%d", &number);
    arg = strtok(NULL, " ");
-   address=expr(args,&success);
+   address=expr(arg,&success);
     if(!success) printf("Mission failed\n");
    for( i=0;i<number;i++){
       printf("%8x :  %8x\n",address+4*i,vaddr_read(address+4*i, 4));
