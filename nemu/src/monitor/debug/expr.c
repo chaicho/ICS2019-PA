@@ -4,6 +4,7 @@
  * Type 'man regex' for more information about POSIX regex functions.
  */
 #include <regex.h>
+#include <memory/paddr.h>
 enum {
   TK_NOTYPE, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_NEQ,TK_REG,TK_NEG,
 
@@ -188,8 +189,15 @@ unsigned eval(int p,int q){
       }
       else if(tokens[p].type==TK_REG)
       {
-        bool success;
-        return  isa_reg_str2val(tokens[p].str,&success);
+        bool success;  
+        unsigned t=isa_reg_str2val(tokens[p].str,&success);
+        if(!success) printf("Wrong reg\n");
+        if(address) {
+          address=false;
+          return paddr_read(t, 4);
+        }
+        return t;
+  
       }
       
       else return 0;        
