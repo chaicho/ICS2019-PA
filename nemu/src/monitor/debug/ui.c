@@ -1,7 +1,7 @@
 #include <isa.h>
 #include "expr.h"
 #include "watchpoint.h"
-#include <memory/paddr.h>
+#include <memory/vaddr.h>
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -123,7 +123,7 @@ static int cmd_x(char *args){
    sscanf(arg,"%x", &address); 
    int i;
    for( i=0;i<number;i++){
-      printf("%8x :  %8x\n",address+4*i,paddr_read(address+4*i, 4));
+      printf("%8x :  %8x\n",address+4*i,vaddr_read(address+4*i, 4));
    } 
   return 0;
 }
