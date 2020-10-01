@@ -206,7 +206,7 @@ unsigned eval(int p,int q){
               lef--;
           }
           else if(lef==0){
-              printf("now:  %d pre: %d ",priority[tokens[i].type],lowest);
+              printf("now:  %d pre: %d \n",priority[tokens[i].type],lowest);
                if(priority[tokens[i].type]>=lowest){
                 if(!(i>0&&tokens[i].type==TK_NEG&&tokens[i-1].type==TK_NEG)) record=i;
                  lowest=priority[tokens[i].type];
