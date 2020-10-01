@@ -188,7 +188,8 @@ unsigned eval(int p,int q){
       }
       else if(tokens[p].type==TK_REG)
       {
-
+        bool success;
+        printf("%d\n",isa_reg_str2val(tokens[p].str,&success));
       }
       
       else return 0;        
@@ -253,7 +254,6 @@ unsigned eval(int p,int q){
         return val1!=val2;
         break;
       case TK_NEG:
-
         return -val2;
         break;
       case TK_OR:
