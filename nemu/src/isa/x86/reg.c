@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "local-include/reg.h"
-
+#include<string.h>
 const char *regsl[] = {"eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"};
 const char *regsw[] = {"ax", "cx", "dx", "bx", "sp", "bp", "si", "di"};
 const char *regsb[] = {"al", "cl", "dl", "bl", "ah", "ch", "dh", "bh"};
@@ -76,5 +76,13 @@ printf("\n");
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
+  *success=true;    
+  int ww=0;
+  for(ww=0;ww<7;ww++){
+    if(strcmp(s,regsl[ww])) return reg_l(ww);
+    if(strcmp(s,regsb[ww])) return  reg_b(ww);
+    if(strcmp(s,regsw[ww])) return reg_w(ww);    
+  }
+  if(ww==7) *success=false;
   return 0;
 }
