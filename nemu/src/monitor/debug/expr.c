@@ -5,6 +5,8 @@
  */
 #include <regex.h>
 #include <memory/paddr.h>
+#include <memory/vaddr.h>
+
 enum {
   TK_NOTYPE, TK_EQ, TK_PLUS,TK_MINUS,TK_MULT,TK_DIV,TK_LEFTBRA,TK_RIGHTBRA,TK_NUM,TK_HEX,TK_DE,TK_AND,TK_OR,TK_NEQ,TK_REG,TK_NEG,
 
