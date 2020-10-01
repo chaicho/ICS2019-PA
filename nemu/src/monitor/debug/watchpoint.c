@@ -5,7 +5,7 @@
 
 static WP wp_pool[NR_WP] = {};
 static WP *head = NULL, *free_ = NULL;
-
+int size=0;
 void init_wp_pool() {
   int i;
   for (i = 0; i < NR_WP; i ++) {
@@ -17,6 +17,12 @@ void init_wp_pool() {
   head = NULL;
   free_ = wp_pool;
 }
-
+WP* new_wp(){
+    if(free_==NULL){
+      printf("No free watchpoints\n");
+      assert(0);
+    }  
+    WP *
+}
 /* TODO: Implement the functionality of watchpoint */
 
