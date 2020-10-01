@@ -285,11 +285,11 @@ word_t expr(char *e, bool *success) {
   }
   int w=0;
   for (w = 0; w < nr_token; w ++) {
-     if (tokens[w].type == TK_MULT && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&&tokens[w-1].type!=TK_HEX) ) ) {
+     if (tokens[w].type == TK_MULT && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&&tokens[w-1].type!=TK_HEX&&tokens[w-1].type!=TK_REG) ) ) {
       tokens[w].type = TK_DE;
     }}
   for (w = 0; w < nr_token; w ++) {
-     if (tokens[w].type == TK_MINUS && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&& tokens[w-1].type!=TK_HEX) ) ){
+     if (tokens[w].type == TK_MINUS && (w == 0 || (tokens[w- 1].type!=TK_RIGHTBRA&&tokens[w-1].type!=TK_NUM&& tokens[w-1].type!=TK_HEX&&tokens[w-1].type!=TK_REG) ) ){
       tokens[w].type = TK_NEG;
     }
 }
