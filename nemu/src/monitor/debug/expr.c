@@ -269,7 +269,7 @@ unsigned eval(int p,int q){
         return val1&&val2;
         break;
       case TK_DE:
-        return paddr_read( val2,4);
+        return vaddr_read( val2,4);
         break;
       default:
         return 0;
