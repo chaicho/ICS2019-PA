@@ -30,7 +30,7 @@ static struct rule {
   {"&&",TK_AND},
   {"\\|\\|",TK_OR},
   {"!=",TK_NEQ},
-  {"\\$[Ee]?[A-Da-d][xX]}|\\$[A-Da-d][xXlL]|\\$[Ee]?[si|SI|di|DI|SP|sp|BP|bp]",TK_REG},
+  {"\\$[Ee]?[A-Da-d][xX]|\\$[A-Da-d][xXlL]|\\$[Ee]?[sSdDBb][iIlL]",TK_REG},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
