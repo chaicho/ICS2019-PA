@@ -188,7 +188,7 @@ unsigned eval(int p,int q){
       }
       else if(tokens[p].type==TK_REG)
       {
-          
+
       }
       
       else return 0;        
@@ -210,7 +210,7 @@ unsigned eval(int p,int q){
                if(priority[tokens[i].type]>=lowest){
                 if(!(i>0&&tokens[i].type==TK_NEG&&tokens[i-1].type==TK_NEG)) record=i;
                  lowest=priority[tokens[i].type];
-                //printf("at %d\n with lowest %d\n",i,lowest);
+                printf("at %d\n with lowest %d\n",i,lowest);
                } 
           }
          // printf("%d\n",lef);
