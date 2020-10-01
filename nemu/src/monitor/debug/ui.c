@@ -118,7 +118,7 @@ static int cmd_x(char *args){
    char *arg = strtok(NULL, " "); 
    if(arg==NULL) printf ("More arguments needed\n");
    int number, address=1;
-   bool success;
+   bool success=true;
    int i=0;
    sscanf(arg, "%d", &number);
    arg = strtok(NULL, " ");
