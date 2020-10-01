@@ -189,7 +189,7 @@ unsigned eval(int p,int q){
       else if(tokens[p].type==TK_REG)
       {
         bool success;
-        isa_reg_str2val(tokens[p].str,&success);
+        return  isa_reg_str2val(tokens[p].str,&success);
       }
       
       else return 0;        
