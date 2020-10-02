@@ -80,15 +80,15 @@ word_t isa_reg_str2val(const char *s, bool *success) {
   int ww=0;
   for(ww=0;ww<7;ww++){
     if(!strcmp(s,regsl[ww])){
-      printf("s= %s %s\n",s,regsl[ww]);
+      //printf("s= %s %s\n",s,regsl[ww]);
       return reg_l(ww);
       }
     if(!strcmp(s,regsb[ww])){
-         printf("%s %s\n",s,regsb[ww]);
+        // printf("%s %s\n",s,regsb[ww]);
          return  reg_b(ww);
     }
     if(!strcmp(s,regsw[ww])) {
-         printf("%s %s\n",s,regsw[ww]);
+         //printf("%s %s\n",s,regsw[ww]);
          return reg_w(ww);    
      }
   }
