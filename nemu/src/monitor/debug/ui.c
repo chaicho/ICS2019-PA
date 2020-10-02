@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
-
+#include "watchpoint.h"
 void cpu_exec(uint64_t);
 int is_batch_mode();
 
@@ -30,6 +30,7 @@ static char* rl_gets() {
 
 static int cmd_c(char *args) {
   cpu_exec(-1);
+  check_wp();
   return 0;
 }
 
@@ -44,6 +45,8 @@ static int cmd_si(char *args);
 static int cmd_info(char *args);
 static int cmd_x(char *args);
 static int cmd_p (char *args);
+static int cmd_w(char *args);
+static int cmd_d(char *args);
 static struct {
   char *name;
   char *description;
@@ -56,8 +59,8 @@ static struct {
   {"info"," Print register status or Print monitoring point information",cmd_info},
   { "p"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",cmd_p},
   {"x","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",cmd_x},
-  {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",},
-  {"d N","Delete the monitoring point with sequence number N",},
+  {"w EXPR", "When the value of the expression EXPR changes, the program execution is suspended",cmd_w},
+  {"d N","Delete the monitoring point with sequence number N",cmd_d},
   /* TODO: Add more commands */
 
 };
@@ -88,7 +91,7 @@ static int cmd_info(char  *args){
   }
   else if(*arg=='w')  //打印监视点
   {
-     
+     print_wp();
   }
   return 0;
 }
@@ -114,7 +117,16 @@ static int cmd_help(char *args) {
   }
   return 0;
 }
-
+static int cmd_w(char *args){
+   build_wp(args);
+   return 0;
+}
+static int cmd_d(char *args){
+  int number;
+  sscanf(args,"%d",&number);
+  delete_wp(number);
+  return 0;
+}
 static int cmd_x(char *args){
    char *arg = strtok(NULL, " "); 
    if(arg==NULL) printf ("More arguments needed\n");
