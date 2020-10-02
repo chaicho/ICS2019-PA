@@ -94,6 +94,7 @@ void print_wp(){
   while (tmp!=NULL)
   {
   printf("Watchpoint %d: %s with value %u \n",tmp->NO,tmp->str,tmp->pre_val);
+  tmp=tmp->next;
   }
   return;
 }
