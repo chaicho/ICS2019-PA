@@ -60,7 +60,7 @@ static struct {
   { "p"," Calculate the value of the expression EXPR. For the operations supported by EXPR, see the section on expression evaluation in debugging",cmd_p},
   {"x","Find the value of the expression EXPR, use the result as the starting memory address, and output consecutive N 4 bytes in hexadecimal form",cmd_x},
   {"w", "When the value of the expression EXPR changes, the program execution is suspended",cmd_w},
-  {"dq","Delete the monitoring point with sequence number N",cmd_d},
+  {"d","Delete the monitoring point with sequence number N",cmd_d},
   /* TODO: Add more commands */
 
 };
