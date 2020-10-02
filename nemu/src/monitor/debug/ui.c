@@ -37,7 +37,7 @@ static int cmd_c(char *args) {
 
 
 static int cmd_q(char *args) {
-  nemu_state.state=NEMU_QUIT;
+  //nemu_state.state=NEMU_QUIT;
   return -1;
 }
 
@@ -192,4 +192,5 @@ void ui_mainloop() {
 
     if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
   }
+  return;
 }
