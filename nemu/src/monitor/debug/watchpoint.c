@@ -81,7 +81,7 @@ void check_wp(){
     if(tmp->pre_val!=new){
       printf("Watchpoint %d: %s change from %u to %u\n",tmp->NO,tmp->str,tmp->pre_val,new);
       change=true;
-     
+      tmp->pre_val=new;
     }
     tmp=tmp->next;
   } 
