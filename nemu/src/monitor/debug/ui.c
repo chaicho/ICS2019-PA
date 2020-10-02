@@ -120,7 +120,7 @@ static int cmd_help(char *args) {
   return 0;
 }
 static int cmd_w(char *args){
-   build_wp(args);
+   insert_wp(args);
    return 0;
 }
 static int cmd_d(char *args){

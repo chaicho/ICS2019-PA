@@ -29,12 +29,6 @@ WP* new_wp(){
     }  
     WP *tmp=free_;
     free_=free_->next;
-    if(head==NULL) head=tmp;
-    else
-    {
-      tmp->next=head;
-      head=tmp;
-    }
     tmp->next=NULL;
     return tmp;
 }
@@ -67,7 +61,7 @@ void free_wp(WP *wp){
         }
      }
 }
-void build_wp(char * a){
+void insert_wp(char * a){
     WP *now=new_wp();
     strcpy(now->str,a);
     bool success=true;
@@ -76,8 +70,8 @@ void build_wp(char * a){
     printf("Invalid watchpoint");
     free_wp(now);
     }
-    if(head==NULL) head=now;
-
+    now->next=head;
+    head=now; 
     return;
 }
 void check_wp(){
