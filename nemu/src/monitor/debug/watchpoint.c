@@ -83,6 +83,7 @@ void check_wp(){
       change=true;
      
     }
+    tmp=tmp->next;
   } 
   if(change) {
     nemu_state.state=NEMU_STOP;
