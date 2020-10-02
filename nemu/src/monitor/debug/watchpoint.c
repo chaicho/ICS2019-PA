@@ -39,10 +39,12 @@ void free_wp(WP *wp){
      }
      else if(wp==head){
         head=head->next;
+        printf("Free watchpoint %d : %s \n",wp->NO,wp->str);
         wp->pre_val=0;
         memset(wp->str,0,32);
         wp->next=free_;
         free_=wp;
+        
      }
      else{
         WP *tmp=head;
