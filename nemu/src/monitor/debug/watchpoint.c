@@ -77,7 +77,7 @@ void check_wp(){
   {
     bool success;
     uint32_t new=expr(tmp->str,&success);
-     assert(success);
+     //assert(success);
     if(tmp->pre_val!=new){
       printf("Watchpoint %d: %s change from %u to %u\n",tmp->NO,tmp->str,tmp->pre_val,new);
       change=true;
