@@ -44,7 +44,6 @@ void free_wp(WP *wp){
         memset(wp->str,0,32);
         wp->next=free_;
         free_=wp;
-        
      }
      else{
         WP *tmp=head;
