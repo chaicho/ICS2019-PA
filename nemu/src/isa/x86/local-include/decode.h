@@ -47,7 +47,8 @@ static inline def_DopHelper(I) {
 /* sign immediate */
 static inline def_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
-
+  sword_t simm=instr_fetch(&s->seq_pc,op->width);
+  operand_imm(s,op,load_val,simm,op->width);
   /* TODO: Use instr_fetch() to read `op->width' bytes of memory
    * pointed by 's->seq_pc'. Interpret the result as a signed immediate,
    * and call `operand_imm()` as following.
@@ -290,6 +291,7 @@ static inline def_DHelper(out_a2dx) {
   decode_op_a(s, id_src1, true);
   operand_reg(s, id_dest, true, R_DX, 2);
 }
+
 
 static inline void operand_write(DecodeExecState *s, Operand *op, rtlreg_t* src) {
   if (op->type == OP_TYPE_REG) { rtl_sr(s, op->reg, src, op->width); }
