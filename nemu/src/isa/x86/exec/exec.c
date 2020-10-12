@@ -14,7 +14,7 @@ static inline void set_width(DecodeExecState *s, int width) {
 static inline def_EHelper(gp1) {
   switch (s->isa.ext_opcode) {
     EMPTY(0) EMPTY(1) EMPTY(2) EMPTY(3)
-    EMPTY(4) EMPTY(5) EMPTY(6) EMPTY(7)
+    EMPTY(4) EX(5,sub) EMPTY(6) EMPTY(7)
   }
 }
 
@@ -25,6 +25,7 @@ static inline def_EHelper(gp2) {
     EMPTY(4) EMPTY(5) EMPTY(6) EMPTY(7)
   }
 }
+
 
 /* 0xf6, 0xf7 */
 static inline def_EHelper(gp3) {
@@ -57,7 +58,9 @@ static inline def_EHelper(gp7) {
     EMPTY(4) EMPTY(5) EMPTY(6) EMPTY(7)
   }
 }
+static inline def_EHelper(){
 
+}
 static inline def_EHelper(2byte_esc) {
   uint8_t opcode = instr_fetch(&s->seq_pc, 1);
   s->opcode = opcode;
@@ -78,7 +81,7 @@ again:
     IDEXW(0x80, I2E, gp1, 1)
     IDEX (0x81, I2E, gp1)
     IDEX (0x83, SI2E, gp1)
-    IDEXW(0x88, mov_G2E, mov, 1)
+    IDEXW(0x88, mov_G2E, mov, 1) 
     IDEX (0x89, mov_G2E, mov)
     IDEXW(0x8a, mov_E2G, mov, 1)
     IDEX (0x8b, mov_E2G, mov)
@@ -115,6 +118,11 @@ again:
     IDEX (0xf7, E, gp3)
     IDEXW(0xfe, E, gp4, 1)
     IDEX (0xff, E, gp5)
+    IDEX (0xe8, J, call)
+    IDEX (0x55, r, push)
+    IDEX (0X31, G2E,xor)
+    IDEX (0x58, r,pop)
+    EX   (0xc3, ret )
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
   }
