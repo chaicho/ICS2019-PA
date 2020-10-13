@@ -42,8 +42,7 @@ static inline def_rtl(pop, rtlreg_t* dest) {
 static inline def_rtl(is_sub_overflow, rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
   // dest <- is_overflow(src1 - src2)
-//    rtl_is_sub_overflow(dest,res,src1,src2,width);
- TODO();
+// TODO();
 }
 
 static inline def_rtl(is_sub_carry, rtlreg_t* dest,
