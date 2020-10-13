@@ -27,19 +27,23 @@ static inline def_rtl(sr, int r, const rtlreg_t* src1, int width) {
 static inline def_rtl(push, const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
-  TODO();
+    rtl_subi(s,&cpu.esp,&cpu.esp,4);
+    rtl_sm (s,&cpu.esp, 0,src1,4);
 }
 
 static inline def_rtl(pop, rtlreg_t* dest) {
   // dest <- M[esp]
   // esp <- esp + 4
-  TODO();
+  rtl_lm(s,dest,&cpu.esp,0,4);
+  rtl_addi(s,&cpu.esp,&cpu.esp,4);
+ // TODO();
 }
 
 static inline def_rtl(is_sub_overflow, rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
   // dest <- is_overflow(src1 - src2)
-  TODO();
+//    rtl_is_sub_overflow(dest,res,src1,src2,width);
+ TODO();
 }
 
 static inline def_rtl(is_sub_carry, rtlreg_t* dest,

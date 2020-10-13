@@ -48,7 +48,10 @@ static inline def_DopHelper(I) {
 static inline def_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
   sword_t simm=instr_fetch(&s->seq_pc,op->width);
-  operand_imm(s,op,load_val,simm,op->width);
+  operand_imm(s,op,load_val,simm,op->width);  
+  //imm和simm是union起来的，所以不需要专门写函数
+
+  
   /* TODO: Use instr_fetch() to read `op->width' bytes of memory
    * pointed by 's->seq_pc'. Interpret the result as a signed immediate,
    * and call `operand_imm()` as following.
