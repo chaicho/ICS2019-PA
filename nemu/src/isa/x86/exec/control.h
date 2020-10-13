@@ -27,7 +27,7 @@ static inline def_EHelper(call) {
   rtl_push(s,&s->jmp_pc);
   s->is_jmp=1;
   //rtl_pop( );
-  //TODO();
+  TODO();
   print_asm("call %x", s->jmp_pc);
 }
 
