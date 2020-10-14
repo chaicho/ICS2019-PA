@@ -59,7 +59,8 @@ static inline def_EHelper(gp7) {
   }
 }
 static inline def_EHelper(endbr){
-  instr_fetch(&s->seq_pc,3);
+  instr_fetch(&s->seq_pc,1);
+  instr_fetch(&s->seq_pc,2);
 }
 static inline def_EHelper(){
 
