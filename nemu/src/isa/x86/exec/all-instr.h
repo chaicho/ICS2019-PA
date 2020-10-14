@@ -15,3 +15,4 @@ def_EHelper(push);
 def_EHelper(sub);
 def_EHelper(add);
 def_EHelper(xor);
+def_EHelper(ret);
