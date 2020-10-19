@@ -16,3 +16,4 @@ def_EHelper(sub);
 def_EHelper(add);
 def_EHelper(xor);
 def_EHelper(ret);
+def_EHelper(lea);
