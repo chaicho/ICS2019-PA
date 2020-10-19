@@ -7,10 +7,10 @@ static inline def_EHelper(test) {
 }
 
 static inline def_EHelper(and) {
- TODO();
- // rtl_and(s,ddest,ddest,dsrc1);
-  //cpu.eflag.CF=0;
-  //cpu.eflag.OF=0;
+ //TODO();
+ rtl_and(s,ddest,ddest,dsrc1);
+  cpu.eflag.CF=0;
+  cpu.eflag.OF=0;
   print_asm_template2(and);
 }
 
