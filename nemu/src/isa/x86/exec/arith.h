@@ -36,6 +36,7 @@ static inline def_EHelper(sub) {
 }
 
 static inline def_EHelper(cmp) {
+cmp_internal(s);
   //TODO();
 }
 
