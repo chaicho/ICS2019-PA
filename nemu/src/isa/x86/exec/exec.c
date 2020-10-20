@@ -149,8 +149,8 @@ vaddr_t isa_exec_once() {
   s.seq_pc = cpu.pc;
 
   fetch_decode_exec(&s);
-  s.is_jmp=0;
   printf("%x\n",s.seq_pc);
+  printf("JUMP = %d",s.is_jmp);
   update_pc(&s);
   
   return s.seq_pc;
