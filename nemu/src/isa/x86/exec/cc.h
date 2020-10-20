@@ -31,13 +31,15 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
   switch (subcode & 0xe) {
     case CC_O: 
     case CC_B:
-    case CC_E: *dest= cpu.eflag.ZF==1 ? 1:0;
+    case CC_E: 
+      *dest= cpu.eflag.ZF==1 ? 1:0;
+      break;
     case CC_BE:
     case CC_S:
     case CC_L:
     case CC_LE:
        //TODO();
-    //default: panic("should not reach here");
+    default: panic("should not reach here");
     case CC_P: panic("PF is not supported");
   }
 
