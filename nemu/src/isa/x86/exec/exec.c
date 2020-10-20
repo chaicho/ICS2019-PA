@@ -116,7 +116,7 @@ again:
     IDEX (0xc1, gp2_Ib2E, gp2)
     IDEXW(0xc6, mov_I2E, mov, 1)
     IDEX (0xc7, mov_I2E, mov)
-    EX    (0xc9,leave);
+    EX   (0xc9,leave);
     IDEXW(0xd0, gp2_1_E, gp2, 1)
     IDEX (0xd1, gp2_1_E, gp2)
     IDEXW(0xd2, gp2_cl2E, gp2, 1)
@@ -131,7 +131,7 @@ again:
     IDEX (0x51, r, push) IDEX(0x52,r,push) IDEX (0x53, r, push)  IDEX (0x55, r, push)  IDEX (0x56, r, push)  IDEX (0x57, r, push)
     IDEX (0x01, G2E, add)
     IDEX (0x68, I, push)
-    IDEX (0X74,J, jcc)
+    IDEX (0X74, J, jcc)
     IDEX (0X31, G2E,xor)
     IDEX (0x58, r,pop)
     IDEX (0x8d, lea_M2G ,lea)
