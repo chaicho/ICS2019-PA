@@ -37,14 +37,14 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
     case CC_L:
     case CC_LE:
        //TODO();
-    default: panic("should not reach here");
+  //  default: panic("should not reach here");
     case CC_P: panic("PF is not supported");
   }
 
   if (invert) {
     rtl_xori(s, dest, dest, 0x1);
   }
- // assert(*dest == 0 || *dest == 1);
+  assert(*dest == 0 || *dest == 1);
 }
 
 #endif
