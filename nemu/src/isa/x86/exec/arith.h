@@ -23,7 +23,7 @@ static inline def_EHelper(sub) {
   //rtl_sub(s,ddest,ddest,dsrc1);
   //rtl_get_CF(s, s0);
  // rtl_add(s, s0, dsrc1, s0);
-  rtl_sub(s, s1, ddest, dsrc1);
+  rtl_sub(s, s1, ddest, s0);
   rtl_update_ZFSF(s, s1, id_dest->width);
   rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
   rtl_set_OF(s, s2);
