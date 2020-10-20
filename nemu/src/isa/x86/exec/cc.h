@@ -33,6 +33,7 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
     case CC_B:
     case CC_E: 
       *dest= cpu.eflag.ZF==1 ? 1:0;
+      printf("%d\n",*dest);
       break;
     case CC_BE:
     case CC_S:
