@@ -13,7 +13,7 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
  //TODO();
-  rtl_and(s,t0,ddest,dsrc1);
+  rtl_and(s,ddest,ddest,dsrc1);
   //operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
