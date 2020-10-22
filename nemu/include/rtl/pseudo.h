@@ -29,8 +29,8 @@ static inline def_rtl(neg, rtlreg_t *dest, const rtlreg_t* src1) {
 
 static inline def_rtl(sext, rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- signext(src1[(width * 8 - 1) .. 0])
-  rtl_shli(s,dsrc1,src1,(4-width)*8);
-  rtl_sari(s,ddest,src1,(4-width)*8);
+  rtl_shli(s,t0,src1,(4-width)*8);
+  rtl_sari(s,ddest,t0,(4-width)*8);
   //TODO();
 }
 
