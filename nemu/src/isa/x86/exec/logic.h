@@ -27,9 +27,9 @@ static inline def_EHelper(or) {
 }
 
 static inline def_EHelper(sar) {
-  TODO();
+  //TODO();
   // unnecessary to update CF and OF in NEMU
-
+  rtl_sari(s,ddest,ddest,*dsrc1);
   print_asm_template2(sar);
 }
 
