@@ -29,9 +29,9 @@ static inline def_EHelper(popa) {
 static inline def_EHelper(leave) {
   rtl_mv(s,&cpu.esp,&cpu.ebp);
   rtl_pop(s,s0);
-  //if(s->width==2) cpu.gpr[R_EBP]._16=*s0;
-  //else cpu.gpr[R_EBP]._32=*s0;
-  cpu.ebp=*s0;
+  if(s->width==2) cpu.gpr[R_EBP]._16=*s0;
+  else cpu.gpr[R_EBP]._32=*s0;
+  //cpu.ebp=*s0;
   print_asm("leave");
 }
 
