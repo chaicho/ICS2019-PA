@@ -53,8 +53,8 @@ cmp_internal(s);
 
 static inline def_EHelper(inc) {
   //TODO();
-  rtl_addi(s,&cpu.gpr[s->opcode-40]._32,&cpu.gpr[s->opcode-40]._32,1);
-  
+  rtl_addi(s,&reg_l(s->opcode-40),&reg_l(s->opcode-40),1);
+
   print_asm_template1(inc);
 }
 
