@@ -115,8 +115,8 @@ static inline def_rtl(update_SF, const rtlreg_t* result, int width) {
 
 static inline def_rtl(update_ZFSF, const rtlreg_t* result, int width) {
   rtl_update_ZF(s, result, width);
-  TODO();
   rtl_update_SF(s, result, width);
+  TODO();
 }
 
 #endif
