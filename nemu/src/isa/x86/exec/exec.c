@@ -133,7 +133,7 @@ again:
     IDEX (0x51, r, push) IDEX(0x52,r,push) IDEX (0x53, r, push)  IDEX (0x55, r, push)  IDEX (0x56, r, push)  IDEX (0x57, r, push) 
     IDEXW(0x6a,push_SI,push,1)
     IDEX (0x01, G2E, add)
-    IDEX (0x68, I, push)
+    IDEX (0x68, push_SI, push)
     IDEXW (0X74, J, jcc,1)  IDEXW(0x75,J,jcc,1)
     IDEX (0X31, G2E,xor)
     IDEX (0x58, r,pop)
