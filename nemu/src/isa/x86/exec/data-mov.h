@@ -72,8 +72,8 @@ static inline def_EHelper(movzx) {
 }
 
 static inline def_EHelper(lea) {
-  id_src1->width = s->isa.is_operand_size_16 ? 2 : 4;
-  operand_write(s, id_dest, dsrc1);
+  id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
+  operand_write(s, id_dest, &id_src1->val);
   print_asm_template2(lea);
 }
 
