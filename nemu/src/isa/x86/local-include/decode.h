@@ -48,7 +48,7 @@ static inline def_DopHelper(I) {
 static inline def_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
   sword_t simm=instr_fetch(&s->seq_pc,op->width);
-  if(op->width==1) simm|=0xffffff00;
+  if(op->width==1) simm=simm|0xffffff00;
   operand_imm(s,op,load_val,simm,op->width);  
   //imm和simm是union起来的，所以不需要专门写函数
   //if(op->width==1) op->imm=(signed)
