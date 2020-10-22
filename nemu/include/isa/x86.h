@@ -50,6 +50,10 @@ union{
      uint32_t : 20;  
     };
   }eflag;
+  uint32_t cs, ss, ds, es, fs, gs;
+  struct {
+    uint32_t array[77];
+  };
 } x86_CPU_state;
 
 // decode
