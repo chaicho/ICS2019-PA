@@ -18,3 +18,6 @@ def_EHelper(xor);
 def_EHelper(ret);
 def_EHelper(lea);
 def_EHelper(and);
+def_EHelper(leave);
+def_EHelper(sar);
+def_EHelper(shl);
