@@ -14,7 +14,7 @@ static inline def_EHelper(test) {
 static inline def_EHelper(and) {
  //TODO();
   if(s->width<4) rtl_sext(s,dsrc1,dsrc1,4); 
-  printf("gg: %x\n",*dsrc1);
+  printf("gg: width: %d  %x\n",s->width,*dsrc1);
   rtl_and(s,ddest,ddest,dsrc1);
   //operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
