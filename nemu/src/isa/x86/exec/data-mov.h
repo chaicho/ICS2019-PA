@@ -4,7 +4,7 @@ static inline def_EHelper(mov) {
 }
 
 static inline def_EHelper(push) {
-  //if(s->width==1) rtl_sext(s,ddest,ddest,1);
+  if(s->width==1) rtl_sext(s,ddest,ddest,1);
   rtl_push(s,ddest);
   print_asm_template1(push);
 }
