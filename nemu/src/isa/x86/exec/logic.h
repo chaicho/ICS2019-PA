@@ -3,10 +3,10 @@
 
 static inline def_EHelper(test) {
   //TODO();
-  rtl_and(s,ddest,ddest,dsrc1);
+  rtl_and(s,s0,ddest,dsrc1);
  cpu.eflag.CF=0;
   cpu.eflag.ZF=0;
-  rtl_update_ZFSF(s,ddest,s->width); 
+  rtl_update_ZFSF(s,s0,s->width); 
   print_asm_template2(test);
 }
 
