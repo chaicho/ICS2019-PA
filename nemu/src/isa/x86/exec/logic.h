@@ -46,7 +46,7 @@ static inline def_EHelper(sar) {
 static inline def_EHelper(shl) {
  //TODO();
   // unnecessary to update CF and OF in NEMU
- rtl_shli(s,ddest,ddest,*dsrc1); 
+ rtl_shli(s,t0,ddest,*dsrc1); 
  operand_write(s,id_dest,t0); 
  rtl_update_ZFSF(s,ddest,s->width);
   print_asm_template2(shl);
