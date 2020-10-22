@@ -150,7 +150,7 @@ vaddr_t isa_exec_once() {
 
   fetch_decode_exec(&s);
   printf("%x:",s.seq_pc);
-  printf("JUMP = %d\n ",s.is_jmp);
+  printf("JUMP = %d  to  %x with code %d\n",s.is_jmp,s.jmp_pc, s.opcode);
   update_pc(&s);
   
   return s.seq_pc;
