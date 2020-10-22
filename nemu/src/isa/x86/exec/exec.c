@@ -137,7 +137,7 @@ again:
     IDEXW (0X74, J, jcc,1)  IDEXW(0x75,J,jcc,1)
     IDEX (0X31, G2E,xor)
     IDEX (0x58, r,pop)
-    IDEX (0x8d, lea_M2G ,lea)
+    IDEX (0x8d, E2G ,lea)
     IDEXW (0x84,G2E, test,1)
     IDEXW (0xeb,J,jmp,1)
     IDEX (0x3b, E2G , cmp)
