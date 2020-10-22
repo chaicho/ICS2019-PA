@@ -3,7 +3,6 @@
 static inline def_EHelper(jmp) {
   // the target address is calculated at the decode stage
   rtl_j(s, s->jmp_pc);
-
   print_asm("jmp %x", s->jmp_pc);
 }
 
