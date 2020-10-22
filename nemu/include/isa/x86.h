@@ -18,6 +18,7 @@
  */
 
 typedef struct {
+struct{
 union{
   union{
     uint32_t _32;
@@ -51,6 +52,7 @@ union{
     };
   }eflag;
   uint32_t cs, ss, ds, es, fs, gs;
+  };
   struct {
     uint32_t array[77];
   };
