@@ -34,6 +34,8 @@ union{
     rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
   };
  };
+  
+  vaddr_t pc;
   union{
     uint32_t all;
     struct{
@@ -48,7 +50,6 @@ union{
      uint32_t : 20;  
     };
   }eflag;
-  vaddr_t pc;
 } x86_CPU_state;
 
 // decode
