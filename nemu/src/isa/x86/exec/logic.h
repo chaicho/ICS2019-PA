@@ -17,6 +17,7 @@ static inline def_EHelper(and) {
   //operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
+
   print_asm_template2(and);
 }
 
