@@ -17,8 +17,8 @@ static inline def_EHelper(jcc) {
 }
 
 static inline def_EHelper(jmp_rm) {
+ // rtl_push
   rtl_jr(s, ddest);
-
   print_asm("jmp *%s", id_dest->str);
 }
 
@@ -37,6 +37,7 @@ static inline def_EHelper(call) {
 static inline def_EHelper(ret) {
   rtl_pop(s,&s->jmp_pc);
   rtl_j(s,s->jmp_pc);
+
   print_asm("ret");
 }
 
