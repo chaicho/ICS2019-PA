@@ -2,7 +2,7 @@
 
 
 static inline def_EHelper(test) {
-  TODO();
+  //TODO();
   rtl_and(s,ddest,ddest,dsrc1);
  cpu.eflag.CF=0;
   cpu.eflag.ZF=0;
