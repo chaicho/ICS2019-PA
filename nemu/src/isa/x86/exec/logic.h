@@ -17,7 +17,7 @@ static inline def_EHelper(and) {
   operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
-  rtl_update_ZFSF(s,ddest,s->width);
+  rtl_update_ZFSF(s,t0,s->width);
   print_asm_template2(and);
 }
 
