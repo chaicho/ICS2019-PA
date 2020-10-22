@@ -147,10 +147,10 @@ vaddr_t isa_exec_once() {
   s.is_jmp = 0;
   s.isa = (ISADecodeInfo) { 0 };
   s.seq_pc = cpu.pc;
- printf("%x:",s.seq_pc);
-  printf("JUMP = %d  to  %x with code %x\n",s.is_jmp,s.jmp_pc, s.opcode);
+ 
   fetch_decode_exec(&s);
-  
+   printf("%x:",s.seq_pc);
+  printf("JUMP = %d  to  %x with code %x\n",s.is_jmp,s.jmp_pc, s.opcode);
   update_pc(&s);
   
   return s.seq_pc;
