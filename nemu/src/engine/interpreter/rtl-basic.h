@@ -123,13 +123,13 @@ static inline def_rtl(host_sm, void *addr, const rtlreg_t *src1, int len) {
 // control
 
 static inline def_rtl(j, vaddr_t target) {
-  s->seq_pc = target;
-  //s->is_jmp = true;
+  s->jmp_pc = target;
+  s->is_jmp = true;
 }
 
 static inline def_rtl(jr, rtlreg_t *target) {
-  s->seq_pc = *target;
-  //s->is_jmp = true;
+  s->jmp_pc = *target;
+  s->is_jmp = true;
 }
 
 static inline def_rtl(jrelop, uint32_t relop,
