@@ -17,6 +17,7 @@ static inline def_EHelper(and) {
  // printf("%ux\n",*s0);
  printf( " desti :%x src1:  %x\n", *ddest, *dsrc1 );
   rtl_and(s,s0,ddest,dsrc1);
+  printf("The truth is %u",*s0);
   *ddest=*s0;
   // printf("%x compared with ",*ddest); 
   //operand_write(s,id_dest,s0);
