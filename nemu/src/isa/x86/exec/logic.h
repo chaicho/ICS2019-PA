@@ -17,6 +17,7 @@ static inline def_EHelper(and) {
   //printf("OPTYPE : dest: %d   src1 : %d\n",s->dest.type,s->src1.type);
   if(s->src1.width==1) *dsrc1|=0xfffffff00;
   else if(s->src1.width==2) *dsrc1|=0xffff0000; 
+  printf("sc1: %x\n",*dsrc1);
   rtl_and(s,s0,ddest,dsrc1);
   operand_write(s,id_dest,s0);
   cpu.eflag.CF=0;
