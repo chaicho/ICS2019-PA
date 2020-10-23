@@ -51,10 +51,10 @@ static inline def_DopHelper(SI) {
  //  printf("ddest: %x\n",cpu.esp);
   //*s0=simm;
   //printf("simm:%x\n",*s0);
-  if(op->width==1){
+  /*if(op->width==1){
      simm=(simm<<24)>>24;
       printf("EXTEND!\n");
-  }
+  }*/
   //printf("simm:%x\n",*s0);
   //simm=*s0;
   op->type=OP_TYPE_IMM;
