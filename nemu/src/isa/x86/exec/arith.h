@@ -45,7 +45,7 @@ static inline def_EHelper(sub) {
   rtl_or(s, s0, s0, s2);
   rtl_set_CF(s, s0);
  // printf("%x\n",*s1);
-  //operand_write(s, id_dest, s1);
+  operand_write(s, id_dest, s1);
  //TODO();
 }
 
