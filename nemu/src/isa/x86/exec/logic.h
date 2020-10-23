@@ -21,8 +21,9 @@ static inline def_EHelper(and) {
  // *ddest=*s2;
   //reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
+  printf("TYPE : %d",id_dest->type );
   operand_write(s,id_dest,s2);
-  // printf("%x\n",*ddest);
+   printf("%x\n",*ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
