@@ -15,8 +15,8 @@ static inline def_EHelper(and) {
  //TODO();
   if(id_src1->type==OP_TYPE_IMM&&id_src1->width<=4) rtl_sext(s,dsrc1,dsrc1,4); 
   //printf("%ux\n",*s0);
-  rtl_and(s,t0,ddest,dsrc1);
-  operand_write(s,id_dest,t0);
+  rtl_and(s,s0,ddest,dsrc1);
+  operand_write(s,id_dest,s0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
