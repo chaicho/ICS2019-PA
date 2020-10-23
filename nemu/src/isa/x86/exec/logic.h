@@ -13,7 +13,7 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
   //TODO();
-  //id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
+  id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
   printf("OPTYPE : dest: %d   src1 : %d\n",s->dest.type,s->src1.type);
   //if(s->src1.width==1) rtl_sext(s,dsrc1,dsrc1,4); 
   rtl_and(s,s0,ddest,dsrc1);
