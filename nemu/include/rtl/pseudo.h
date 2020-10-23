@@ -33,7 +33,7 @@ static inline def_rtl(sext, rtlreg_t* dest, const rtlreg_t* src1, int width) {
   rtl_shli(s,t0,src1,8*(width-1));
   printf("from :%d",*t0);
   rtl_sari(s,t0,t0,8*(width-1));
-  printf("to: %d",*t0);
+  printf("to: %d\n",*t0);
  // rtl_sari(s,t0,t0,8*(width-id_src1->width));
   //TODO();
   //operand_write(s,id_dest,src1);
