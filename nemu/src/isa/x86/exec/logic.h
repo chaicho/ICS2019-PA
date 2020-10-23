@@ -16,13 +16,13 @@ static inline def_EHelper(and) {
   //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,4); 
  // printf("%ux\n",*s0);
  printf( " desti :%x src1:  %x\n", *ddest, *dsrc1 );
-  rtl_and(s,s2,ddest,dsrc1);
-  printf("The truth is %x\n",*s2);
+  rtl_and(s,ddest,ddest,dsrc1);
+  printf("The truth is %x\n",*ddest);
  // *ddest=*s2;
   //reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
-  printf("TYPE : %d\n",id_dest->type );
-  operand_write(s,id_dest,s2);
+ // printf("TYPE : %d\n",id_dest->type );
+ // operand_write(s,id_dest,s2);
    //printf("%x\n",*ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
