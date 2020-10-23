@@ -141,7 +141,7 @@ again:
     IDEXW (0x84,G2E, test,1)
     IDEXW (0xeb,J,jmp,1)
     IDEX (0x3b, E2G , cmp)
-    EX( 0x47,inc)
+    IDEX( 0x47,r, inc)
     EX (0x5d,pop)
   
     EX   (0xc3, ret )
