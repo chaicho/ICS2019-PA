@@ -34,7 +34,7 @@ static inline def_EHelper(sub) {
   //rtl_sub(s,ddest,ddest,dsrc1);
   //rtl_get_CF(s, s0);
  // rtl_add(s, s0, dsrc1, s0);
-  printf("%d\n",*dsrc1);
+  //printf("%x %x\n",*dsrc1);
   rtl_sub(s, s1, ddest, dsrc1);
   rtl_update_ZFSF(s, s1, id_dest->width);
   rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
@@ -43,7 +43,8 @@ static inline def_EHelper(sub) {
   rtl_is_sub_carry(s, s0, ddest, s0);
   rtl_or(s, s0, s0, s2);
   rtl_set_CF(s, s0);
-  operand_write(s, id_dest, s1);
+  *ddest=*s1;
+  //operand_write(s, id_dest, s1);
  //TODO();
 }
 
