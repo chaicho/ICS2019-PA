@@ -13,10 +13,10 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
  //TODO();
-  if(id_src1->width<=4) rtl_sext(s,dsrc1,dsrc1,4); 
+  if(s->src1.width<=1) rtl_sext(s,dsrc1,dsrc1,4); 
   //printf("%ux\n",*s0);
-  rtl_and(s,s0,ddest,dsrc1);
-  operand_write(s,id_dest,s0);
+  rtl_and(s,ddest,ddest,dsrc1);
+  //operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
@@ -77,7 +77,7 @@ static inline def_EHelper(setcc) {
 
 static inline def_EHelper(not) {
   rtl_not(s,ddest,ddest);
-
+  
   print_asm_template1(not);
 }
 
