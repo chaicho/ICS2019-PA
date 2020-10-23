@@ -34,7 +34,7 @@ static inline def_EHelper(sub) {
   //rtl_sub(s,ddest,ddest,dsrc1);
   //rtl_get_CF(s, s0);
  // rtl_add(s, s0, dsrc1, s0);
-  printf("%x ---- %x\n",*ddest,*dsrc1);
+ // printf("%x ---- %x\n",*ddest,*dsrc1);
   rtl_sub(s, s1, ddest, dsrc1);
   //printf("%x\n",*s1);
   rtl_update_ZFSF(s, s1, id_dest->width);
