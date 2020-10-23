@@ -14,19 +14,11 @@ static inline def_EHelper(test) {
 static inline def_EHelper(and) {
   //TODO();
   printf("OPTYPE : dest: %d   src1 : %d\n",s->dest.type,s->src1.type);
-  if(s->src1.width==1&&s->src1.type==OP_TYPE_IMM) rtl_sext(s,dsrc1,dsrc1,4); 
-  // printf("%ux\n",*s0);
-  printf( " dest :%x  src1:  %x\n", *ddest, *dsrc1 );
-  rtl_and(s,s0,ddest,dsrc1);
-  printf("The truth is %x\n",*ddest);
-  *ddest=*s0;
-  //rtl_mv(s,ddest,s0);
-  //if(ddest==&) assert(0);
-  //reg_b(0)=*s0;
-  // printf("%x compared with ",*ddest); 
- // printf("TYPE : %d\n",id_dest->type );
- // operand_write(s,id_dest,s2);
-   //printf("%x\n",*ddest);
+  if(s->src1.width==1&&s->src1.type==OP_TYPE_IMM) rtl_sext(s,s1,dsrc1,4); 
+  else *s1=*dsrc1;
+  rtl_and(s,s0,ddest,s1);
+  operand_write(s,id_dest,s0);
+
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
