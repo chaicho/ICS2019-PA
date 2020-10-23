@@ -13,7 +13,7 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
  //TODO();
-  if(s->width==1) rtl_sext(s,dsrc1,dsrc1,4); 
+  if(s->src1.width==1) rtl_sext(s,dsrc1,dsrc1,4); 
   printf("gg: width: %u  %x\n",s->src1.width,*dsrc1);
   rtl_and(s,ddest,ddest,dsrc1);
   //operand_write(s,id_dest,t0);
