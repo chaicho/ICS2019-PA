@@ -207,7 +207,7 @@ static inline def_DHelper(SI2E) {
   assert(id_dest->width == 2 || id_dest->width == 4);
   operand_rm(s, id_dest, true, NULL, false);
   printf("%x\n",*ddest);
-  id_src1->width = 1;
+  // /id_src1->width = 1;
   decode_op_SI(s, id_src1, true);
   if (id_dest->width == 2) {
     *dsrc1 &= 0xffff;
