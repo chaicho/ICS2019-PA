@@ -19,6 +19,7 @@ static inline def_EHelper(and) {
   rtl_and(s,s0,ddest,dsrc1);
   printf("The truth is %u\n",*s0);
   *ddest=*s0;
+  reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
   //operand_write(s,id_dest,s0);
   // printf("%x\n",*ddest);
