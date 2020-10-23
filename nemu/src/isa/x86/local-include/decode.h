@@ -51,7 +51,7 @@ static inline def_DopHelper(SI) {
  //  printf("ddest: %x\n",cpu.esp);
   //*s0=simm;
   //printf("simm:%x\n",*s0);
-  //if(op->width==1) rtl_sext(s,s0,s0,4);
+  if(op->width==1) simm=(simm<<24)>>24;
   //printf("simm:%x\n",*s0);
   //simm=*s0;
   operand_imm(s,op,load_val,simm,op->width);  
