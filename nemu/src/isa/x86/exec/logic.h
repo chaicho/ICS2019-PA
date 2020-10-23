@@ -12,14 +12,14 @@ static inline def_EHelper(test) {
 }
 
 static inline def_EHelper(and) {
- //TODO();
+  //TODO();
   //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,4); 
- // printf("%ux\n",*s0);
- printf( " desti :%x src1:  %x\n", *ddest, *dsrc1 );
+  // printf("%ux\n",*s0);
+  printf( " dest :%x  src1:  %x\n", *ddest, *dsrc1 );
   rtl_and(s,s0,ddest,dsrc1);
   printf("The truth is %x\n",*ddest);
   *ddest=*s0;
-  if(ddest==&cpu.eax) assert(0);
+  //if(ddest==&) assert(0);
   //reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
  // printf("TYPE : %d\n",id_dest->type );
