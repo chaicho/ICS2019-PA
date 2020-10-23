@@ -16,8 +16,10 @@ static inline def_EHelper(and) {
   if(s->src1.type!=OP_TYPE_REG&&s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,4); 
  // printf("%ux\n",*s0);
   rtl_and(s,s0,ddest,dsrc1);
-  *ddest=*s0; 
-  //operand_write(s,id_dest,s0);
+  *ddest=*s0;
+  printf("%x compared with ",*ddest); 
+  operand_write(s,id_dest,s0);
+  printf("%x\n",*ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
