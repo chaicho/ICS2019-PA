@@ -51,9 +51,10 @@ static inline def_DopHelper(SI) {
  //  printf("ddest: %x\n",cpu.esp);
   //*s0=simm;
   //printf("simm:%x\n",*s0);
-  //if(op->width==1) simm=(simm<<24)>>24;
+  if(op->width==1) simm=(simm<<24)>>24;
   //printf("simm:%x\n",*s0);
   //simm=*s0;
+  op->type=OP_TYPE_IMM;
   operand_imm(s,op,load_val,simm,op->width);  
   //imm和simm是union起来的，所以不需要专门写函数
   //if(op->width==1) op->imm=(signed)
