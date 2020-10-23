@@ -18,8 +18,8 @@ static inline def_EHelper(and) {
   printf( " dest :%x  src1:  %x\n", *ddest, *dsrc1 );
   rtl_and(s,s0,ddest,dsrc1);
   printf("The truth is %x\n",*ddest);
-  //*ddest=*s0;
-  rtl_mv(s,ddest,s0);
+  *ddest=*s0;
+  //rtl_mv(s,ddest,s0);
   //if(ddest==&) assert(0);
   //reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
