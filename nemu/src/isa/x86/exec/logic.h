@@ -18,10 +18,10 @@ static inline def_EHelper(and) {
   id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
   if(s->src1.width==1) *dsrc1|=0xfffffff00;
   else if(s->src1.width==2) *dsrc1|=0xffff0000; 
+  *s0=*ddest;
   printf("sc1: %x\n",*dsrc1);
-  rtl_and(s,s0,ddest,dsrc1);
-  
-  operand_write(s,id_dest,s0);
+  rtl_and(s,ddest,s0,dsrc1);
+  operand_write(s,id_dest,ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
