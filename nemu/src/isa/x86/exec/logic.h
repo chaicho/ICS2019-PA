@@ -16,12 +16,12 @@ static inline def_EHelper(and) {
   //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,4); 
  // printf("%ux\n",*s0);
  printf( " desti :%x src1:  %x\n", *ddest, *dsrc1 );
-  rtl_and(s,s0,ddest,dsrc1);
-  printf("The truth is %u\n",*s0);
-  *ddest=*s0;
+  rtl_and(s,s2,ddest,dsrc1);
+  printf("The truth is %u\n",*s2);
+ // *ddest=*s2;
   //reg_b(0)=*s0;
   // printf("%x compared with ",*ddest); 
-  //operand_write(s,id_dest,s0);
+  operand_write(s,id_dest,s0);
   // printf("%x\n",*ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
