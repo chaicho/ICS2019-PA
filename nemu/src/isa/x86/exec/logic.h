@@ -13,6 +13,7 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
   //TODO();
+  printf("OPTYPE : dest: %d   src1 : %d\n",s->dest.type,s->src1.type);
   if(s->src1.width==1&&s->src1.type==OP_TYPE_IMM) rtl_sext(s,dsrc1,dsrc1,4); 
   // printf("%ux\n",*s0);
   printf( " dest :%x  src1:  %x\n", *ddest, *dsrc1 );
