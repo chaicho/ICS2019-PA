@@ -13,13 +13,13 @@ static inline def_EHelper(test) {
 
 static inline def_EHelper(and) {
  //TODO();
-  //if(s->src1.width==1) rtl_sext(s,s0,dsrc1,4); 
+  if(s->src1.width<=1) rtl_sext(s,dsrc1,dsrc1,4); 
   //printf("%ux\n",*s0);
   rtl_and(s,ddest,ddest,dsrc1);
   //operand_write(s,id_dest,t0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
-  rtl_update_ZFSF(s,t0,s->width);
+  rtl_update_ZFSF(s,ddest,s->width);
   print_asm_template2(and);
 }
 
