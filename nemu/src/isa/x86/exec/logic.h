@@ -16,13 +16,13 @@ static inline def_EHelper(and) {
   //printf("OPTYPE : dest: %d   src1 : %d\n",s->dest.type,s->src1.type);
   //id_src1->width = s->isa.is_operand_size_16 ? 2 : 4;
    //id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
-   printf("%d",id_dest->width);
+   //printf("%d",id_dest->width);
    rtl_sext(s, dsrc1, dsrc1, id_dest->width);
   //if(s->src1.width==1) *dsrc1|=0xfffffff00;
   //else if(s->src1.width==2) *dsrc1|=0xffff0000; 
   //id_dest->width=4;
  // *s0=*ddest;
-  printf("dest: %x, sc1: %x\n",*ddest, *dsrc1);
+ // printf("dest: %x, sc1: %x\n",*ddest, *dsrc1);
   rtl_and(s,ddest,ddest,dsrc1);
   operand_write(s,id_dest,ddest);
   cpu.eflag.CF=0;
@@ -41,6 +41,7 @@ static inline def_EHelper(xor) {
 static inline def_EHelper(or) {
   //TODO();
   rtl_or(s,ddest,ddest,dsrc1);
+  operand_write(s,id_dest,ddest);
   rtl_update_ZFSF(s,ddest,s->width);
   print_asm_template2(or);
 }
