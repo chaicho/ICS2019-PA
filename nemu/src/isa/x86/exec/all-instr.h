@@ -12,4 +12,12 @@ def_EHelper(inv);
 def_EHelper(nemu_trap);
 def_EHelper(call);
 def_EHelper(push);
-
+def_EHelper(sub);
+def_EHelper(add);
+def_EHelper(xor);
+def_EHelper(ret);
+def_EHelper(lea);
+def_EHelper(and);
+def_EHelper(leave);
+def_EHelper(sar);
+def_EHelper(shl);
