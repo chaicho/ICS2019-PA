@@ -17,13 +17,14 @@ static inline def_rtl(mv, rtlreg_t* dest, const rtlreg_t *src1) {
 
 static inline def_rtl(not, rtlreg_t *dest, const rtlreg_t* src1) {
   // dest <- ~src1
-  rtl_xori(s,dest,src1,0xffffffff);
+  *dest=~*src1;
   //TODO();
 }
 
 static inline def_rtl(neg, rtlreg_t *dest, const rtlreg_t* src1) {
   // dest <- -src1
-  rtl_sub(s,dest,rz,src1);
+  *dest=-*src1;
+  //rtl_sub(s,dest,rz,src1);
   //TODO();
 }
 
