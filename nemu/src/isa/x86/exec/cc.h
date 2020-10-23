@@ -32,8 +32,8 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
     case CC_O: 
     case CC_B:
     case CC_E: 
-      rtl_update_ZF(s,dest,s->width);
-      *dest= cpu.eflag.ZF==1 ? 1: 0;
+      rtl_update_ZF(s,dest,id_dest->width);
+     *dest= cpu.eflag.ZF==1 ? 1: 0;
       assert(*dest==cpu.eflag.ZF);
             //printf("%d\n",*dest);
       break;
