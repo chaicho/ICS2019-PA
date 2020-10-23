@@ -18,7 +18,7 @@ static inline def_EHelper(and) {
   //id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
   //if(s->src1.width==1) *dsrc1|=0xfffffff00;
   //else if(s->src1.width==2) *dsrc1|=0xffff0000; 
-  id_dest->width=4;
+  id_dest->width=1;
   *s0=*ddest;
   printf("dest: %x, sc1: %x\n",*ddest, *dsrc1);
   rtl_and(s,ddest,s0,dsrc1);
