@@ -48,6 +48,7 @@ static inline def_DopHelper(I) {
 static inline def_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
   sword_t simm=instr_fetch(&s->seq_pc,op->width);
+    printf("ddest: %x\n",*ddest);
   *s0=simm;
   //printf("simm:%x\n",*s0);
   if(op->width==1) rtl_sext(s,s0,s0,4);
@@ -208,7 +209,6 @@ static inline def_DHelper(SI2E) {
   operand_rm(s, id_dest, true, NULL, false);
  
   id_src1->width = 1; 
-  printf("ddest: %x\n",*ddest);
   decode_op_SI(s, id_src1, true); 
  
   if (id_dest->width == 2) {
