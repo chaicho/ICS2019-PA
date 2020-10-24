@@ -19,7 +19,6 @@ static inline def_EHelper(and) {
    //printf("%d",id_dest->width);
    //printf("%d\n",id_dest->width);
    rtl_sext(s, dsrc1, dsrc1, id_dest->width);
-  // operand_write(s,id_src1,dsrc1);
   //if(s->src1.width==1) *dsrc1|=0xfffffff00;
   //else if(s->src1.width==2) *dsrc1|=0xffff0000; 
   //id_dest->width=4;
