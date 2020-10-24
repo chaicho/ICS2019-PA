@@ -55,7 +55,7 @@ static inline def_DopHelper(SI) {
      simm=(simm<<24)>>24;
       printf("EXTEND!\n");
   }*/
-  op->type=OP_TYPE_IMM;
+ // op->type=OP_TYPE_IMM;
   operand_imm(s,op,load_val,simm,op->width);  
   //imm和simm是union起来的，所以不需要专门写函数
   //if(op->width==1) op->imm=(signed)
@@ -277,8 +277,8 @@ static inline def_DHelper(a2O) {
 static inline def_DHelper(J) {
   decode_op_SI(s, id_dest, false);
   // the target address can be computed in the decode stage
-  printf("Jump to %d\n",id_dest->simm);
- // s->jmp_pc = id_dest->simm + cpu.pc;
+  printf("Jump to %x\n",id_dest->simm);
+ // s->jmp_pc = id_dst->simm + cpu.pc;
 s->jmp_pc = id_dest->simm +  s->seq_pc;
 
 }
