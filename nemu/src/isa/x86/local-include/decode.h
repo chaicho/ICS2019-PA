@@ -277,7 +277,7 @@ static inline def_DHelper(a2O) {
 static inline def_DHelper(J) {
   decode_op_SI(s, id_dest, false);
   // the target address can be computed in the decode stage
-  printf("Jump to %x\n",id_dest->simm);
+  printf("Jump to %x\n",*ddest);
  // s->jmp_pc = id_dst->simm + cpu.pc;
 s->jmp_pc = id_dest->simm +  s->seq_pc;
 
