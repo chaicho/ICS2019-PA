@@ -146,7 +146,7 @@ again:
    // IDEXW(0xff,O,push,1)
     EX   (0xc3, ret )
     IDEX(0x03,E2G,add)
-    IDEXW (0x0a,E2G,or,1)
+    IDEX(0x09,G2E,or) IDEXW (0x0a,E2G,or,1)
     IDEXW (0x22,E2G,and,1)
     IDEX( 0x13,E2G,adc)
     case(0x90):  break;
