@@ -4,6 +4,7 @@
 #include "difftest.h"
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
+  // if(ref_r->eflag!=cpu.eflag)printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eflag,cpu.eflag);
   if(ref_r->eax!=cpu.eax) {
     printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eax,cpu.eax);
     return false;
