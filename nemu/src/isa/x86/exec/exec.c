@@ -138,7 +138,7 @@ again:
     IDEX (0X31, G2E,xor)
     // IDEX (0x58, r,pop)
     IDEX (0x8d, lea_M2G ,lea)
-    IDEXW (0x84,G2E, test,1)
+    IDEXW (0x84,G2E, test,1) IDEX(0X85,G2E,test)
     IDEXW (0xeb,J,jmp,1)
     IDEX (0x3b, E2G , cmp)
    IDEX(0x43,r,inc) IDEX( 0x47,r, inc)
