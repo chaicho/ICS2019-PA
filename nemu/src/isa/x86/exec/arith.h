@@ -49,7 +49,7 @@ static inline def_EHelper(sub) {
 }
 
 static inline def_EHelper(cmp) {
-rtl_sext(s,dsrc1,dsrc1,id_dest->width);
+//rtl_sext(s,dsrc1,dsrc1,id_dest->width);
 printf("cmp %x with %x",*ddest,*dsrc1);
 cmp_internal(s);
   //TODO();
