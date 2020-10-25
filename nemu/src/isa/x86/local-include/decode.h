@@ -37,6 +37,7 @@ static inline void operand_imm(DecodeExecState *s, Operand *op, bool load_val, w
 static inline def_DopHelper(I) {
   /* pc here is pointing to the immediate */
   word_t imm = instr_fetch(&s->seq_pc, op->width);
+  printf("imm=%x\n",imm);
   operand_imm(s, op, load_val, imm, op->width);
 }
 
