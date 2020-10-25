@@ -24,6 +24,7 @@ static inline void operand_imm(DecodeExecState *s, Operand *op, bool load_val, w
   if (load_val) {
     rtl_li(s, &op->val, imm);
     op->preg = &op->val;
+    printf("%x\n",*op->preg);
   }
   print_Dop(op->str, OP_STR_SIZE, "$0x%x", imm);
 }
