@@ -59,7 +59,7 @@ rtl_sext(s,dsrc1,dsrc1,id_src1->width);
   rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
   rtl_set_OF(s, s2);
  // rtl_is_add_carry(s, s2, s0, dsrc1);
-  rtl_is_sub_carry(s, s0, ddest,dsrc1);
+  rtl_is_sub_carry(s, s0, dsrc1,ddest);
   //rtl_or(s, s0, s0, s2);
   rtl_set_CF(s, s0);
 //cmp_internal(s);
