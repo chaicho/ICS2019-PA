@@ -49,6 +49,8 @@ static inline def_EHelper(sub) {
 }
 
 static inline def_EHelper(cmp) {
+rtl_sext(s,s0,dsrc1,id_dest->width);
+operand_write(s,id_src1,s0);
 cmp_internal(s);
   //TODO();
 }
