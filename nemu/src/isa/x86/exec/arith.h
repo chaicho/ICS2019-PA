@@ -50,8 +50,8 @@ static inline def_EHelper(sub) {
 
 static inline def_EHelper(cmp) {
 rtl_sext(s,dsrc1,dsrc1,id_src1->width);
-operand_write(s,id_src1,dsrc1);
-printf("cmp %x with %x\n",*ddest,*dsrc1);
+//operand_write(s,id_src1,dsrc1);
+//printf("cmp %x with %x\n",*ddest,*dsrc1);
 cmp_internal(s);
   //TODO();
 }
