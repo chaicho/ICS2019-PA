@@ -38,12 +38,16 @@ static inline def_EHelper(leave) {
 
 static inline def_EHelper(cltd) {
   if (s->isa.is_operand_size_16) {
-    rtl_sext(s,s0,&reg_l(R_EAX),2);
-    reg_w(R_EDX)=*s0;
+    rtl_lr(s,s0,R_AX,2);
+    rtl_msb(s,s0,s0,2);  
+    *s0=*s0<<15;
+    rtl_sr(s,R_DX,s0,2);
   }
   else {
-    rtl_sext(s,s0,&reg_l(R_EAX),4);
-   reg_l(R_EDX)=*s0;
+    rtl_lr(s,s0,R_AX,4);
+    rtl_msb(s,s0,s0,4);  
+    *s0=*s0<<31;
+    rtl_sr(s,R_EDX,s0,4);
   }
 
   print_asm(s->isa.is_operand_size_16 ? "cwtl" : "cltd");
