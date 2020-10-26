@@ -20,9 +20,9 @@ static inline def_EHelper(add) {
 
 // dest <- sub result
 static inline void cmp_internal(DecodeExecState *s) {
-  rtl_sub(s, s0, ddest, dsrc1);
+  rtl_sub(s, s0, dsrc1, ddest);
   rtl_update_ZFSF(s, s0, id_dest->width);
-  rtl_is_sub_carry(s, s1, ddest, dsrc1);
+  rtl_is_sub_carry(s, s1, dsrc1, ddest);
   rtl_set_CF(s, s1);
   rtl_is_sub_overflow(s, s1, s0, ddest, dsrc1, id_dest->width);
   rtl_set_OF(s, s1);
@@ -30,20 +30,12 @@ static inline void cmp_internal(DecodeExecState *s) {
  
 
 static inline def_EHelper(sub) {
-  //rtl_sub(s,ddest,ddest,dsrc1);
-  //rtl_get_CF(s, s0);
- // rtl_add(s, s0, dsrc1, s0);
- // printf("%x ---- %x\n",*ddest,*dsrc1);
   rtl_sub(s, s1, ddest, dsrc1);
-  //printf("%x\n",*s1);
   rtl_update_ZFSF(s, s1, id_dest->width);
   rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
   rtl_set_OF(s, s2);
- // rtl_is_add_carry(s, s2, s0, dsrc1);
   rtl_is_sub_carry(s, s0, ddest,dsrc1);
-  //rtl_or(s, s0, s0, s2);
   rtl_set_CF(s, s0);
- // printf("%x\n",*s1);
   operand_write(s, id_dest, s1);
  //TODO();
    print_asm_template2(sub);
