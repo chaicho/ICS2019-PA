@@ -6,6 +6,9 @@
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   // if(ref_r->eflag!=cpu.eflag)printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eflag,cpu.eflag);
   printf("CF:  %d    SF:   %d\n",cpu.eflag.CF,cpu.eflag.SF);
+  if(ref_r->eflag.all!=cpu.eflag.all){
+     return false;
+  }
   if(ref_r->eax!=cpu.eax) {
     printf("The supposed EAX: %x \n Wrong EAX : %x\n",ref_r->eax,cpu.eax);
    printf("gg\n");
