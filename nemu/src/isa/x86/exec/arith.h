@@ -58,7 +58,7 @@ static inline def_EHelper(cmp) {
   rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
   rtl_set_OF(s, s2);
   rtl_is_sub_carry(s, s0, ddest,dsrc1);
-//  rtl_set_CF(s, s0);
+  rtl_set_CF(s, s0);
   //TODO();
 }
 
