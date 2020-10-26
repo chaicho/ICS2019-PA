@@ -47,7 +47,7 @@ static inline def_rtl(is_sub_overflow, rtlreg_t* dest,
    rtl_msb(s,t1,src2,width);
    rtl_sub(s,dest,src1,src2);
    rtl_msb(s,t2,dest,width);
-   if(*t1!=*t0) *dest=0;
+   if(*t1==*t0) *dest=0;
    else {
       if(*t2!=*t0) *dest=0;
       else  *dest=1;
