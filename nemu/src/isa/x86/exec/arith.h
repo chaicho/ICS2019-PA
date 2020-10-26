@@ -43,11 +43,10 @@ static inline def_EHelper(sub) {
 }
 
 static inline def_EHelper(cmp) {
-  if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,id_src1->width);
+  //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,id_src1->width);
   printf("dest: %x  src1: %x\n",*ddest,*dsrc1);
   cmp_internal(s);
   print_asm_template2(cmp);
-
 }
 
 static inline def_EHelper(inc) {
