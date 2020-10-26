@@ -234,7 +234,7 @@ static inline def_EHelper(idiv) {
       rtl_mv(s, s0, &cpu.eax);
       rtl_idiv64_q(s, &cpu.eax, &cpu.edx, s0, pdest);
       rtl_idiv64_r(s, &cpu.edx, &cpu.edx, s0, pdest);
-      assert(0);
+     // assert(0);
       break;
     default: assert(0);
   }
