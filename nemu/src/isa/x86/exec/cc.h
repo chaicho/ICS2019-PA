@@ -29,8 +29,10 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
   // TODO: Query EFLAGS to determine whether the condition code is satisfied.
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
-    case CC_O: 
+    case CC_O:
+    *ddest= (cpu.eflag.OF==1)? 1:0; 
     case CC_B:
+     *ddest=(cpu.eflag.CF==1)? 1:0;
     case CC_E: 
       //rtl_update_ZF(s,dest,id_dest->width);
      *dest= cpu.eflag.ZF==1 ? 1: 0;
@@ -38,8 +40,13 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
             //printf("%d\n",*dest);
       break;
     case CC_BE:
+      if(cpu.eflag.ZF==1||cpu.eflag.CF==1) *dest=1;
+      else *dest=0;
     case CC_S:
+      *dest=cpu.eflag.SF;
     case CC_L:
+      if(cpu.eflag.SF!=cpu.eflag.OF)  *dest=1;
+      else *dest =0;
     case CC_LE:
       //TODO();
       if(cpu.eflag.ZF==1||cpu.eflag.CF!=cpu.eflag.SF) *dest=1;
