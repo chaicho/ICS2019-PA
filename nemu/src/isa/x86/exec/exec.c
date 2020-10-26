@@ -81,6 +81,7 @@ static inline def_EHelper(2byte_esc) {
 
 static inline void fetch_decode_exec(DecodeExecState *s) {
   uint8_t opcode;
+    assert(0);
 again:
   opcode = instr_fetch(&s->seq_pc, 1);
   s->opcode = opcode;
