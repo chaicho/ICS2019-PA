@@ -46,10 +46,14 @@ static inline def_EHelper(sub) {
  // printf("%x\n",*s1);
   operand_write(s, id_dest, s1);
  //TODO();
+   print_asm_template2(sub);
+
 }
 
 static inline def_EHelper(cmp) {
 cmp_internal(s);
+  print_asm_template2(cmp);
+
 }
 
 static inline def_EHelper(inc) {
