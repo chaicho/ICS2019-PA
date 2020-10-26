@@ -53,7 +53,6 @@ static inline def_rtl(msb, rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- src1[width * 8 - 1]
   *t0=(*src1>>((8*width)-1))&0x1;
   *dest=*t0;
-  assert(0);
   //rtl_shri(s,dest,src1,(width)*8-1);
   //TODO();
 }
