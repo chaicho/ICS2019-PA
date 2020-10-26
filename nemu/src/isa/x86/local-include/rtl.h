@@ -109,6 +109,7 @@ static inline def_rtl(update_ZF, const rtlreg_t* result, int width) {
 static inline def_rtl(update_SF, const rtlreg_t* result, int width) {
   // eflags.SF <- is_sign(result[width * 8 - 1 .. 0])
   rtl_msb(s,t1,result,width);
+  printf("msb:  %d\n",*t1);
   cpu.eflag.SF=*t1;
 }
 
