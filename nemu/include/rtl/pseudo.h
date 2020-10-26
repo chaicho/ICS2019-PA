@@ -52,8 +52,8 @@ static inline def_rtl(zext, rtlreg_t* dest, const rtlreg_t* src1, int width) {
 static inline def_rtl(msb, rtlreg_t* dest, const rtlreg_t* src1, int width) {
   // dest <- src1[width * 8 - 1]
   *t0=(*src1>>((8*width)-1))&0x1;
-  rtl_li(s,dest,*t0);
-  
+  *dest=*t0;
+  printf("msb: %d",*t0);
   //rtl_shri(s,dest,src1,(width)*8-1);
   //TODO();
 }
