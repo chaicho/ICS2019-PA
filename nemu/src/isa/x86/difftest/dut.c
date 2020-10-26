@@ -8,7 +8,7 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   printf("CF:  %d    SF:   %d\n",cpu.eflag.CF,cpu.eflag.SF);
   if(ref_r->eax!=cpu.eax) {
     printf("The supposed EAX: %x \n Wrong EAX : %x\n",ref_r->eax,cpu.eax);
-    printf("CF:  %d    SF:   %d\n",cpu.eflag.CF,cpu.eflag.SF);
+    printf("CF:  %d  \n  SF:   %d\n",cpu.eflag.CF,cpu.eflag.SF);
     return false;
   }
    if(ref_r->ebp!=cpu.ebp) {
