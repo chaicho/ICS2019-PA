@@ -41,10 +41,11 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
     case CC_S:
     case CC_L:
     case CC_LE:
+    TODO();
       if(cpu.eflag.ZF==1||cpu.eflag.CF!=cpu.eflag.SF) *dest=1;
       else *dest=0;
       break;
-       //TODO();
+       
     default: panic("should not reach here");
     case CC_P: panic("PF is not supported");
   }
