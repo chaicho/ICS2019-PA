@@ -20,7 +20,7 @@ static inline def_EHelper(add) {
 
 // dest <- sub result
 static inline void cmp_internal(DecodeExecState *s) {
-  rtl_sub(s, s0, ddest, dsrc1);
+  rtl_sub(s, s0, dsrc1, ddest);
   rtl_update_ZFSF(s, s0, id_dest->width);
   rtl_is_sub_carry(s, s1, ddest, dsrc1);
   rtl_set_CF(s, s1);
@@ -51,7 +51,8 @@ static inline def_EHelper(sub) {
 }
 
 static inline def_EHelper(cmp) {
-cmp_internal(s);
+  
+  cmp_internal(s);
   print_asm_template2(cmp);
 
 }
