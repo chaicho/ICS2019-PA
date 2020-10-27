@@ -53,6 +53,7 @@ static inline def_EHelper(inc) {
   //TODO();
   rtl_addi(s,s0,ddest,1);
   operand_write(s,id_dest,s0);
+  rtl_set_OF(s,s0);
   rtl_update_ZFSF(s,ddest,id_dest->width);
   print_asm_template1(inc);
 }
@@ -60,6 +61,7 @@ static inline def_EHelper(inc) {
 static inline def_EHelper(dec) {
   rtl_subi(s,s0,ddest,1);
   operand_write(s,id_dest,s0);
+   rtl_set_OF(s,s0);
   rtl_update_ZFSF(s,ddest,id_dest->width);
   print_asm_template1(dec);
 }
