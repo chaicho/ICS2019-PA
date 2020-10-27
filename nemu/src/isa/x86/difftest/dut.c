@@ -7,25 +7,25 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   // if(ref_r->eflag!=cpu.eflag)printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eflag,cpu.eflag);
   printf("ZF : %d  OF : %d  CF:  %d    SF:   %d\n",cpu.eflag.ZF,cpu.eflag.OF,cpu.eflag.CF,cpu.eflag.SF);
    bool fla=true;
-  // if(ref_r->eflag.CF!=cpu.eflag.CF){
-  //    printf("The supposed CF: %x \n Wrong CF : %x\n",ref_r->eflag .CF,cpu.eflag.CF);
-  //    fla=false;
-  // }
-  // if(ref_r->eflag.OF!=cpu.eflag.OF){
-  //    printf("The supposed OF: %x \n Wrong OF : %x\n",ref_r->eflag .OF,cpu.eflag.OF);
-  //    fla=false;
-  // }
-  // if(ref_r->eflag.ZF!=cpu.eflag.ZF){
-  //     printf("The supposed ZF: %x \n Wrong ZF : %x\n",ref_r->eflag .ZF,cpu.eflag.ZF);
-  //    fla=false;
-  //  }
-  // if(ref_r->eflag.SF!=cpu.eflag.SF){
-  //    printf("The supposed SF: %x \n Wrong SF : %x\n",ref_r->eflag .SF,cpu.eflag.SF);
-  //    fla=false;
-  // }
-  // if(ref_r->eflag.all!=cpu.eflag.all){
-  //    return false;
-  // }
+  if(ref_r->eflag.CF!=cpu.eflag.CF){
+     printf("The supposed CF: %x \n Wrong CF : %x\n",ref_r->eflag .CF,cpu.eflag.CF);
+     fla=false;
+  }
+  if(ref_r->eflag.OF!=cpu.eflag.OF){
+     printf("The supposed OF: %x \n Wrong OF : %x\n",ref_r->eflag .OF,cpu.eflag.OF);
+     fla=false;
+  }
+  if(ref_r->eflag.ZF!=cpu.eflag.ZF){
+      printf("The supposed ZF: %x \n Wrong ZF : %x\n",ref_r->eflag .ZF,cpu.eflag.ZF);
+     fla=false;
+   }
+  if(ref_r->eflag.SF!=cpu.eflag.SF){
+     printf("The supposed SF: %x \n Wrong SF : %x\n",ref_r->eflag .SF,cpu.eflag.SF);
+     fla=false;
+  }
+  if(ref_r->eflag.all!=cpu.eflag.all){
+     return false;
+  }
   if(ref_r->eax!=cpu.eax) {
     printf("The supposed EAX: %x \n Wrong EAX : %x\n",ref_r->eax,cpu.eax);
   fla=false;

@@ -8,9 +8,10 @@ int is_exit_status_bad();
 int main(int argc, char *argv[]) {
   /* Initialize the monitor. */
   init_monitor(argc, argv);
- 
+  
   /* Start engine. */
   engine_start();
+  //cpu.eflag=0x2;
 /* FILE *fp = fopen("/home/chaicho/ics2020/nemu/tools/gen-expr/input", "r");
   int result=0;
   char str[50];
