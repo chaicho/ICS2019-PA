@@ -45,6 +45,8 @@ static inline def_EHelper(or) {
   //TODO();
   rtl_or(s,ddest,ddest,dsrc1);
   operand_write(s,id_dest,ddest);
+  cpu.eflag.CF=0;
+  cpu.eflag.OF=0;
   rtl_update_ZFSF(s,ddest,s->width);
   print_asm_template2(or);
 }
