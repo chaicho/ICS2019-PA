@@ -131,6 +131,7 @@ static inline def_DHelper(mov_G2E) {
  */
 static inline def_DHelper(E2G) {
   operand_rm(s, id_src1, true, id_dest, true);
+ printf("dest: %x  src1: %x\n",*ddest,*dsrc1);
 }
 
 static inline def_DHelper(mov_E2G) {
