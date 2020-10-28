@@ -46,7 +46,7 @@ static inline def_rtl(is_sub_overflow, rtlreg_t* dest,
    rtl_msb(s,t0,src1,width);
    rtl_msb(s,t1,src2,width);
    rtl_msb(s,t2,res,width); 
-  //  printf("src1 :  %d   src2: %d  ans: %x  ans_bit : %d\n ",*t0,*t1,*dest,*t2);
+    printf("src1 :  %d   src2: %d  ans: %x  ans_bit : %d\n ",*t0,*t1,*dest,*t2);
    if(*t1==*t0) *dest=0;
    else {
       if(*t2!=*t0) *dest=1;
