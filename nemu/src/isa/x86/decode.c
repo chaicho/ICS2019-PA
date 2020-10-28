@@ -31,12 +31,12 @@ static inline void load_addr(DecodeExecState *s, ModR_M *m, Operand *rm) {
   sword_t disp = 0;
   int disp_size = 4;
   int base_reg = -1, index_reg = -1, scale = 0;
-  printf("ggggggggg\n");
   if (m->R_M == R_ESP) {
     SIB sib;
     sib.val = instr_fetch(&s->seq_pc, 1);
     base_reg = sib.base;
     scale = sib.ss;
+  printf("ggggggggg\n");
 
     if (sib.index != R_ESP) { index_reg = sib.index; }
   }
