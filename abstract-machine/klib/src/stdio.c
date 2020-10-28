@@ -39,15 +39,15 @@ int sprintf(char *out, const char *fmt, ...) {
       break;
     case 'd':;
       int gg1=(int)va_arg(tmp,int);
-      // int store[20],j=-1;
-      // while (gg1)
-      // {
-      //     store[++j]=gg1%10;
-      //     gg1/=10;
-      // }
-      // for(;j>=0;--j){
-      //    out[loc++]=(char) '0'+store[j];
-      // }
+      int store[20],j=-1;
+      while (gg1)
+      {
+          store[++j]=gg1%10;
+          gg1/=10;
+      }
+      for(;j>=0;--j){
+         out[loc++]=(char) '0'+store[j];
+      }
       out[loc++]=gg1+'0';
       break;
     default:
