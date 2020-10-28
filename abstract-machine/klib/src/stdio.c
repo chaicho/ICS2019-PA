@@ -47,7 +47,7 @@ int sprintf(char *out, const char *fmt, ...) {
           gg1/=10;
       }
       for(;j>=0;--j){
-         out[loc++]='0'+store[j];
+         out[loc++]=(char) '0'+store[j];
       }
       out[loc++]='\0';
       break;
