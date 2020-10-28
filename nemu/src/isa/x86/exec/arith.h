@@ -52,12 +52,10 @@ static inline def_EHelper(cmp) {
 
 static inline def_EHelper(inc) {
   //TODO();
-  *s0=*ddest;
-  printf("ori :%x",*s0);
-  rtl_addi(s,s0,s0,1);
+  // printf("ori :%x",*s0);
+  rtl_addi(s,s0,ddest,1);
   operand_write(s,id_dest,s0);
-  printf("now :%x",*s0);  
-
+  // printf("now :%x",*s0);  
   rtl_update_ZFSF(s,ddest,id_dest->width);
   print_asm_template1(inc);
 }
