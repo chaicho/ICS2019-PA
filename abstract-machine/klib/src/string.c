@@ -63,7 +63,10 @@ void* memmove(void* dst,const void* src,size_t n) {
 
 void* memcpy(void* out, const void* in, size_t n) {
   assert(0);
-  return NULL;
+  // unsigned char *c1=(unsigned char *)out;
+  // unsigned char *c2=(unsigned char *)in;
+  // strncpy(c1,c2,n);
+  return out;
 }
 
 int memcmp(const void* s1, const void* s2, size_t n) {
