@@ -61,7 +61,7 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
     default: panic("should not reach here");
     case CC_P: panic("PF is not supported");
   }
-  //if((*dest)==1) printf("JUMPPPP\n");
+  if((*dest)==1) printf("JUMPPPP\n");
   if (invert) {
     rtl_xori(s, dest, dest, 0x1);
   }
