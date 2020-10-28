@@ -70,8 +70,8 @@ static inline def_EHelper(dec) {
 }
 
 static inline def_EHelper(neg) {
-  rtl_neg(s,s0,dsrc1);
-  operand_write(s,id_src1,s0);
+  rtl_neg(s,s0,ddest);
+  operand_write(s,id_dest,s0);
   print_asm_template1(neg);
 }
 
