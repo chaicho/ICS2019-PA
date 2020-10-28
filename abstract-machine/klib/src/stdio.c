@@ -36,7 +36,6 @@ int sprintf(char *out, const char *fmt, ...) {
       {
          out[loc++]=s[gg++];
       }
-      out[loc++]='\0';
       break;
     case 'd':;
       int gg1=va_arg(tmp,int);
@@ -49,11 +48,12 @@ int sprintf(char *out, const char *fmt, ...) {
       for(;j>=0;--j){
          out[loc++]=(char) '0'+store[j];
       }
-      out[loc++]='\0';
       break;
     default:
       break;
     }
+    out[loc++]='\0';
+
     va_end(tmp);
   }
   
