@@ -53,7 +53,6 @@ void* memset(void* v,int c,size_t n) {
   for(i=0;i<n;i++){
     *(s++)=(unsigned char) c;
   }
-  v=s;
   return v;
 }
 
