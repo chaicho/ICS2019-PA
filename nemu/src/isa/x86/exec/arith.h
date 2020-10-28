@@ -52,9 +52,7 @@ static inline def_EHelper(cmp) {
 
 static inline def_EHelper(inc) {
   //TODO();
-  if(id_dest->type==OP_TYPE_MEM) {
-    rtl_lm(s,s0,ddest,0,id_dest->width);
-  }
+  *s0=*ddest;
   printf("ori :%x",*s0);
   rtl_addi(s,s0,s0,1);
   operand_write(s,id_dest,s0);
