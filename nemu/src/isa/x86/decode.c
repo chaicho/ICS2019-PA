@@ -36,12 +36,13 @@ static inline void load_addr(DecodeExecState *s, ModR_M *m, Operand *rm) {
     sib.val = instr_fetch(&s->seq_pc, 1);
     base_reg = sib.base;
     scale = sib.ss;
-  printf("ggggggggg\n");
 
     if (sib.index != R_ESP) { index_reg = sib.index; }
   }
   else {
     /* no SIB */
+      printf("ggggggggg\n");
+
     base_reg = m->R_M;
   }
 
