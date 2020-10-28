@@ -53,8 +53,6 @@ static inline void load_addr(DecodeExecState *s, ModR_M *m, Operand *rm) {
 
   if (disp_size != 0) {
     /* has disp */
-          printf("ggggggggg\n");
-
     disp = instr_fetch(&s->seq_pc, disp_size);
     if (disp_size == 1) { disp = (int8_t)disp; }
   }
