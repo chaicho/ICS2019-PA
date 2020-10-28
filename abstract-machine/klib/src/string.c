@@ -14,7 +14,7 @@ char *strcpy(char* dst,const char* src) {
   size_t i;
   for(i=0;src[i]!='\0';i++) dst[i]=src[i];
   dst[i]='\0';
-  assert(0);
+  // assert(0);
   return dst;
 }
 
@@ -28,6 +28,7 @@ char* strncpy(char* dst, const char* src, size_t n) {
 char* strcat(char* dst, const char* src) {
   size_t i=0;
   while (dst[i]!='\0') i++;
+  assert(dst[i]=='\0');
   strcpy(dst+i,src);
   return dst;
 }
