@@ -52,11 +52,13 @@ static inline def_EHelper(cmp) {
 
 static inline def_EHelper(inc) {
   //TODO();
-  if(id_dest->type==OP_TYPE_MEM) assert(0);
-  printf("ori :%x",*ddest);
-  rtl_addi(s,s0,ddest,1);
-  operand_write(s,id_dest,ddest);
-  printf("now :%x",*ddest);  
+  if(id_dest->type==OP_TYPE_MEM) {
+    rtl_lm(s,s0,ddest,0,id_dest->width);
+  }
+  printf("ori :%x",*s0);
+  rtl_addi(s,s0,s0,1);
+  operand_write(s,id_dest,s0);
+  printf("now :%x",*s0);  
 
   rtl_update_ZFSF(s,ddest,id_dest->width);
   print_asm_template1(inc);
