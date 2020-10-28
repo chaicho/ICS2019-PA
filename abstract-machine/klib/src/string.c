@@ -52,9 +52,9 @@ void* memset(void* v,int c,size_t n) {
   unsigned char *s=(unsigned char *)v;
   for(i=0;i<n;i++){
     *s=(unsigned char) c;
-    s++;
+     s++;
   }
-  return s;
+  return v;
 }
 
 void* memmove(void* dst,const void* src,size_t n) {
