@@ -188,7 +188,7 @@ static inline def_DHelper(mov_I2r) {
 /* used by unary operations */
 static inline def_DHelper(I) {
   decode_op_I(s, id_dest, true);
-  printf("%x\n",*ddest);
+  // printf("%x\n",*ddest);
 }
 
 static inline def_DHelper(r) {
