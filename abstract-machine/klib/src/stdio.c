@@ -42,7 +42,7 @@ int sprintf(char *out, const char *fmt, ...) {
       int store[20],j=-1;
       while (gg1)
       {
-          store[j++]=gg1%10;
+          store[++j]=gg1%10;
           gg1/=10;
       }
       for(;j>=0;--j){
