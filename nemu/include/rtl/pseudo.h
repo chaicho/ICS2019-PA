@@ -23,7 +23,7 @@ static inline def_rtl(not, rtlreg_t *dest, const rtlreg_t* src1) {
 
 static inline def_rtl(neg, rtlreg_t *dest, const rtlreg_t* src1) {
   // dest <- -src1
-  *dest=-*src1;
+  *dest=~(*src1)+1;
   //rtl_sub(s,dest,rz,src1);
   //TODO();
 }
