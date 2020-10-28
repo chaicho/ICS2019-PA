@@ -56,7 +56,7 @@ static inline def_DopHelper(SI) {
   //printf("simm:%x\n",*s0);
   if(op->width==1){
      simm=(simm<<24)>>24;
-      printf("EXTEND!\n");
+      // printf("EXTEND!\n");
   }
  // op->type=OP_TYPE_IMM;
   operand_imm(s,op,load_val,simm,op->width);  
@@ -120,7 +120,7 @@ static inline def_DopHelper(O) {
  */
 static inline def_DHelper(G2E) {
   operand_rm(s, id_dest, true, id_src1, true);
-   printf("dest: %x  src1: %x\n",*ddest,*dsrc1);
+  //  printf("dest: %x  src1: %x\n",*ddest,*dsrc1);
 
 }
 
