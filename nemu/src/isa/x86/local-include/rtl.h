@@ -43,10 +43,10 @@ static inline def_rtl(pop, rtlreg_t* dest) {
 static inline def_rtl(is_sub_overflow, rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1, const rtlreg_t* src2, int width) {
   // dest <- is_overflow(src1 - src2)
-   *t0=0;
    rtl_msb(s,t1,src2,width);
-   rtl_msb(s,t2,res,width); 
-    printf("src1 :  %d  %x  src2: %x %x ans: %x  ans_bit : %d\n ",*t0,*src1,*t1,*src2,*res,*t2);
+   rtl_msb(s,t2,res,width);  
+   rtl_msb(s,t0,src1,width);
+    printf("src1 :  %x  %x  src2: %x %x ans: %x  ans_bit : %d\n ",*t0,*src1,*t1,*src2,*dest,*t2);
    if(*t1==*t0) *dest=0;
    else {
       if(*t2!=*t0) *dest=1;
