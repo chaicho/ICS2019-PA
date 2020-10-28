@@ -38,7 +38,7 @@ int sprintf(char *out, const char *fmt, ...) {
       }
       break;
     case 'd':;
-      int gg1=va_arg(tmp,int);
+      int gg1=(int)va_arg(tmp,int);
       // int store[20],j=-1;
       // while (gg1)
       // {
