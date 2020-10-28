@@ -28,16 +28,17 @@ char* strncpy(char* dst, const char* src, size_t n) {
 char* strcat(char* dst, const char* src) {
   size_t i=0;
   while (dst[i]!='\0') i++;
-  assert(dst[i]=='\0');
+  //assert(dst[i]=='\0');
   strcpy(dst+i,src);
   return dst;
 }
 
 int strcmp(const char* s1, const char* s2) {
   while (*s1==*s2) {
-    if(*(s1)=='\0'||*(s2)=='\0') break;
+    //if(*(s1)=='\0'||*(s2)=='\0') break;
     s1++;
     s2++;
+    if(*s1=='\0') break;
   }
   return *(s1)-*(s2);
 }
