@@ -155,7 +155,7 @@ again:
     IDEX(0x09,G2E,or) IDEXW (0x0a,E2G,or,1)
     IDEXW (0x22,E2G,and,1)
     IDEX( 0x13,E2G,adc)
-    IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
+    IDEX(0x39,E,cmp) IDEXW(0x3c,I2a,cmp,1)
     IDEX(0x2b,E2G,sub) IDEX(0x29,E2G,sub)
     IDEX(0x1b,E2G,sbb)
     EX(0x99,cltd)
