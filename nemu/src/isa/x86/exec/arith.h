@@ -44,7 +44,7 @@ static inline def_EHelper(sub) {
 
 static inline def_EHelper(cmp) {
   //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,id_src1->width);
-  printf("dest:%d  %x  src1:%d %x\n",id_dest->type,*ddest,id_src1->type,*dsrc1);
+  printf("dest:%d  %x  %d src1:%d %x %d\n",id_dest->type,*id_dest->str,*ddest,id_src1->type,*dsrc1,*id_src1->str);
   cmp_internal(s);
   print_asm_template2(cmp);
 }
