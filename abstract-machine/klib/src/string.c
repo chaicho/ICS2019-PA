@@ -38,7 +38,6 @@ int strcmp(const char* s1, const char* s2) {
     //if(*(s1)=='\0'||*(s2)=='\0') break;
     s1++;
     s2++;
-    if(*s1=='\0') break;
   }
   return *(s1)-*(s2);
 }
@@ -52,10 +51,10 @@ void* memset(void* v,int c,size_t n) {
   size_t i=0;
   unsigned char *s=(unsigned char *)v;
   for(i=0;i<n;i++){
-    *(s++)=(unsigned char) c;
+    *s=(unsigned char) c;
+    s++;
   }
-  v=s;
-  return v;
+  return s;
 }
 
 void* memmove(void* dst,const void* src,size_t n) {
