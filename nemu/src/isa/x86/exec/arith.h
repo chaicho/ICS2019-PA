@@ -21,7 +21,7 @@ static inline def_EHelper(add) {
 // dest <- sub result
 static inline void cmp_internal(DecodeExecState *s) {
   rtl_sub(s, s0, ddest, dsrc1);
-  //printf("%x\n",*s0);
+  printf("%x\n",*s0);
   rtl_update_ZFSF(s, s0, s->width);
   rtl_is_sub_carry(s, s1, ddest, dsrc1);
   rtl_set_CF(s, s1);
@@ -45,7 +45,7 @@ static inline def_EHelper(sub) {
 
 static inline def_EHelper(cmp) {
   //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,id_src1->width);
-  printf("dest:%d  %x  src1:%d %x\n",id_dest->type,*ddest,id_src1->type,*dsrc1);
+  printf("dest:  %x  src1: %x\n",*ddest,*dsrc1);
   cmp_internal(s);
   print_asm_template2(cmp);
 }
