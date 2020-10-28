@@ -171,6 +171,7 @@ again:
     IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
     IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub)
     IDEX(0x1b,E2G,sbb)
+    IDEX(0xe9,J,jmp_rm)
     EX(0x99,cltd)
     case(0x90):  break;
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
