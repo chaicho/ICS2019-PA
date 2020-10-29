@@ -17,6 +17,8 @@ int sprintf(char *out, const char *fmt, ...) {
   va_list tmp;
   va_start(tmp,fmt);
   int i=0;
+  int gg;
+  int store[32],j=-1;
   while (fmt[i]!='\0')
   {
     if(fmt[i]!='%') {
@@ -39,12 +41,13 @@ int sprintf(char *out, const char *fmt, ...) {
          }
         case 'd':;
          {
-             int gg1=(int)va_arg(tmp,int);
-            int store[20],j=-1;
-            while (gg1)
+            gg=(int)va_arg(tmp,int);
+            // int store[20],j=-1;
+            j=-1;
+            while (gg)
             {
-              store[++j]=gg1%10;
-            gg1/=10;
+              store[++j]=gg%10;
+            gg/=10;
          }
             for(;j>=0;--j){
             *out=(char) ('0'+store[j]);
