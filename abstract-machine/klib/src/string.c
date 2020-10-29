@@ -48,6 +48,7 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 }
 
 void* memset(void* v,int c,size_t n) {
+  assert(0);
   size_t i=0;
   unsigned char *s=(unsigned char *)v;
   for(i=0;i<n;i++){
@@ -62,17 +63,19 @@ void* memmove(void* dst,const void* src,size_t n) {
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-  assert(0);
-  // unsigned char *c1=(unsigned char *)out;
-  // unsigned char *c2=(unsigned char *)in;
-  // strncpy(c1,c2,n);
+   unsigned char *c1=(unsigned char *)out;
+   unsigned char *c2=(unsigned char *)in;
+  while ((n--)>0)
+  {
+    *(c1++)=*(c2++);
+  }
   return out;
 }
 
 int memcmp(const void* s1, const void* s2, size_t n) {
   unsigned char *c1=(unsigned char *)s1;
   unsigned char *c2=(unsigned char *)s2;
-  while ((--n)&&*c1==*c2) {
+  while ((--n)>0&&*c1==*c2) {
     if(*(c1)=='\0'||*(c2)=='\0') break;
     c1++;
     c2++;
