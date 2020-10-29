@@ -43,12 +43,15 @@ int strcmp(const char* s1, const char* s2) {
 }
 
 int strncmp(const char* s1, const char* s2, size_t n) {
-  assert(0);
-  return 0;
+while ((n--)>0&&*s1==*s2) {
+    if(*(s1)=='\0') break;
+    s1++;
+    s2++;
+  }  return 0;
 }
 
 void* memset(void* v,int c,size_t n) {
-  assert(0);
+  //assert(0);
   size_t i=0;
   unsigned char *s=(unsigned char *)v;
   for(i=0;i<n;i++){
@@ -58,7 +61,7 @@ void* memset(void* v,int c,size_t n) {
 }
 
 void* memmove(void* dst,const void* src,size_t n) {
-  assert(0);
+ // assert(0);
   return NULL;
 }
 
