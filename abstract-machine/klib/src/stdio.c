@@ -17,7 +17,6 @@ int sprintf(char *out, const char *fmt, ...) {
   va_list tmp;
   va_start(tmp,fmt);
   int i=0;
-  int loc=0;
   while (fmt[i]!='\0')
   {
     if(fmt[i]!='%') {
@@ -34,7 +33,7 @@ int sprintf(char *out, const char *fmt, ...) {
             int gg = 0;
             while (s[gg] != '\0')
             {
-                out[loc++] = s[gg++];
+                *(out++) = s[gg++];
             }
              break;
          }
