@@ -173,6 +173,9 @@ again:
     IDEX(0x1b,E2G,sbb)
     IDEX(0xe9,J,jmp)
     EX(0x99,cltd)
+    IDEXW(0xee,out_a2dx,out,1)
+    IDEX(0xef,out_a2dx,out)
+
     case(0x90):  break;
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
