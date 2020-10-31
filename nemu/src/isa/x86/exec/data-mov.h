@@ -56,13 +56,13 @@ static inline def_EHelper(cltd) {
 static inline def_EHelper(cwtl) {
   if (s->isa.is_operand_size_16) {
      rtl_lr(s,s0,R_AL,1);
-     rtl_sext(s,s0,s0,8);
+     rtl_sext(s,s0,s0,1);
      rtl_sr(s,R_AX,s0,2);  
   }
   else {
     rtl_lr(s,s0,R_AX,2);
     printf("AX: %x\n",*s0);
-    rtl_sext(s,s0,s0,16);
+    rtl_sext(s,s0,s0,2);
     rtl_sr(s,R_EAX,s0,4);
   } 
 
