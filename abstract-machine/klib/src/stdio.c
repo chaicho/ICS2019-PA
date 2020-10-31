@@ -25,14 +25,14 @@ int printf(const char *fmt, ...) {
         case 's':
         {
             char *s = va_arg(tmp, char *);
-            int gg = 0;
+            gg=0;
             while (s[gg] != '\0')
             {
                 putch(s[gg++]);
             }
              break;
          }
-        case 'd':;
+        case 'd':
          {
             gg=(int)va_arg(tmp,int);
             // int store[20],j=-1;
@@ -40,8 +40,8 @@ int printf(const char *fmt, ...) {
             while (gg)
             {
               store[++j]=gg%10;
-            gg/=10;
-         }
+              gg/=10;
+            }
             for(;j>=0;--j){
             putch( '0'+store[j]);
              }      
