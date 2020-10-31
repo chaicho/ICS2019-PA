@@ -67,6 +67,7 @@ static inline def_EHelper(shl) {
 static inline def_EHelper(shr) {
  rtl_shri(s,s0,ddest,*dsrc1);
  printf("%x\n",*s0);
+ printf("length %d",id_dest->width);
  //id_dest->width=id_src1->width;
  operand_write(s,id_dest,s0); 
  rtl_update_ZFSF(s,s0,id_dest->width);
