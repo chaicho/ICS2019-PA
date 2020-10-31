@@ -30,7 +30,7 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
     case CC_O:
-    *ddest= (cpu.eflag.OF==1)? 1:0; 
+     *ddest= (cpu.eflag.OF==1)? 1:0; 
     break;
     case CC_B:
      *ddest=(cpu.eflag.CF==1)? 1:0;
@@ -46,7 +46,7 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
       else *dest=0;
       break;
     case CC_S:
-      *dest=cpu.eflag.SF;
+      *dest=(cpu.eflag.SF==1)? 1:0;
       break;
     case CC_L:
       if(cpu.eflag.SF!=cpu.eflag.OF)  *dest=1;
