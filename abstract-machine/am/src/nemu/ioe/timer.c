@@ -6,7 +6,7 @@ void __am_timer_init() {
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
   uint32_t data;
-  asm volatile ("inl %1, %0" : "=a"(data) : "d"(0x52));    
+  asm volatile ("inl %1, %0" : "=a"(data) : "d"(0x48));    
   uptime->us=data;
 }
 
