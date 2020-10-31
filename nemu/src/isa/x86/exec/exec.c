@@ -153,7 +153,7 @@ again:
     IDEX (0x01, G2E, add)
     IDEX (0x68, push_SI, push)
     IDEXW (0X74, J, jcc,1)  IDEXW(0x75,J,jcc,1) IDEXW(0x77,J,jcc,1) IDEXW(0x7c,J,jcc,1) IDEXW(0x7d,J,jcc,1) IDEXW(0x7e,J,jcc,1) IDEXW(0x7f,J,jcc,1)  IDEXW(0X76,J,jcc,1)
-    IDEX (0X31, G2E,xor)  IDEXW(0x34,I2a,xor,1) IDEX(0x35,I2a,xor)
+    IDEX (0X31, G2E,xor)  IDEXW(0x34,I2a,xor,1) IDEX(0x35,I2a,xor) IDEXW(0x30,G2E,xor,1)
     // IDEX (0x58, r,pop)
     IDEX (0x8d, lea_M2G ,lea)
     IDEXW (0x84,G2E, test,1) IDEX(0X85,G2E,test) 
