@@ -49,6 +49,8 @@ static inline def_EHelper(sar) {
   //TODO();
   //cpu.edx>>=3;
   //operand_write(s,id_dest,s0);
+    operand_write(s,id_dest,s0);
+
   rtl_update_ZFSF(s,s0,id_dest->width);
   //TODO();
   operand_write(s,id_dest,s0);
