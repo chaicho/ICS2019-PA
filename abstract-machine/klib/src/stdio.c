@@ -10,11 +10,12 @@ int printf(const char *fmt, ...) {
   va_start(tmp,fmt);
   int i=0;
   int gg;
-  int store[32],j=-1;
+  int store[33],j=-1;
   while (fmt[i]!='\0')
   {
     if(fmt[i]!='%') {
       putch(fmt[i]);
+      i++;
       continue;
     }
     if(fmt[i]=='%'){
