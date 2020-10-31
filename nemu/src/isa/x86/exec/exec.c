@@ -177,7 +177,7 @@ again:
     IDEX (0X31, G2E,xor)  IDEXW(0x34,I2a,xor,1) IDEX(0x35,I2a,xor) IDEXW(0x30,G2E,xor,1) IDEXW(0x32,E2G,xor,1) IDEX(0x33,E2G,xor)
     // IDEX (0x58, r,pop)
     IDEX (0x8d, lea_M2G ,lea)
-    IDEXW (0x84,G2E, test,1) IDEX(0X85,G2E,test) 
+    IDEXW (0x84,G2E, test,1) IDEX(0X85,G2E,test) IDEXW(0xa8,I2a,test,1) IDEX(0xa9,I2a,test)
     IDEXW (0xeb,J,jmp,1)
     IDEX (0x3b, E2G , cmp) IDEX(0x3d,I2a,cmp) IDEXW(0x38,G2E,cmp,1)
     IDEX (0x41,r,inc) IDEX(0x43,r,inc) IDEX( 0x47,r, inc) IDEX(0x40,r,inc) IDEX(0x46,r,inc) IDEX(0x42,r,inc) IDEX(0x44,r,inc) IDEX(0x45,r,inc)
