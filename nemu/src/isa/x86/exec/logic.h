@@ -66,6 +66,7 @@ static inline def_EHelper(shl) {
 
 static inline def_EHelper(shr) {
   printf("length %d\n",id_dest->width);
+     printf("NOW:length %d\n",id_dest->width);
 
  rtl_shri(s,s0,ddest,*dsrc1);
  printf("%x\n",*s0);
