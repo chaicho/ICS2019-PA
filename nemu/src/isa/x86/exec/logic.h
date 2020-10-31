@@ -46,7 +46,7 @@ static inline def_EHelper(sar) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
   printf("length %d\n",id_dest->width);
-  if(id_dest->width==2) *s0=*ddest&0x0000ffff; 
+  if(id_dest->width==2) *s0=(uint16_t)*ddest ;
   rtl_sar(s,s0,s0,dsrc1);
   //TODO();
   //cpu.edx>>=3;
