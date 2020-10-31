@@ -77,22 +77,23 @@ static inline def_EHelper(2byte_esc) {
     IDEXW (0xb7,mov_E2G,movzx,2)
     IDEXW (0xbe,mov_E2G,movsx,1)
     IDEXW (0xbf,mov_E2G,movsx,2)
-    IDEX (0xaf,E2G,imul2);
-    IDEX(0X85,J,jcc);
-    IDEX(0x83,J,jcc);
-    IDEX(0X86,J,jcc);
-    IDEX(0x87,J,jcc);
-    IDEX(0X81,J,jcc);
-    IDEX(0x80,J,jcc);
-    IDEX(0X82,J,jcc);
-    IDEX(0x84,J,jcc);
+    IDEX (0xaf,E2G,imul2)
+    IDEX(0X85,J,jcc)
+    IDEX(0x83,J,jcc)
+    IDEX(0X86,J,jcc)
+    IDEX(0x87,J,jcc)
+    IDEX(0X81,J,jcc)
+    IDEX(0x80,J,jcc)
+    IDEX(0X82,J,jcc)
+    IDEX(0x84,J,jcc)
     IDEX(0X8f,J,jcc)
-    IDEX(0X88,J,jcc);
-    IDEX(0x89,J,jcc);
-    IDEX(0X8a,J,jcc);
-    IDEX(0x8b,J,jcc);
-    IDEX(0X8c,J,jcc);
-    IDEX(0x8d,J,jcc);
+    IDEX(0X88,J,jcc)
+    IDEX(0x89,J,jcc)
+    IDEX(0X8a,J,jcc)
+    IDEX(0x8b,J,jcc)
+    IDEX(0X8c,J,jcc)
+    IDEX(0x8d,J,jcc)
+    IDEX(0X8e,J,jcc)
     default: exec_inv(s);
   }
 }
