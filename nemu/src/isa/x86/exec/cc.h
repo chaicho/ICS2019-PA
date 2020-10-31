@@ -30,10 +30,10 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
     case CC_O:
-     *ddest= (cpu.eflag.OF==1)? 1:0; 
+     *dest= (cpu.eflag.OF==1)? 1:0; 
     break;
     case CC_B:
-     *ddest=(cpu.eflag.CF==1)? 1:0;
+     *dest=(cpu.eflag.CF==1)? 1:0;
      break;
     case CC_E: 
       //rtl_update_ZF(s,dest,id_dest->width);
