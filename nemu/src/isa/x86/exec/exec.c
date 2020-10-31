@@ -178,7 +178,7 @@ again:
     IDEXW(0xec,in_dx2a,in,1)
     IDEX(0xed,in_dx2a,in)
   case(0x90):  break;
-  case 0x66:  assert(0 );s->isa.is_operand_size_16 = true; goto again;
+  case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
   }
 }
