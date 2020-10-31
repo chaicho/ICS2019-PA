@@ -5,8 +5,9 @@ void __am_timer_init() {
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
-uptime->us=0;
-
+  uint32_t data;
+  asm volatile ("inl %1, %0" : "=a"(data) : "d"((uint16_t)0xa1000048));    
+  uptime->us=data;
 }
 
 void __am_timer_rtc(AM_TIMER_RTC_T *rtc) {
