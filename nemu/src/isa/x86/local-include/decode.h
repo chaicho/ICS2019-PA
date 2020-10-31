@@ -237,10 +237,10 @@ static inline def_DHelper(SI_E2G) {
 
 static inline def_DHelper(gp2_1_E) {
   operand_rm(s, id_dest, true, NULL, false);
-    printf("NOW:length %d\n",id_dest->width);
+    // printf("NOW:length %d\n",id_dest->width);
 
   operand_imm(s, id_src1, true, 1, 1);
-      printf("NOW:length %d\n",id_dest->width);
+      // printf("NOW:length %d\n",id_dest->width);
 
 }
 
