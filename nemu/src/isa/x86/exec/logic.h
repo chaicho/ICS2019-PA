@@ -45,7 +45,7 @@ static inline def_EHelper(or) {
 static inline def_EHelper(sar) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
-  printf("length %d\n",id_dest->width);
+  // printf("length %d\n",id_dest->width);
   if(s->isa.is_operand_size_16) rtl_sext(s,s0,ddest,2);
   else *s0=*ddest;
   rtl_sar(s,s0,s0,dsrc1);

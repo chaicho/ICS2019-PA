@@ -61,7 +61,7 @@ static inline def_EHelper(cwtl) {
   }
   else {
     rtl_lr(s,s0,R_AX,2);
-    printf("AX: %x\n",*s0);
+    // printf("AX: %x\n",*s0);
     rtl_sext(s,s0,s0,2);
     rtl_sr(s,R_EAX,s0,4);
   } 
