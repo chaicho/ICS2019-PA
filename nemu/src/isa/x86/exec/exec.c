@@ -24,7 +24,7 @@ static inline def_EHelper(gp2) {
 
   switch (s->isa.ext_opcode) {
     EMPTY(0) EMPTY(1) EMPTY(2) EMPTY(3)
-    EX(4,shl) EX(5,shr) EMPTY(6) EX(7,sar)
+    EX(4,shl) EXW(5,shr,id_dest->width) EMPTY(6) EX(7,sar)
   }
         printf("NOW:length %d\n",id_dest->width);
 
