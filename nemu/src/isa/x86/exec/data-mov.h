@@ -61,7 +61,7 @@ static inline def_EHelper(cwtl) {
   }
   else {
     rtl_lr(s,s0,R_AX,2);
-    rtl_sext(s,s0,s0,8);
+    rtl_sext(s,s0,s0,16);
     rtl_sr(s,R_EAX,s0,4);
   } 
 
