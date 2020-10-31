@@ -240,6 +240,8 @@ static inline def_DHelper(gp2_1_E) {
     printf("NOW:length %d\n",id_dest->width);
 
   operand_imm(s, id_src1, true, 1, 1);
+      printf("NOW:length %d\n",id_dest->width);
+
 }
 
 static inline def_DHelper(gp2_cl2E) {
