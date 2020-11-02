@@ -1,7 +1,8 @@
 #include <am.h>
 #include <nemu.h>
-// static uint32_t boot_time;
+ static uint32_t boot_time;
 void __am_timer_init() {
+  boot_time=inl(0x52);
   // asm volatile ("inl %1, %0" : "=a"(boot_time) : "d"(0x48)); 
 }
 
