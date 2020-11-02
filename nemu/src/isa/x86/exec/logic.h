@@ -14,7 +14,7 @@ static inline def_EHelper(test) {
 static inline def_EHelper(and) {
  
   //rtl_sext(s, dsrc1, dsrc1, id_src1->width);
-  //if(s->src1.width==1) *dsrc1|=0xfffffff00;
+  //if(s->src1.width==1S) *dsrc1|=0xfffffff00;
   rtl_and(s,s0,ddest,dsrc1);
   operand_write(s,id_dest,s0);
   cpu.eflag.CF=0;
