@@ -61,10 +61,10 @@ static inline def_EHelper(inc) {
 }
 
 static inline def_EHelper(dec) {
-  (*ddest)--;
+  *s0=*ddest-1;
   // printf("NOW:length %d\n",id_dest->width);
 
-  operand_write(s,id_dest,ddest);
+  operand_write(s,id_dest,s0);
    //rtl_set_OF(s,s0);
   rtl_update_ZFSF(s,s0,id_dest->width);
   print_asm_template1(dec);
