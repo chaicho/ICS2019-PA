@@ -171,7 +171,7 @@ again:
     IDEX (0xe8, J, call)
     IDEX (0x50,r,push) IDEX (0x51, r, push) IDEX(0x52,r,push) IDEX (0x53, r, push)  IDEX (0x55, r, push)  IDEX (0x56, r, push)  IDEX (0x57, r, push) 
     IDEXW(0x6a, push_SI,push,1)
-    IDEX (0x01, G2E, add)
+    // IDEX (0x01, G2E, add)
     IDEX (0x68, push_SI, push)
     IDEXW (0X74, J, jcc,1)  IDEXW(0x75,J,jcc,1) IDEXW(0x77,J,jcc,1) IDEXW(0x79,J,jcc,1) IDEXW(0x73,J,jcc,1) IDEXW(0x72,J,jcc,1) IDEXW(0x78,J,jcc,1) IDEXW(0x7c,J,jcc,1) IDEXW(0x7d,J,jcc,1) IDEXW(0x7e,J,jcc,1) IDEXW(0x7f,J,jcc,1)  IDEXW(0X76,J,jcc,1)
     IDEX (0X31, G2E,xor)  IDEXW(0x34,I2a,xor,1) IDEX(0x35,I2a,xor) IDEXW(0x30,G2E,xor,1) IDEXW(0x32,E2G,xor,1) IDEX(0x33,E2G,xor)
@@ -185,7 +185,7 @@ again:
     IDEX (0x5a,r,pop)  IDEX (0x5d,r,pop)  IDEX (0x59,r,pop) IDEX (0x5e,r,pop)  IDEX (0x5f,r,pop) IDEX(0x5b,r,pop) IDEX (0x58,r,pop) 
    // IDEXW(0xff,O,push,1)
     EX   (0xc3, ret )
-    IDEX(0x03,E2G,add)
+    // IDEX(0x03,E2G,add)
     IDEX(0x09,G2E,or) IDEXW (0x0a,E2G,or,1) 
     IDEXW (0x22,E2G,and,1)  IDEXW(0x24,I2a,and,1) IDEX(0x25,I2a,and) IDEX(0x21,G2E,and) IDEXW(0x20,G2E,and,1) IDEX(0x23,E2G,and)
     IDEX( 0x13,E2G,adc)
@@ -198,7 +198,7 @@ again:
     IDEX(0xef,out_a2dx,out)
     IDEXW(0xec,in_dx2a,in,1)
     IDEX(0xed,in_dx2a,in)
-    IDEXW(0x00,G2E,add,1)
+    IDEXW(0x00,G2E,add,1) IDEX(0x01,G2E,add) IDEXW(0x02,E2G,add,1) IDEX(0X03,E2G,add)
   case(0x90):  break;
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
