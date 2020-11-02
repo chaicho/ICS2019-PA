@@ -198,7 +198,7 @@ again:
     IDEX(0xef,out_a2dx,out)
     IDEXW(0xec,in_dx2a,in,1)
     IDEX(0xed,in_dx2a,in)
-    IDEXW(0x00,G2E,add,1) IDEX(0x01,G2E,add) IDEXW(0x02,E2G,add,1) IDEX(0X03,E2G,add)
+    IDEXW(0x00,G2E,add,1) IDEX(0x01,G2E,add) IDEXW(0x02,E2G,add,1) IDEX(0X03,E2G,add) IDEXW(0x04,I2a,add,1) IDEX(0x05,I2a,add)
   case(0x90):  break;
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
