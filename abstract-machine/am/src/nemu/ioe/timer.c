@@ -8,7 +8,7 @@ void __am_timer_init() {
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
   uint32_t data;
-  asm volatile ("inl %1, %0" : "=a"(data) : "d"(RTC_ADDR+4));    
+  data=inl(RTC_ADDR+4);    
   uptime->us=(data-boot_time);
 }
 
