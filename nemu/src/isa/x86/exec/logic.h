@@ -25,7 +25,7 @@ static inline def_EHelper(and) {
 
 static inline def_EHelper(xor) {
   rtl_xor(s,ddest,ddest,dsrc1);
-  rtl_update_ZFSF(s,s0,id_dest->width);
+  rtl_update_ZFSF(s,ddest,id_dest->width);
   operand_write(s,id_dest,ddest);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
