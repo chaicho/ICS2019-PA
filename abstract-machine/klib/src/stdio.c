@@ -6,7 +6,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  char buf[40]={};
+  char buf[40]="0000";
   char *tmp=buf;
   sprintf(tmp,fmt);
   while (*tmp!='\0')
