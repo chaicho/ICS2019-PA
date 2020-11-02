@@ -187,7 +187,7 @@ again:
     EX   (0xc3, ret )
     IDEX(0x03,E2G,add)
     IDEX(0x09,G2E,or) IDEXW (0x0a,E2G,or,1) 
-    IDEXW (0x22,E2G,and,1)  IDEXW(0x24,I2a,and,1) IDEX(0x25,I2a,and)
+    IDEXW (0x22,E2G,and,1)  IDEXW(0x24,I2a,and,1) IDEX(0x25,I2a,and) IDEX(0x21,G2E,and) IDEXW(0x20,G2E,and,1) IDEX(0x23,E2G,and)
     IDEX( 0x13,E2G,adc)
     IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
     IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub) 
