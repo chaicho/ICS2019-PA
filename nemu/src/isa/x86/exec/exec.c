@@ -191,7 +191,7 @@ again:
     IDEX( 0x13,E2G,adc)
     IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
     IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub)
-    IDEX(0x1b,E2G,sbb)
+    IDEX(0x1b,E2G,sbb) IDEX(0x19,G2E,sbb)
     IDEX(0xe9,J,jmp)
     EX(0x99,cltd)
     IDEXW(0xee,out_a2dx,out,1)
