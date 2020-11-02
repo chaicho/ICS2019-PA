@@ -24,9 +24,9 @@ static inline def_EHelper(and) {
 }
 
 static inline def_EHelper(xor) {
-  rtl_xor(s,ddest,ddest,dsrc1);
-  rtl_update_ZFSF(s,ddest,id_dest->width);
-  operand_write(s,id_dest,ddest);
+  rtl_xor(s,s0,ddest,dsrc1);
+  rtl_update_ZFSF(s,s0,id_dest->width);
+  operand_write(s,id_dest,s0);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
   print_asm_template2(xor);
