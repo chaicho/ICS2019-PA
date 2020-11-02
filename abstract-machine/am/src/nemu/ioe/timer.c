@@ -2,13 +2,13 @@
 #include <nemu.h>
  static uint32_t boot_time;
 void __am_timer_init() {
-  boot_time=inl(0x52);
+  boot_time=inl(RTC_ADDR+4);
   // asm volatile ("inl %1, %0" : "=a"(boot_time) : "d"(0x48)); 
 }
 
 void __am_timer_uptime(AM_TIMER_UPTIME_T *uptime) {
   uint32_t data;
-  asm volatile ("inl %1, %0" : "=a"(data) : "d"(0x52));    
+  asm volatile ("inl %1, %0" : "=a"(data) : "d"(RTC_ADDR+4));    
   uptime->us=(data-boot_time)*1000000;
 }
 
