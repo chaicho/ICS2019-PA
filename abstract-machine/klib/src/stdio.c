@@ -6,7 +6,52 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-  
+va_list tmp;
+  va_start(tmp,fmt);
+  int i=0;
+  int gg;
+  int store[32],j=-1;
+  while (fmt[i]!='\0')
+  {
+    if(fmt[i]!='%') {
+     putch(fmt[i++]);
+      continue;
+    }
+    if(fmt[i]=='%'){
+        i++;
+        switch (fmt[i++])
+        {
+        case 's':
+        {
+            char *s = va_arg(tmp, char *);
+            int gg = 0;
+            while (s[gg] != '\0')
+            {
+                putch(s[gg++]);
+            }
+             break;
+         }
+        case 'd':;
+         {
+            gg=(int)va_arg(tmp,int);
+            // int store[20],j=-1;
+            j=-1;
+            while (gg)
+            {
+              store[++j]=gg%10;
+            gg/=10;
+         }
+            for(;j>=0;--j){
+            putch ('0'+store[j]);
+
+             }      
+        break;
+        }
+    }
+    }
+  }
+
+  va_end(tmp);
   return 0;
 }
 
