@@ -81,7 +81,7 @@ static inline def_DopHelper(a) {
 }
 static inline def_DopHelper(d) {
   operand_reg(s, op, load_val, R_EDI, op->width);
-    assert(0);
+    // assert(0);
 }
 static inline def_DopHelper(s) {
   operand_reg(s, op, load_val, R_ESI, op->width);
