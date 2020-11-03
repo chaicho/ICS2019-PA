@@ -83,6 +83,49 @@ static inline def_EHelper(shr) {
   print_asm_template2(shr);
 }
 
+static inline def_EHelper(rol) {
+  // printf("length %d\n",id_dest->width);
+    // printf("NOW:length %d\n",id_dest->width);
+
+int tmp=*dsrc1;
+while (tmp!=0)
+{
+  rtl_msb(s,s0,ddest,id_dest->width);
+  *ddest=(*ddest<<1)+*s0;
+  tmp--;
+}
+if(*dsrc1==1){
+  rtl_get_CF(s,s1);
+  rtl_msb(s,s0,ddest,id_dest->width);
+  cpu.eflag.OF=*s1^*s0;
+}
+//  printf("%x\n",*s0);
+//  printf("length %d\n",id_dest->width);
+ //id_dest->width=id_src1->width;
+ operand_write(s,id_dest,ddest); 
+  print_asm_template2(rol);
+}
+
+static inline def_EHelper(ror) {
+  // printf("length %d\n",id_dest->width);
+    // printf("NOW:length %d\n",id_dest->width);
+
+int tmp=*dsrc1;
+while (tmp!=0)
+{
+  *s0=*ddest&1;
+ // rtl_msb(s,s0,ddest,id_dest->width);
+  *ddest=(*ddest>>1)+(*s0<<(id_dest->width-1));
+  tmp--;
+}
+
+//  printf("%x\n",*s0);
+//  printf("length %d\n",id_dest->width);
+ //id_dest->width=id_src1->width;
+ operand_write(s,id_dest,ddest); 
+  print_asm_template2(rol);
+}
+
 
 static inline def_EHelper(setcc) {
   uint32_t cc = s->opcode & 0xf;
