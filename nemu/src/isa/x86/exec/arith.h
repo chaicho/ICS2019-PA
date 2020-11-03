@@ -61,8 +61,8 @@ static inline def_EHelper(inc) {
 }
 
 static inline def_EHelper(dec) {
-  *s0=*ddest-1;
-  // printf("NOW:length %d\n",id_dest->width);
+  rtl_subi(s,s0,ddest,1);
+    // printf("NOW:length %d\n",id_dest->width);
 
   operand_write(s,id_dest,s0);
    //rtl_set_OF(s,s0);
