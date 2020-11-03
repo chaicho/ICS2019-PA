@@ -79,6 +79,12 @@ static inline def_DopHelper(SI) {
 static inline def_DopHelper(a) {
   operand_reg(s, op, load_val, R_EAX, op->width);
 }
+static inline def_DopHelper(d) {
+  operand_reg(s, op, load_val, R_EDI, op->width);
+}
+static inline def_DopHelper(s) {
+  operand_reg(s, op, load_val, R_ESI, op->width);
+}
 
 /* This helper function is use to decode register encoded in the opcode. */
 /* XX: AL, AH, BL, BH, CL, CH, DL, DH
@@ -149,6 +155,11 @@ static inline def_DHelper(lea_M2G) {
 static inline def_DHelper(I2a) {
   decode_op_a(s, id_dest, true);
   decode_op_I(s, id_src1, true);
+}
+static inline def_DHelper(mov_sb) {
+  decode_op_d(s,id_dest,true);
+  // decode_op_I(s, id_src1, true);
+  decode_op_s(s,id_src1,true);
 }
 
 /* Gv <- EvIb
@@ -318,7 +329,9 @@ static inline def_DHelper(out_a2dx) {
   decode_op_a(s, id_src1, true);
   operand_reg(s, id_dest, true, R_DX, 2);
 }
-
+// static inline def_DHelper(lea_M2G) {
+//   operand_rm(s, id_src1, false, id_dest, false);
+// }
 
 static inline void operand_write(DecodeExecState *s, Operand *op, rtlreg_t* src) {
   if (op->type == OP_TYPE_REG) { rtl_sr(s, op->reg, src, op->width); }

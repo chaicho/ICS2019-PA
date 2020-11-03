@@ -83,6 +83,17 @@ static inline def_EHelper(movzx) {
   print_asm_template2(movzx);
 }
 
+static inline def_EHelper(movsb) {
+  if(id_dest->width==1) {
+      operand_write(s, id_dest, dsrc1);
+  }
+ else{
+    id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
+  // rtl_zext(s, ddest, dsrc1, id_dest->width);
+  operand_write(s, id_dest, dsrc1);
+ }
+  print_asm_template2(movzx);
+}
 static inline def_EHelper(lea) {
   rtl_addi(s, ddest, s->isa.mbase, s->isa.moff);
   operand_write(s, id_dest, ddest);
