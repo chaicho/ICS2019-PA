@@ -162,6 +162,8 @@ static inline def_DHelper(mov_sb) {
   decode_op_s(s,id_src1,true);
   id_src1->type=OP_TYPE_MEM;
   id_dest->type=OP_TYPE_MEM;
+  s->isa.mbase=*ddest;
+  printf("%d\n",*ddest);
 }
 
 /* Gv <- EvIb
@@ -336,7 +338,7 @@ static inline def_DHelper(out_a2dx) {
 // }
 
 static inline void operand_write(DecodeExecState *s, Operand *op, rtlreg_t* src) {
-  if (op->type == OP_TYPE_REG) { rtl_sr(s, op->reg, src, op->width); }
+  if (op->type == OP_TYPE_REG) {    rtl_sr(s, op->reg, src, op->width); }
   else if (op->type == OP_TYPE_MEM) { rtl_sm(s, s->isa.mbase, s->isa.moff, src, op->width); }
   else { assert(0); }
 }
