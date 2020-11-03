@@ -81,6 +81,7 @@ static inline def_DopHelper(a) {
 }
 static inline def_DopHelper(d) {
   operand_reg(s, op, load_val, R_EDI, op->width);
+  assert(0);
 }
 static inline def_DopHelper(s) {
   operand_reg(s, op, load_val, R_ESI, op->width);
@@ -163,7 +164,7 @@ static inline def_DHelper(mov_sb) {
   id_src1->type=OP_TYPE_MEM;
   id_dest->type=OP_TYPE_MEM;
   s->isa.mbase=*ddest;
-  assert(0);
+  // assert(0);
   printf("%d\n",*ddest);
 }
 
