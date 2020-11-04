@@ -92,9 +92,9 @@ static inline def_EHelper(movsb) {
   operand_write(s, id_dest, dsrc1); 
  } 
  *s0=*ddest+(id_dest->width);
-  rtl_lr(s,s0,R_EDI,id_dest->width);
+  rtl_sr(s,R_EDI,s0,id_dest->width);
   *s0=*dsrc1+(id_src1->width);
-  rtl_lr(s,s0,R_ESI,id_src1->width);
+  rtl_sr(s,R_ESI,s0,id_src1->width);
 
   print_asm_template2(movzx);
 }
