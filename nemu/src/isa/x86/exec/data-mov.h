@@ -96,7 +96,7 @@ static inline def_EHelper(movsb) {
  } 
     // *s0=reg_l(R_EDI)+1;
     cpu.edi+=tt;
-   // cpu.esi+=tt;
+    cpu.esi+=tt;
     print_asm_template2(movsb);
 
 
