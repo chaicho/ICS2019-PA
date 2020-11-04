@@ -92,7 +92,7 @@ static inline def_EHelper(movsb) {
   operand_write(s, id_dest, dsrc1); 
  } 
     *s0=reg_l(R_EDI)+1;
-    rtl_sr(s,R_EDI,s0,id_dest->width);
+  //  rtl_sr(s,R_EDI,s0,id_dest->width);
     print_asm_template2(movsb);
 
 
