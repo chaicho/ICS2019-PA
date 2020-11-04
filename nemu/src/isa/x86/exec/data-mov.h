@@ -89,9 +89,13 @@ static inline def_EHelper(movsb) {
   }
  else{
     id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
-  // rtl_zext(s, ddest, dsrc1, id_dest->width);
-  operand_write(s, id_dest, dsrc1);
- }
+  operand_write(s, id_dest, dsrc1); 
+ } 
+ *s0=*ddest+(id_dest->width);
+  rtl_lr(s,s0,R_EDI,id_dest->width);
+  *s0=*dsrc1+(id_src1->width);
+  rtl_lr(s,s0,R_ESI,id_src1->width);
+
   print_asm_template2(movzx);
 }
 static inline def_EHelper(lea) {
