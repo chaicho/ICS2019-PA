@@ -87,7 +87,7 @@ static inline def_EHelper(movsb) {
   int tt=0;
   if(id_dest->width==1) {
       tt=1;
-      rtl_lm(s,s0,dsrc1,0,1);
+     // rtl_lm(s,s0,dsrc1,0,1);
       //  rtl_zext(s, ddest, dsrc1, id_dest->width);
        operand_write(s, id_dest, s0);
       // operand_write(s,id_dest,dsrc1);
