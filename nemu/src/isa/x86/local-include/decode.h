@@ -158,11 +158,10 @@ static inline def_DHelper(I2a) {
   decode_op_I(s, id_src1, true);
 }
 static inline def_DHelper(mov_sb) {
-  //  decode_op_d(s,id_dest,true);
+    // decode_op_r(s,id_dest,true);
   
-  //  decode_op_s(s,id_src1,true);
-  rtl_lr(s,dsrc1,R_ESI,4);
-   rtl_lr(s,ddest,R_EDI,4);
+    // decode_op_r(s,id_src1,true);
+  
   // id_src1->type=OP_TYPE_MEM;
   // s->isa.mbase=ddest;
   //  id_dest->type=OP_TYPE_MEM;
