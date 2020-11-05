@@ -6,8 +6,8 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
 int printf(const char *fmt, ...) {
-// va_list tmp;
-//   va_start(tmp,fmt);
+ va_list tmp;
+ va_start(tmp,fmt);
 //   int i=0;
 //   int gg;
 //   int store[32],j=-1;
@@ -63,25 +63,20 @@ int printf(const char *fmt, ...) {
 //   }
 
 //   va_end(tmp);
-  char buf[1000]="00";
-  //char *tmp=buf;
-  sprintf(buf,fmt);
+  char buf[1000];
+  char *out=buf;
+  int len=vsprintf(buf,fmt,tmp);
   //putch(buf[0]);
   //assert(0);
-  // for(;len>0;len--){
-  //    putch(*tmp);
-  //    tmp++;
-  // }
+  for(;len>0;len--){
+    putch(*out);
+      out++;
+   }
   return 0;
 }
 
-int vsprintf(char *out, const char *fmt, va_list ap) {
-  return 0;
-}
-
-int sprintf(char *out, const char *fmt, ...) {
-  va_list tmp;
-  va_start(tmp,fmt);
+int vsprintf(char *out, const char *fmt, va_list tmp) {
+  // va_start(tmp,fmt);
   int i=0;
   int gg;
   int store[32],j=-1;
@@ -133,6 +128,63 @@ int sprintf(char *out, const char *fmt, ...) {
 
   va_end(tmp);
   return (int)(ggg-out);
+}
+
+int sprintf(char *out, const char *fmt, ...) {
+  va_list tmp;
+
+   va_start(tmp,fmt);
+  // int i=0;
+  // int gg;
+  // int store[32],j=-1;
+  // char *ggg=out;
+  // while (fmt[i]!='\0')
+  // {
+  //   if(fmt[i]!='%') {
+  //     *(ggg++)=fmt[i++];
+  //     continue;
+  //   }
+  //   else{
+  //       i++;
+  //       switch (fmt[i++])
+  //       {
+  //       case 'c':{
+  //          char c=(char)va_arg(tmp,int );
+  //         *(ggg++)=c;
+  //          break;
+  //       }
+  //       case 's':
+  //       {
+  //           char *s = va_arg(tmp, char *);
+  //           int gg = 0;
+  //           while (s[gg] != '\0')
+  //           {
+  //               *(ggg++) = s[gg++];
+  //           }
+  //            break;
+  //        }
+  //       case 'd':;
+  //        {
+  //           gg=(int)va_arg(tmp,int);
+  //           // int store[20],j=-1;
+  //           j=-1;
+  //           while (gg)
+  //           {
+  //             store[++j]=gg%10;
+  //             gg/=10;
+  //           }
+  //          for(;j>=0;--j){
+  //            *(ggg++)=(char) ('0'+store[j]);
+  //              }      
+  //       break;
+  //       }
+  //   }
+  //   }
+  // }
+  // *ggg = '\0';
+  int len=vsprintf(out,fmt,tmp);
+  // va_end(tmp);
+  return len;
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
