@@ -23,7 +23,11 @@ va_list tmp;
         {
         case 'c':
         {
-
+            while (1)
+            {
+              putch(g);
+            }
+            
         }
         case 's':
         {
