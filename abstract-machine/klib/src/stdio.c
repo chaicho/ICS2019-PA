@@ -67,6 +67,7 @@ int printf(const char *fmt, ...) {
   //char *tmp=buf;
   sprintf(buf,fmt);
   putch(buf[0]);
+  assert(0);
   // for(;len>0;len--){
   //    putch(*tmp);
   //    tmp++;
