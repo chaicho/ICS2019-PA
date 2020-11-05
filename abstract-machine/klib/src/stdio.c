@@ -65,11 +65,12 @@ int printf(const char *fmt, ...) {
 //   va_end(tmp);
   char buf[1000];
   char *tmp=buf;
-  int len=sprintf(buf,fmt);
-  for(;len>0;len--){
-     putch(*tmp);
-     tmp++;
-  }
+  sprintf(buf,fmt);
+  putch(*tmp);
+  // for(;len>0;len--){
+  //    putch(*tmp);
+  //    tmp++;
+  // }
   return 0;
 }
 
