@@ -87,12 +87,13 @@ static inline def_EHelper(movsb) {
   int tt=0;
   if(id_dest->width==1) {
       tt=1;
-      operand_write(s, id_dest, dsrc1);
+     rtl_sm(s,ddest,0,dsrc1,1);
   }
  else{
     id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
     tt= s->isa.is_operand_size_16 ? 2 : 4;
-    operand_write(s, id_dest, dsrc1); 
+    //operand_write(s, id_dest, dsrc1); 
+    rtl_sm(s,ddest,0,dsrc1,id_dest->width);
  } 
     // *s0=reg_l(R_EDI)+1;
     cpu.edi+=tt;
