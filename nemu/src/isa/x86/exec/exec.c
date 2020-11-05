@@ -91,7 +91,7 @@ static inline def_EHelper(2byte_esc) {
     IDEXW (0X9d,setcc_E, setcc,1)
     IDEXW (0X9e,setcc_E, setcc,1)
     IDEXW (0X9f,setcc_E, setcc,1)
-    IDEXW (0xb6,mov_E2G,movzx,1)
+    IDEXW (0xb6,mov_E2G,movzx,2)
     IDEXW (0xb7,mov_E2G,movzx,2)
     IDEXW (0xbe,mov_E2G,movsx,1)
     IDEXW (0xbf,mov_E2G,movsx,2)
