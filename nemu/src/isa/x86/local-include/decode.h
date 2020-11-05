@@ -80,11 +80,11 @@ static inline def_DopHelper(a) {
   operand_reg(s, op, load_val, R_EAX, op->width);
 }
 static inline def_DopHelper(d) {
-  operand_reg(s, op, load_val, R_EDI, op->width);
+  operand_reg(s, op, load_val, R_EDI, 4);
     // assert(0);
 }
 static inline def_DopHelper(s) {
-  operand_reg(s, op, load_val, R_ESI, op->width);
+  operand_reg(s, op, load_val, R_ESI, 4);
 }
 
 /* This helper function is use to decode register encoded in the opcode. */
@@ -158,9 +158,9 @@ static inline def_DHelper(I2a) {
   decode_op_I(s, id_src1, true);
 }
 static inline def_DHelper(mov_sb) {
-  decode_op_d(s,id_dest,true);
-  // decode_op_I(s, id_src1, true);
-  decode_op_s(s,id_src1,true);
+   decode_op_d(s,id_dest,true);
+  
+   decode_op_s(s,id_src1,true);
   // id_src1->type=OP_TYPE_MEM;
   // s->isa.mbase=ddest;
   //  id_dest->type=OP_TYPE_MEM;
