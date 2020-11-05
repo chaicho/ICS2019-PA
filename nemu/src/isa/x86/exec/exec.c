@@ -190,7 +190,7 @@ again:
     IDEXW (0x22,E2G,and,1)  IDEXW(0x24,I2a,and,1) IDEX(0x25,I2a,and) IDEX(0x21,G2E,and) IDEXW(0x20,G2E,and,1) IDEX(0x23,E2G,and)
     IDEX( 0x13,E2G,adc)
     IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
-    IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub) 
+    IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub)  IDEX(0x2d,I2a,sub) IDEXW(0x2a,E2G,sub,1) IDEXW(0x2c,I2a,sub,1)
     IDEX(0x1b,E2G,sbb) IDEX(0x19,G2E,sbb)
     IDEX(0xe9,J,jmp)
     EX(0x99,cltd)
