@@ -64,9 +64,9 @@ int printf(const char *fmt, ...) {
 
 //   va_end(tmp);
   char buf[1000];
-  char *tmp=buf;
+  //char *tmp=buf;
   sprintf(buf,fmt);
-  putch(*tmp);
+  putch(buf[0]);
   // for(;len>0;len--){
   //    putch(*tmp);
   //    tmp++;
