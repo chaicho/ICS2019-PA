@@ -21,6 +21,10 @@ va_list tmp;
         i++;
         switch (fmt[i++])
         {
+        case 'c':
+          {
+            putch(fmt[i]);
+        }
         case 's':
         {
             char *s = va_arg(tmp, char *);
