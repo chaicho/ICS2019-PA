@@ -90,7 +90,7 @@ static inline def_EHelper(rol) {
     *dsrc1=(*dsrc1)%(8*(id_dest->width));
   } 
    rtl_shl(s,s0,ddest,dsrc1);
-	*s0|=(*ddest)>>(8*(id_dest->width)-(*dsrc1-1));
+	*s0|=(*ddest)>>(8*(id_dest->width)-(*dsrc1));
   operand_write(s,id_dest,s0);
 if(*dsrc1==1){
   rtl_get_CF(s,s1);
