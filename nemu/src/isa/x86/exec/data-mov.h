@@ -87,8 +87,7 @@ static inline def_EHelper(movsb) {
   int tt=0;
   if(id_dest->width==1) {
       tt=1;
-      //  *ddest-=1;
-      rtl_sm (s,ddest,(int)(-1),dsrc1,1);
+      operand_write(s,id_dest,dsrc1);
   }
  else{
     id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
