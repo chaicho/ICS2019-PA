@@ -52,7 +52,7 @@ static inline def_EHelper(sar) {
   //TODO();
   //cpu.edx>>=3;
   //operand_write(s,id_dest,s0);
-    operand_write(s,id_dest,s0);
+    // operand_write(s,id_dest,s0);
 
   rtl_update_ZFSF(s,s0,id_dest->width);
   //TODO();
@@ -93,11 +93,7 @@ static inline def_EHelper(rol) {
    rtl_shl(s,s0,ddest,s1);
 	*s0|=(*ddest)>>(8*(id_dest->width)-(*dsrc1));
   operand_write(s,id_dest,s0);
-if(*dsrc1==1){
-  rtl_get_CF(s,s1);
-  rtl_msb(s,s0,ddest,id_dest->width);
-  cpu.eflag.OF=*s1^*s0;
-}
+
 //  printf("%x\n",*s0);
 //  printf("length %d\n",id_dest->width);
  //id_dest->width=id_src1->width;
