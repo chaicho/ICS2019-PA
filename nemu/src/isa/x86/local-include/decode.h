@@ -161,8 +161,8 @@ static inline def_DHelper(mov_sb) {
   //  decode_op_d(s,id_dest,true);
   
   //  decode_op_s(s,id_src1,true);
-  rtl_lr(s,s0,R_ESI,4);
-   rtl_lr(s,s1,R_EDI,4);
+  rtl_lr(s,dsrc1,R_ESI,4);
+   rtl_lr(s,ddest,R_EDI,4);
   // id_src1->type=OP_TYPE_MEM;
   // s->isa.mbase=ddest;
   //  id_dest->type=OP_TYPE_MEM;
