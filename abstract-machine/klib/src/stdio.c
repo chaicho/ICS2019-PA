@@ -24,7 +24,7 @@ va_list tmp;
         case 'c':
           {
             putch(fmt[i]);
-            break;
+            // break;
         }
         case 's':
         {
