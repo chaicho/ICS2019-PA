@@ -102,14 +102,11 @@ static inline def_EHelper(movsb) {
 //     cpu.edi+=tt;
 //     cpu.esi+=tt;
 
-   rtl_lr(s,s0,R_ESI,4);
-   rtl_lr(s,s1,R_EDI,4);
-
-   rtl_lm(s,s2,s0,0,id_dest->width);
-   rtl_sm(s,s1,0,s2,id_dest->width);
+   rtl_lm(s,s0,dsrc1,0,id_dest->width);
+   rtl_sm(s,ddest,0,s0,id_dest->width);
    cpu.esi+=id_dest->width;
    cpu.edi+=id_dest->width;
-    print_asm_template2(movsb);
+  print_asm_template2(movsb);
 
 
   // print_asm_template2(movzx);
