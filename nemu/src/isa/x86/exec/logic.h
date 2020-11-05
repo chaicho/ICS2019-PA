@@ -86,10 +86,12 @@ static inline def_EHelper(shr) {
 static inline def_EHelper(rol) {
   // printf("length %d\n",id_dest->width);
     // printf("NOW:length %d\n",id_dest->width);
-	if(*dsrc1<=8*(id_dest->width)){
-  rtl_shl(s,s0,ddest,dsrc1);
+	if(*dsrc1>8*(id_dest->width)){
+    *dsrc1=(*dsrc1)%(8*(id_dest->width));
+  } 
+   rtl_shl(s,s0,ddest,dsrc1);
 	*s0|=(id_dest->val)>>(8*(id_dest->width)-*dsrc1);
-  }
+  operand_write(s,id_dest,s0);
 if(*dsrc1==1){
   rtl_get_CF(s,s1);
   rtl_msb(s,s0,ddest,id_dest->width);
