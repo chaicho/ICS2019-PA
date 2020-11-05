@@ -46,7 +46,7 @@ va_list tmp;
             gg/=10;
          }
             for(;j>=0;--j){
-            putch ('0'+store[j]);
+            putch ((char)'0'+store[j]);
 
              }      
         break;
