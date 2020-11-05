@@ -163,7 +163,7 @@ static inline def_DHelper(mov_sb) {
   decode_op_s(s,id_src1,true);
   id_src1->type=OP_TYPE_MEM;
   id_dest->type=OP_TYPE_MEM;
-  s->isa.mbase=*ddest;
+  // s->isa.mbase=*ddest;
   // assert(0);
   printf("%d\n",*ddest);
 }

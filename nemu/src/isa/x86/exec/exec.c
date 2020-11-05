@@ -217,6 +217,6 @@ vaddr_t isa_exec_once() {
 //  assert(0);
  // printf("JUMP = %d  to  %x with code %x\n",s.is_jmp,s.jmp_pc, s.opcode);
   update_pc(&s);
-  assert(0);
+  // assert(0);
   return s.seq_pc;
 }
