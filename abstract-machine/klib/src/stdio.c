@@ -63,7 +63,7 @@ int printf(const char *fmt, ...) {
 //   }
 
 //   va_end(tmp);
-  char buf[1000];
+  char buf[1000]="00";
   //char *tmp=buf;
   sprintf(buf,fmt);
   putch(buf[0]);
