@@ -23,7 +23,7 @@ va_list tmp;
         {
         case 'c':
           {
-            putch(fmt[i]);
+            putch(fmt[i++]);
             // break;
         }
         case 's':
