@@ -84,25 +84,25 @@ static inline def_EHelper(movzx) {
 }
 
 static inline def_EHelper(movsb) {
-  int tt=0;
-  if(id_dest->width==1) {
-      tt=1;
-     // rtl_lm(s,s0,dsrc1,0,1);
-      //  rtl_zext(s, ddest, dsrc1, id_dest->width);
-       operand_write(s, id_dest, s0);
-      // operand_write(s,id_dest,dsrc1);
-  }
- else{
-    id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
-    tt= s->isa.is_operand_size_16 ? 2 : 4;
-    //operand_write(s, id_dest, dsrc1); 
-    operand_write(s,id_dest,dsrc1);
- } 
-    // *s0=reg_l(R_EDI)+1;
-    cpu.edi+=tt;
-    cpu.esi+=tt;
-  // rtl_lr(s,s1,R_ESI,4);
-  // rtl_lr(s,s2,R_EDI,4);
+//   int tt=0;
+//   if(id_dest->width==1) {
+//       tt=1;
+//       rtl_lm(s,s0,dsrc1,0,1);
+//       //  rtl_zext(s, ddest, dsrc1, id_dest->width);
+//        operand_write(s, id_dest, s0);
+//       // operand_write(s,id_dest,dsrc1);
+//   }
+//  else{
+//     id_dest->width = s->isa.is_operand_size_16 ? 2 : 4;
+//     tt= s->isa.is_operand_size_16 ? 2 : 4;
+//     //operand_write(s, id_dest, dsrc1); 
+//     operand_write(s,id_dest,dsrc1);
+//  } 
+//     // *s0=reg_l(R_EDI)+1;
+//     cpu.edi+=tt;
+//     cpu.esi+=tt;
+  rtl_lr(s,s1,R_ESI,4);
+  rtl_lr(s,s2,R_EDI,4);
     print_asm_template2(movsb);
 
 
