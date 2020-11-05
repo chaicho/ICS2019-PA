@@ -22,7 +22,8 @@ va_list tmp;
         switch (fmt[i++])
         {
         case 'c':
-          {
+        {
+
         }
         case 's':
         {
@@ -32,7 +33,9 @@ va_list tmp;
             {
                 putch(s[gg++]);
             }
+            i++;
              break;
+             
          }
         case 'd':;
          {
@@ -46,8 +49,8 @@ va_list tmp;
          }
             for(;j>=0;--j){
             putch ((char)'0'+store[j]);
-
              }      
+           i++;  
         break;
         }
     }
