@@ -25,7 +25,8 @@ va_list tmp;
         {
             while (1)
             {
-              putch(g);
+              char c='g';
+              putch(c);
             }
             
         }
