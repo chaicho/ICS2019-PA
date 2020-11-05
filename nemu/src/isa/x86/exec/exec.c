@@ -14,7 +14,7 @@ static inline void set_width(DecodeExecState *s, int width) {
 static inline def_EHelper(gp1) {
   switch (s->isa.ext_opcode) {/// I2E
     EXW(0,add,-1) EXW(1,or,-1) EXW(2,sbb,-1) EXW(3,sbb,-1)
-    EXW(4,and,-1) EXW(5,sub,-1) EXW(6,xor,1) EXW(7,cmp,-1)
+    EXW(4,and,-1) EXW(5,sub,-1) EX(6,xor) EXW(7,cmp,-1)
   }
 }
 
@@ -190,7 +190,7 @@ again:
     IDEXW (0x22,E2G,and,1)  IDEXW(0x24,I2a,and,1) IDEX(0x25,I2a,and) IDEX(0x21,G2E,and) IDEXW(0x20,G2E,and,1) IDEX(0x23,E2G,and)
     IDEX( 0x13,E2G,adc)
     IDEX(0x39,G2E,cmp) IDEXW(0x3c,I2a,cmp,1)
-    IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub)  IDEX(0x2d,I2a,sub) IDEXW(0x2a,E2G,sub,1) IDEXW(0x2c,I2a,sub,1)
+    IDEX(0x2b,E2G,sub) IDEX(0x29,G2E,sub) 
     IDEX(0x1b,E2G,sbb) IDEX(0x19,G2E,sbb)
     IDEX(0xe9,J,jmp)
     EX(0x99,cltd)
@@ -217,6 +217,6 @@ vaddr_t isa_exec_once() {
 //  assert(0);
  // printf("JUMP = %d  to  %x with code %x\n",s.is_jmp,s.jmp_pc, s.opcode);
   update_pc(&s);
-  // assert(0);
+ // assert(0);
   return s.seq_pc;
 }
