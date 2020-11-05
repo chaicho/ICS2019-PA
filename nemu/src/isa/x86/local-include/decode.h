@@ -165,7 +165,7 @@ static inline def_DHelper(mov_sb) {
   id_dest->type=OP_TYPE_MEM;
   // s->isa.mbase=*ddest;
   // assert(0);
-  printf("%d\n",*ddest);
+  //printf("%d\n",*ddest);
 }
 
 /* Gv <- EvIb
