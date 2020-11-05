@@ -59,6 +59,7 @@ int printf(const char *fmt, ...) {
   char buf[1000];
   char *tmp=buf;
   int len=sprintf(tmp,fmt);
+  tmp=buf;
   for(;len>0;len--){
      putch(*tmp);
      tmp++;
