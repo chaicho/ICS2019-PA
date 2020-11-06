@@ -4,6 +4,7 @@
 #define W 400
 #define H 300
  #define SYNC_ADDR (VGACTL_ADDR + 4)
+ static uint32_t *fb;
 void __am_gpu_init() {      
     // int i;
     // int w = 400;  // TODO: get the correct width
@@ -28,7 +29,7 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   // int ww=ctl->w;
   // int hh=ctl->h;
   // int i,j;
-   uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
+  fb  = (uint32_t *)(uintptr_t)FB_ADDR;
 
   int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h;
   uint32_t *pixels = ctl->pixels;
