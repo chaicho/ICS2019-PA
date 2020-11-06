@@ -35,16 +35,14 @@ void *malloc(size_t size) {
    if(addr==0){
      addr=heap.start;
   }
-  else
-  {
-      size  = (size_t)ROUNDUP(size, 8);
+  size  = (size_t)ROUNDUP(size, 8);
      
       addr += size;
      
       for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)addr; p ++) {
         *p = 0;
       }
-  }
+  
   
   return old;
 }
