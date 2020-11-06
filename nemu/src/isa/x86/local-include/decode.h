@@ -55,7 +55,7 @@ static inline def_DopHelper(SI) {
   //*s0=simm;
   //printf("simm:%x\n",*s0);
   if(op->width==1){
-     simm=(simm<<24)>>24;
+     simm=((signed)(simm<<24))>>24;
       // printf("EXTEND!\n");
   }
  // op->type=OP_TYPE_IMM;
