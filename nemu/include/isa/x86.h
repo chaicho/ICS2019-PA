@@ -36,8 +36,8 @@ union{
  };
   
   vaddr_t pc;
-
-  union eflag {
+  
+  union {
     uint32_t all;
     struct{
      uint32_t CF : 1;
