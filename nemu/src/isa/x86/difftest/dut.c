@@ -7,6 +7,10 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   // if(ref_r->eflag!=cpu.eflag)printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eflag,cpu.eflag);
   
    bool fla=true;
+   if(ref_r->pc!=cpu.pc){
+      printf("The supposed pc: %x \n Wrong pc : %x\n",ref_r->pc,cpu.pc);
+  fla=false;
+   }
   // if(ref_r->eflag.CF!=cpu.eflag.CF){
   //    printf("The supposed CF: %x \n Wrong CF : %x\n",ref_r->eflag .CF,cpu.eflag.CF);
   //    fla=false;
