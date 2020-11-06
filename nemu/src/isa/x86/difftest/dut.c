@@ -5,7 +5,7 @@
 
 bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
   // if(ref_r->eflag!=cpu.eflag)printf("The supposed value: %x \n Wrong value : %x\n",ref_r->eflag,cpu.eflag);
-  printf("PC %x: ZF : %d  OF : %d  CF:  %d    SF:   %d\n",cpu.pc,cpu.eflag.ZF,cpu.eflag.OF,cpu.eflag.CF,cpu.eflag.SF);
+  
    bool fla=true;
   // if(ref_r->eflag.CF!=cpu.eflag.CF){
   //    printf("The supposed CF: %x \n Wrong CF : %x\n",ref_r->eflag .CF,cpu.eflag.CF);
@@ -54,7 +54,7 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
     printf("The supposed ESP: %x \n Wrong ESP : %x\n",ref_r->esp,cpu.esp);
     fla=false;
   }
-  
+  if(!fla) printf("PC %x: ZF : %d  OF : %d  CF:  %d    SF:   %d\n",cpu.pc,cpu.eflag.ZF,cpu.eflag.OF,cpu.eflag.CF,cpu.eflag.SF);
   return fla;
   // return ref_r->eax==cpu.eax&&ref_r->ebp==cpu.ebp&&ref_r->ebx==cpu.ebx&&ref_r->ecx==cpu.ecx&&ref_r->edi==cpu.edi&&ref_r->edx==cpu.edx&&ref_r->esp==cpu.esp;
 }
