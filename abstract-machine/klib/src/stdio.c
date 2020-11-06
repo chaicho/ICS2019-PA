@@ -77,7 +77,7 @@ int printf(const char *fmt, ...) {
 
 int vsprintf(char *out, const char *fmt, va_list tmp) {
   // va_start(tmp,fmt);
-  int i=0,num_before=0;
+  int i=0;
   int gg;
   int store[32],j=-1;
   char *ggg=out;
@@ -88,12 +88,12 @@ int vsprintf(char *out, const char *fmt, va_list tmp) {
       continue;
     }
     else{
-      num_before=0;
+      // num_before=0;
         i++;
-        while(fmt[i]>='0'&&fmt[i]<='9'){
-          num_before=10*num_before+fmt[i]-'0';
-          i++;
-        }
+        // while(fmt[i]>='0'&&fmt[i]<='9'){
+        //   num_before=10*num_before+fmt[i]-'0';
+        //   i++;
+        // }
         switch (fmt[i++])
         {
         case 'c':{
