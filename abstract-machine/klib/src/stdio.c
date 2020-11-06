@@ -88,6 +88,7 @@ int vsprintf(char *out, const char *fmt, va_list tmp) {
       continue;
     }
     else{
+      num_before=0;
         i++;
         while(fmt[i]>='0'&&fmt[i]<='9'){
           num_before=10*num_before+fmt[i]-'0';
