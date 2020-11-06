@@ -31,20 +31,18 @@ int atoi(const char* nptr) {
 }
 
 void *malloc(size_t size) {
-   char *old = addr;
    if(addr==0){
      addr=heap.start;
-  }
-  size  = (size_t)ROUNDUP(size, 8);
+    }
+  char *old = addr;
+      size  = (size_t)ROUNDUP(size, 8);
      
       addr += size;
      
       for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)addr; p ++) {
         *p = 0;
       }
-  
-  
-  return old;
+    return old;
 }
 
 void free(void *ptr) {
