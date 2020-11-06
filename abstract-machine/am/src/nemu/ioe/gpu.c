@@ -34,10 +34,10 @@ void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
   //        *(fb+xx+yy*400+i+j)=*((uint32_t *) (ctl->pixels+i+j));
   //    }
   //  }
-  // *fb=1;
+// *fb=1;
   int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h;
   uint32_t *pixels = ctl->pixels;
-  int cp_bytes = (W-x>x) ?   sizeof(uint32_t) * w :sizeof(uint32_t) *(W - x);
+  int cp_bytes = (W-x>w) ?   sizeof(uint32_t) * w :sizeof(uint32_t) *(W - x);
   for (int j = 0; j < h && y + j < H; j ++) {
     memcpy(&fb[(y + j) * W + x], pixels, cp_bytes);
     pixels += w;
