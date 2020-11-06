@@ -59,7 +59,7 @@ static inline def_rtl(is_sub_carry, rtlreg_t* dest,
     const rtlreg_t* src1, const rtlreg_t* src2) {
     //*t0=rtl_msb(s,dest,src1,)
     // printf("src1:  %x  src2: %x\n",*src1,*src2);
-    if(*src1-*src2>*src1) *dest=1;
+    if((*src1-*src2)>*src1) *dest=1;
     else *dest=0;
  // TODO();
 }
