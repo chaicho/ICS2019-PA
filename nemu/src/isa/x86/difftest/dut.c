@@ -58,7 +58,7 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
     printf("The supposed ESP: %x \n Wrong ESP : %x\n",ref_r->esp,cpu.esp);
     fla=false;
   }
-  if(cpu.pc==0x103a3a||cpu.pc==0x103a3c){
+  if(cpu.pc>=0x103a3a){
       printf("FALSE: PC %x: ZF : %d  OF : %d  CF:  %d    SF:   %d\n",cpu.pc,cpu.eflag.ZF,cpu.eflag.OF,cpu.eflag.CF,cpu.eflag.SF);
      printf("TRUE : PC %x: ZF : %d  OF : %d  CF:  %d    SF:   %d\n",ref_r->pc,ref_r->eflag.ZF,ref_r->eflag.OF,ref_r->eflag.CF,ref_r->eflag.SF);
   }
