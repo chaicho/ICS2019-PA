@@ -21,20 +21,23 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) {
-  int xx=ctl->x;
-  int yy=ctl->y;
-  int ww=ctl->w;
-  int hh=ctl->h;
-  int i,j;
-  uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
-  for(i=0;i<ww;i++){
-    for(j=0;j<(hh);j++){
-        *(fb+400*xx+yy+i*ww+j*hh)=*((uint32_t *) (ctl->pixels+i*ww+j*hh));
-    }
-  }
-  if (ctl->sync) {
-    // outl(SYNC_ADDR, 0);
-    outl(SYNC_ADDR, 1);
+  // int xx=ctl->x;
+  // int yy=ctl->y;
+  // int ww=ctl->w;
+  // int hh=ctl->h;
+  // int i,j;
+  // uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
+  // for(i=0;i<ww;i++){
+  //   for(j=0;j<(hh);j++){
+  //       *(fb+400*xx+yy+i*ww+j*hh)=*((uint32_t *) (ctl->pixels+i*ww+j*hh));
+  //   }
+  // }
+  // if (ctl->sync) {
+  //   // outl(SYNC_ADDR, 0);
+  //   outl(SYNC_ADDR, 1);
+  // }
+    if (ctl->sync) {
+    outl(SYNC_ADDR, 0);
   }
 }
 
