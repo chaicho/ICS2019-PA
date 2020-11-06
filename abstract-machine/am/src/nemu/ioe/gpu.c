@@ -1,6 +1,6 @@
 #include <am.h>
 #include <nemu.h>
-#include <klib.h>
+#include <string.h>
 #define W 400
 #define H 300
  #define SYNC_ADDR (VGACTL_ADDR + 4)
