@@ -23,7 +23,7 @@ static inline def_EHelper(gp2) {
       // printf("NOW:length %d\n",id_dest->width);
 
   switch (s->isa.ext_opcode) {
-    EXW(0,rol,-1) EMPTY(1) EXW(2,rol,-1) EMPTY(3)
+    EXW(0,rol,-1) EXW(1,ror,-1) EXW(2,rol,-1) EMPTY(3)
     EXW(4,shl,-1) EXW(5,shr,-1) EMPTY(6) EXW(7,sar,-1)
   }
         // printf("NOW:length %d\n",id_dest->width);
@@ -200,7 +200,7 @@ again:
     IDEX(0xed,in_dx2a,in)
     IDEXW(0x00,G2E,add,1) IDEX(0x01,G2E,add) IDEXW(0x02,E2G,add,1) IDEX(0X03,E2G,add) IDEXW(0x04,I2a,add,1) IDEX(0x05,I2a,add)
      IDEXW(0xa4,mov_sb,movsb,1)     IDEX(0xa5,mov_sb,movsb)
-    IDEX(0X69,I_E2G,imul3)
+    IDEX(0X69,I_E2G,imul3)   
   case(0x90):  break;
   case 0x66: s->isa.is_operand_size_16 = true; goto again;
   default: exec_inv(s);
