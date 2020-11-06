@@ -63,7 +63,7 @@ static inline def_EHelper(sar) {
 static inline def_EHelper(shl) {
  //TODO();
   // unnecessary to update CF and OF in NEMU
-  //id_dest->width= s->isa.is_operand_size_16 ? 2: 4;
+  id_dest->width= s->isa.is_operand_size_16 ? 2: 4;
  rtl_shl(s,s0,ddest,dsrc1); 
  operand_write(s,id_dest,s0); 
  rtl_update_ZFSF(s,s0,id_dest->width);
