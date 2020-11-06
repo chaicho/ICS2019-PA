@@ -34,8 +34,8 @@ static inline def_EHelper(gp2) {
 /* 0xf6, 0xf7 */
 static inline def_EHelper(gp3) {
   switch (s->isa.ext_opcode) {
-    IDEXW(0,test_I,test,-1) EMPTY(1) EX(2,not) EX(3,neg)
-    EX(4,mul) EX(5,imul1) EX(6,div)  EX(7,idiv)
+    IDEXW(0,test_I,test,-1) EMPTY(1) EXW(2,not,-1) EXW(3,neg,-1)
+    EXW(4,mul,-1) EXW(5,imul1,-1) EXW(6,div,-1)  EXW(7,idiv,-1)
   }
 }
 
@@ -52,8 +52,8 @@ static inline def_EHelper(gp5) {
       //printf("NOW:length %d\n",id_dest->width);
 
   switch (s->isa.ext_opcode) {
-    EX(0,inc)  EX(1,dec) EX(2,call_rm) EMPTY(3)
-    EX(4,jmp_rm) EMPTY(5)  EX(6,push) EMPTY(7)
+    EX(0,inc)  EXW(1,dec,-1) EX(2,call_rm) EMPTY(3)
+    EXW(4,jmp_rm,-1) EMPTY(5)  EX(6,push) EMPTY(7)
   }
 }
 
