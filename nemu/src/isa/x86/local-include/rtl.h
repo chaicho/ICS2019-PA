@@ -81,8 +81,7 @@ static inline def_rtl(is_add_overflow, rtlreg_t* dest,
 static inline def_rtl(is_add_carry, rtlreg_t* dest,
     const rtlreg_t* res, const rtlreg_t* src1) {
   // dest <- is_carry(src1 + src2) 
-  if( *res>*src1+*res)  *dest=1;   
-  else *dest=0;
+  *dest=*res<*src1;
  // TODO();
 }
 

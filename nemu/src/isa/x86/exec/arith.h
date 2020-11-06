@@ -12,7 +12,7 @@ static inline def_EHelper(add) {
     rtl_andi(s, s1, s1, 0xffffffffu >> ((4 - id_dest->width) * 8));
   }
   //rtl_is_add_carry(s, s2, s1, s0);
-  rtl_is_add_carry(s, s0, ddest, dsrc1);
+  rtl_is_add_carry(s, s0, s1, dsrc1);
   rtl_set_CF(s, s0);
   operand_write(s, id_dest, s1);
   print_asm_template2(add);
