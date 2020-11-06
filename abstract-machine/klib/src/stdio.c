@@ -121,7 +121,7 @@ int vsprintf(char *out, const char *fmt, va_list tmp) {
               store[++j]=gg%10;
               gg/=10;
             }
-            while(j<num_before){
+            while(j<num_before-1){
               *(ggg++)='0';
               num_before--;
             }
