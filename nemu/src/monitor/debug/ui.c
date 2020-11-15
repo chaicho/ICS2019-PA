@@ -150,7 +150,7 @@ static int cmd_p (char *args){
     else{
            unsigned t=expr(args,&success);
            if(!success) printf("Mission failed\n");
-           else printf("%d\n",t);
+           else printf("%x\n",t);
          }
      
     return 0; 

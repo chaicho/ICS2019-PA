@@ -14,7 +14,7 @@
 #define def_rtl_compute_imm(name) \
   static inline def_rtl(name ## i, rtlreg_t* dest, const rtlreg_t* src1, const sword_t imm) { \
     *dest = concat(c_, name) (*src1, imm); \
-  }
+  }//subi代表减imm
 
 #define def_rtl_compute_reg_imm(name) \
   def_rtl_compute_reg(name) \
@@ -86,11 +86,11 @@ static inline def_rtl(idiv64_r, rtlreg_t* dest,
 
 static inline def_rtl(lm, rtlreg_t *dest, const rtlreg_t* addr, word_t offset, int len) {
   *dest = vaddr_read(*addr + offset, len);
-}
+}//lm读内存
 
 static inline def_rtl(sm, const rtlreg_t* addr, word_t offset, const rtlreg_t* src1, int len) {
   vaddr_write(*addr + offset, *src1, len);
-}
+}//sm写内存
 
 static inline def_rtl(lms, rtlreg_t *dest, const rtlreg_t* addr, word_t offset, int len) {
   word_t val = vaddr_read(*addr + offset, len);
@@ -135,6 +135,7 @@ static inline def_rtl(jr, rtlreg_t *target) {
 static inline def_rtl(jrelop, uint32_t relop,
     const rtlreg_t *src1, const rtlreg_t *src2, vaddr_t target) {
   bool is_jmp = interpret_relop(relop, *src1, *src2);
+ // printf("is:%d\n",is_jmp);
   if (is_jmp) rtl_j(s, target);
 }
 #endif

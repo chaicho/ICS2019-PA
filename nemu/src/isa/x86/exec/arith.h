@@ -1,13 +1,27 @@
 #include "cc.h"
 
 static inline def_EHelper(add) {
-  TODO();
+  //TODO();
+  //rtl_get_CF(s, s0);
+  //rtl_add(s, s0, dsrc1, rz);
+  rtl_add(s, s1, ddest, dsrc1);
+  rtl_update_ZFSF(s, s1, id_dest->width);
+  rtl_is_add_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
+  rtl_set_OF(s, s2);
+  if (id_dest->width != 4) {
+    rtl_andi(s, s1, s1, 0xffffffffu >> ((4 - id_dest->width) * 8));
+  }
+  //rtl_is_add_carry(s, s2, s1, s0);
+  rtl_is_add_carry(s, s0, s1, dsrc1);
+  rtl_set_CF(s, s0);
+  operand_write(s, id_dest, s1);
   print_asm_template2(add);
 }
 
 // dest <- sub result
 static inline void cmp_internal(DecodeExecState *s) {
   rtl_sub(s, s0, ddest, dsrc1);
+  // printf("%x\n",*s0);
   rtl_update_ZFSF(s, s0, id_dest->width);
   rtl_is_sub_carry(s, s1, ddest, dsrc1);
   rtl_set_CF(s, s1);
@@ -17,25 +31,51 @@ static inline void cmp_internal(DecodeExecState *s) {
  
 
 static inline def_EHelper(sub) {
-  TODO();
+  rtl_sub(s, s1, ddest, dsrc1);
+  rtl_update_ZFSF(s, s1, id_dest->width);
+  rtl_is_sub_overflow(s, s2, s1, ddest, dsrc1, id_dest->width);
+  rtl_set_OF(s, s2);
+  rtl_is_sub_carry(s, s0, ddest,dsrc1);
+  rtl_set_CF(s, s0);
+  operand_write(s, id_dest, s1);
+ //TODO();
+   print_asm_template2(sub);
+
 }
 
 static inline def_EHelper(cmp) {
-  TODO();
+  //if(s->src1.width<4) rtl_sext(s,dsrc1,dsrc1,id_src1->width);
+  // printf("dest:  %x  src1: %x\n",*ddest,*dsrc1);
+  cmp_internal(s);
+  print_asm_template2(cmp);
 }
 
 static inline def_EHelper(inc) {
-  TODO();
+  //TODO();
+  // printf("ori :%x",*s0);
+  *s0=*ddest+1;
+  operand_write(s,id_dest,s0);
+  // printf("now :%x",*s0);  
+  rtl_set_OF(s,s0);
+
+  rtl_update_ZFSF(s,s0,id_dest->width);
   print_asm_template1(inc);
 }
 
 static inline def_EHelper(dec) {
-  TODO();
+  rtl_subi(s,s0,ddest,1);
+    // printf("NOW:length %d\n",id_dest->width);
+
+  operand_write(s,id_dest,s0);
+   rtl_set_OF(s,s0);
+  rtl_update_ZFSF(s,s0,id_dest->width);
   print_asm_template1(dec);
 }
 
 static inline def_EHelper(neg) {
-  TODO();
+  rtl_neg(s,s0,ddest);
+  operand_write(s,id_dest,s0);
+  
   print_asm_template1(neg);
 }
 
@@ -205,6 +245,7 @@ static inline def_EHelper(idiv) {
       rtl_mv(s, s0, &cpu.eax);
       rtl_idiv64_q(s, &cpu.eax, &cpu.edx, s0, pdest);
       rtl_idiv64_r(s, &cpu.edx, &cpu.edx, s0, pdest);
+     // assert(0);
       break;
     default: assert(0);
   }

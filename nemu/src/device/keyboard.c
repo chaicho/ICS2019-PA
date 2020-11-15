@@ -22,7 +22,7 @@ f(UP) f(DOWN) f(LEFT) f(RIGHT) f(INSERT) f(DELETE) f(HOME) f(END) f(PAGEUP) f(PA
 enum {
   _KEY_NONE = 0,
   MAP(_KEYS, _KEY_NAME)
-};
+}; //把每一个键映射到一个值
 
 #define SDL_KEYMAP(k) [concat(SDL_SCANCODE_, k)] = concat(_KEY_, k),
 static uint32_t keymap[256] = {

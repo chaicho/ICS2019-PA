@@ -24,6 +24,7 @@ static inline void operand_imm(DecodeExecState *s, Operand *op, bool load_val, w
   if (load_val) {
     rtl_li(s, &op->val, imm);
     op->preg = &op->val;
+    //printf("%x\n",*op->preg);
   }
   print_Dop(op->str, OP_STR_SIZE, "$0x%x", imm);
 }
@@ -37,7 +38,9 @@ static inline void operand_imm(DecodeExecState *s, Operand *op, bool load_val, w
 static inline def_DopHelper(I) {
   /* pc here is pointing to the immediate */
   word_t imm = instr_fetch(&s->seq_pc, op->width);
+  //printf("imm=%x\n",imm);
   operand_imm(s, op, load_val, imm, op->width);
+   //printf("imm=%x\n",imm);
 }
 
 /* I386 manual does not contain this abbreviation, but it is different from
@@ -47,14 +50,26 @@ static inline def_DopHelper(I) {
 /* sign immediate */
 static inline def_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
-
+  sword_t simm=instr_fetch(&s->seq_pc,op->width);
+ //  printf("ddest: %x\n",cpu.esp);
+  //*s0=simm;
+  //printf("simm:%x\n",*s0);
+  if(op->width==1){
+     simm=((signed)(simm<<24))>>24;
+      // printf("EXTEND!\n");
+  }
+ // op->type=OP_TYPE_IMM;
+  operand_imm(s,op,load_val,simm,op->width);  
+  //imm和simm是union起来的，所以不需要专门写函数
+  //if(op->width==1) op->imm=(signed)
+  
   /* TODO: Use instr_fetch() to read `op->width' bytes of memory
    * pointed by 's->seq_pc'. Interpret the result as a signed immediate,
    * and call `operand_imm()` as following.
    *
    operand_imm(s, op, load_val, ???, op->width);
    */
-  TODO();
+  //TODO();
 }
 
 /* I386 manual does not contain this abbreviation.
@@ -63,6 +78,13 @@ static inline def_DopHelper(SI) {
 /* AL/eAX */
 static inline def_DopHelper(a) {
   operand_reg(s, op, load_val, R_EAX, op->width);
+}
+static inline def_DopHelper(d) {
+  operand_reg(s, op, load_val, R_EDI, 4);
+    // assert(0);
+}
+static inline def_DopHelper(s) {
+  operand_reg(s, op, load_val, R_ESI, 4);
 }
 
 /* This helper function is use to decode register encoded in the opcode. */
@@ -105,6 +127,8 @@ static inline def_DopHelper(O) {
  */
 static inline def_DHelper(G2E) {
   operand_rm(s, id_dest, true, id_src1, true);
+  //  printf("dest: %x  src1: %x\n",*ddest,*dsrc1);
+
 }
 
 static inline def_DHelper(mov_G2E) {
@@ -132,6 +156,18 @@ static inline def_DHelper(lea_M2G) {
 static inline def_DHelper(I2a) {
   decode_op_a(s, id_dest, true);
   decode_op_I(s, id_src1, true);
+}
+static inline def_DHelper(mov_sb) {
+    // decode_op_r(s,id_dest,true);
+  
+    // decode_op_r(s,id_src1,true);
+  
+  // id_src1->type=OP_TYPE_MEM;
+  // s->isa.mbase=ddest;
+  //  id_dest->type=OP_TYPE_MEM;
+  //  s->isa.mbase=*ddest;
+  // assert(0);
+  //printf("%d\n",*ddest);
 }
 
 /* Gv <- EvIb
@@ -171,6 +207,7 @@ static inline def_DHelper(mov_I2r) {
 /* used by unary operations */
 static inline def_DHelper(I) {
   decode_op_I(s, id_dest, true);
+  // printf("%x\n",*ddest);
 }
 
 static inline def_DHelper(r) {
@@ -197,8 +234,11 @@ static inline def_DHelper(test_I) {
 static inline def_DHelper(SI2E) {
   assert(id_dest->width == 2 || id_dest->width == 4);
   operand_rm(s, id_dest, true, NULL, false);
-  id_src1->width = 1;
-  decode_op_SI(s, id_src1, true);
+ 
+  id_src1->width = 1; 
+  //printf("ddest: %x\n",*ddest);
+  decode_op_SI(s, id_src1, true); 
+   //printf("ddest: %x\n",*ddest);
   if (id_dest->width == 2) {
     *dsrc1 &= 0xffff;
   }
@@ -216,7 +256,11 @@ static inline def_DHelper(SI_E2G) {
 
 static inline def_DHelper(gp2_1_E) {
   operand_rm(s, id_dest, true, NULL, false);
+    // printf("NOW:length %d\n",id_dest->width);
+
   operand_imm(s, id_src1, true, 1, 1);
+      // printf("NOW:length %d\n",id_dest->width);
+
 }
 
 static inline def_DHelper(gp2_cl2E) {
@@ -262,7 +306,10 @@ static inline def_DHelper(a2O) {
 static inline def_DHelper(J) {
   decode_op_SI(s, id_dest, false);
   // the target address can be computed in the decode stage
-  s->jmp_pc = id_dest->simm + s->seq_pc;
+  //printf("Jump to %x\n",id_dest->simm);
+ // s->jmp_pc = id_dst->simm + cpu.pc;
+s->jmp_pc = id_dest->simm +  s->seq_pc;
+
 }
 
 static inline def_DHelper(push_SI) {
@@ -290,9 +337,12 @@ static inline def_DHelper(out_a2dx) {
   decode_op_a(s, id_src1, true);
   operand_reg(s, id_dest, true, R_DX, 2);
 }
+// static inline def_DHelper(lea_M2G) {
+//   operand_rm(s, id_src1, false, id_dest, false);
+// }
 
 static inline void operand_write(DecodeExecState *s, Operand *op, rtlreg_t* src) {
-  if (op->type == OP_TYPE_REG) { rtl_sr(s, op->reg, src, op->width); }
+  if (op->type == OP_TYPE_REG) {    rtl_sr(s, op->reg, src, op->width); }
   else if (op->type == OP_TYPE_MEM) { rtl_sm(s, s->isa.mbase, s->isa.moff, src, op->width); }
   else { assert(0); }
 }

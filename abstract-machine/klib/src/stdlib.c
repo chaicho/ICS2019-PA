@@ -3,8 +3,9 @@
 #include <klib-macros.h>
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
+static char *addr=NULL;
 static unsigned long int next = 1;
-
+// static unsigned long int before=NULL;
 int rand(void) {
   // RAND_MAX assumed to be 32767
   next = next * 1103515245 + 12345;
@@ -30,7 +31,18 @@ int atoi(const char* nptr) {
 }
 
 void *malloc(size_t size) {
-  return NULL;
+   if(addr==0){
+     addr=heap.start;
+    }
+  char *old = addr;
+      size  = (size_t)ROUNDUP(size, 8);
+     
+      addr += size;
+     
+      for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)addr; p ++) {
+        *p = 0;
+      }
+    return old;
 }
 
 void free(void *ptr) {

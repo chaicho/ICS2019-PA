@@ -30,17 +30,41 @@ static inline void rtl_setcc(DecodeExecState *s, rtlreg_t* dest, uint32_t subcod
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
     case CC_O:
+     *dest= cpu.eflag.OF; 
+    break;
     case CC_B:
-    case CC_E:
+     *dest=cpu.eflag.CF;
+     break;
+    case CC_E: 
+      //rtl_update_ZF(s,dest,id_dest->width);
+     *dest= cpu.eflag.ZF;
+      assert(*dest==cpu.eflag.ZF);
+            //printf("%d\n",*dest);
+      break;
     case CC_BE:
+      // if(cpu.eflag.ZF==1||cpu.eflag.CF==1) *dest=1;
+      // else *dest=0;
+      *dest=cpu.eflag.ZF||cpu.eflag.CF;
+      break;
     case CC_S:
+      *dest=cpu.eflag.SF;
+      break;
     case CC_L:
+     // if(cpu.eflag.SF!=cpu.eflag.OF)  *dest=1;
+     // else *dest =0;
+      *dest=cpu.eflag.SF^cpu.eflag.OF;
+      break;
     case CC_LE:
-       TODO();
+      //TODO();
+      // if(cpu.eflag.ZF==1||cpu.eflag.OF!=cpu.eflag.SF) *dest=1;
+      // else *dest=0;
+      *dest=cpu.eflag.ZF||(cpu.eflag.OF^cpu.eflag.SF);
+      break;
+       
     default: panic("should not reach here");
     case CC_P: panic("PF is not supported");
   }
-
+  //if((*dest)==1) printf("JUMPPPP\n");
   if (invert) {
     rtl_xori(s, dest, dest, 0x1);
   }

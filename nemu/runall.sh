@@ -12,7 +12,7 @@ else
 fi
 
 echo "compiling testcases..."
-if make -C $CPUTEST_PATH ARCH=$ISA-nemu &> /dev/null; then
+if make -C $CPUTEST_PATH ARCH=native &> /dev/null; then
   echo "testcases compile OK"
 else
   echo "testcases compile error... exit..."

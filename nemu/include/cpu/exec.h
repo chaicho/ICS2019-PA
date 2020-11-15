@@ -16,11 +16,17 @@
 #define EXW(idx, ex, w)       IDEXW(idx, empty, ex, w)
 #define EX(idx, ex)           EXW(idx, ex, 0)
 #define EMPTY(idx)            EX(idx, inv)
-
+//EMPTY指的是invalid opcode，目前猜测应该是代表无效情形
+//id 指的是decode部分，ex指的是执行部分，w代表的是字长
+//EX按前面有没有66当作来确定是32还是64，然后进行执行操作
+//EXW设置字长为w，然后进行执行
+//IDEX，decode和exex都执行，按66确定32/64
+// IDEX，全要
 // set_width() is defined in src/isa/$isa/exec/exec.c
 #define CASE_ENTRY(idx, id, ex, w) case idx: set_width(s, w); id(s); ex(s); break;
 
-static inline uint32_t instr_fetch(vaddr_t *pc, int len) {
+static inline uint32_t instr_fetch(vaddr_t *pc, int len) { 
+  //用来取指令
   uint32_t instr = vaddr_ifetch(*pc, len);
 #ifdef DEBUG
   uint8_t *p_instr = (void *)&instr;
